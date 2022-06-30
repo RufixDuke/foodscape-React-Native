@@ -13,7 +13,7 @@ const screenOptions = {
 export const MyStack = () => (
     <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="WelcomeScreen"
+            initialRouteName="LoginScreen"
             screenOptions={screenOptions}
         >
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
