@@ -4,6 +4,7 @@ import {
     Image,
     StyleSheet,
     TouchableWithoutFeedback,
+    Keyboard,
 } from "react-native";
 import React from "react";
 import Login from "../components/Login/Login";
@@ -40,7 +41,8 @@ const styles = StyleSheet.create({
         fontSize: 25,
         fontWeight: "800",
         color: "#2A2A2A",
-        marginLeft: 20,
+        marginLeft: 5,
+        marginTop: 15,
     },
 });
 

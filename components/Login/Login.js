@@ -5,7 +5,6 @@ import {
     Pressable,
     TouchableOpacity,
     Alert,
-    Keyboard,
 } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
@@ -37,13 +36,15 @@ const Login = () => {
                         <Text
                             style={{
                                 marginBottom: 20,
-                                fontWeight: "800",
+                                // fontWeight: "800",
                                 fontSize: 20,
                                 color: "#2A2A2A",
                             }}
                         >
                             Welcome back
                         </Text>
+                        <Text>Email or Phone number</Text>
+
                         <View
                             style={[
                                 styles.inputField,
@@ -62,7 +63,7 @@ const Login = () => {
                                 autoCapitalize="none"
                                 keyboardType="email-address"
                                 textContentType="emailAddress"
-                                // autoFocus={true}
+                                autoFocus={true}
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}
@@ -86,6 +87,7 @@ const Login = () => {
                                 placeholderTextColor="gray"
                                 autoCapitalize="none"
                                 autoCorrect={false}
+                                autoFocus={false}
                                 secureTextEntry={true}
                                 textContentType="password"
                                 onChangeText={handleChange("password")}
