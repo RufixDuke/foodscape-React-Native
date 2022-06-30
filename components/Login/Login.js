@@ -43,8 +43,9 @@ const Login = () => {
                         >
                             Welcome back
                         </Text>
-                        <Text>Email or Phone number</Text>
-
+                        <Text style={{ marginBottom: 5, color: "#828282" }}>
+                            Email or Phone number
+                        </Text>
                         <View
                             style={[
                                 styles.inputField,
@@ -58,18 +59,18 @@ const Login = () => {
                             ]}
                         >
                             <TextInput
-                                placeholder="Email, phone number"
-                                placeholderTextColor="gray"
                                 autoCapitalize="none"
                                 keyboardType="email-address"
                                 textContentType="emailAddress"
-                                autoFocus={true}
+                                // autoFocus={true}
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}
                             />
                         </View>
-
+                        <Text style={{ marginBottom: 5, color: "#828282" }}>
+                            Password
+                        </Text>
                         <View
                             style={[
                                 styles.inputField,
@@ -83,8 +84,6 @@ const Login = () => {
                             ]}
                         >
                             <TextInput
-                                placeholder="Password"
-                                placeholderTextColor="gray"
                                 autoCapitalize="none"
                                 autoCorrect={false}
                                 autoFocus={false}
@@ -118,7 +117,7 @@ const Login = () => {
                         <View style={styles.signUpContainer}>
                             <Text>Don't have an account?</Text>
                             <TouchableOpacity
-                                onPress={() => navigation.push("SignUpForm")}
+                                onPress={() => navigation.push("SignUpScreen")}
                             >
                                 <Text style={{ color: "#F59D5E" }}>
                                     {" "}
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         minHeight: 42,
-        borderRadius: 4,
+        borderRadius: 50,
     }),
     buttonText: {
         fontWeight: "600",
