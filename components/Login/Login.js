@@ -11,7 +11,7 @@ import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
-import { useUserContext } from "../context/userContext";
+import { firebase } from "../../firebase";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email().required("Must be present"),
@@ -21,20 +21,35 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
-    const emailRef = useRef();
-    const psdRef = useRef();
-    const { signInUser } = useUserContext();
-
-    const onSubmit = (e) => {
-        e.preventDefault();
-        const email = emailRef.current.value;
-        const password = psdRef.current.value;
-        if (email && password) signInUser(email, password);
+    const onLogin = async (email, password) => {
+        try {
+            await firebase.auth().signInWithEmailAndPassword(email, password);
+            console.log("Firebase Login Successful", email, password);
+        } catch (error) {
+            Alert.alert(
+                `Hello ${email}`,
+                error.message + "\n\n .. What would you like to do next",
+                [
+                    {
+                        text: "OK",
+                        onPress: () => console.log("OK"),
+                        style: "cancel",
+                    },
+                    {
+                        text: "Sign Up",
+                        onPress: () => navigation.push("SignUpForm"),
+                    },
+                ]
+            );
+        }
     };
     return (
         <Formik
             initialValues={{ email: "", password: "" }}
-            onSubmit={onSubmit}
+            onSubmit={(values) => {
+                onLogin(values.email, values.password);
+                // navigation.push("Homescreen");
+            }}
             validationSchema={LoginSchema}
             validateOnMount={true}
         >
@@ -74,7 +89,6 @@ const Login = () => {
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}
-                                ref={emailRef}
                             />
                         </View>
                         <Text style={{ marginBottom: 5, color: "#828282" }}>
@@ -101,7 +115,6 @@ const Login = () => {
                                 onChangeText={handleChange("password")}
                                 onBlur={handleBlur("password")}
                                 value={values.password}
-                                ref={psdRef}
                             />
                         </View>
                         <View
