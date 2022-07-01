@@ -6,6 +6,7 @@ import {
     TouchableOpacity,
     Alert,
     StyleSheet,
+    Image,
 } from "react-native";
 import React, { useState } from "react";
 import { Formik } from "formik";
@@ -49,6 +50,22 @@ const SignUp = ({ navigation }) => {
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
         }
+    };
+
+    const signUpWithFirebase = () => {
+        let google_provider = new firebase.auth.GoogleAuthProvider();
+        firebase
+            .auth()
+            .signInWithRedirect(google_provider)
+            .then((res) => {
+                if (res.credential) {
+                    let credential = res.credential;
+                    let token = credential.accessToken;
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     return (
@@ -136,12 +153,66 @@ const SignUp = ({ navigation }) => {
                             <Text style={styles.buttonText}>Sign Up</Text>
                         </Pressable>
 
+                        <Text
+                            style={{
+                                textAlign: "center",
+                                marginVertical: 10,
+                                color: "#2A2A2A",
+                                fontSize: 14,
+                            }}
+                        >
+                            OR
+                        </Text>
+
+                        <Pressable
+                            titleSize={20}
+                            style={styles.btn2}
+                            onPress={signUpWithFirebase}
+                        >
+                            <Image
+                                source={require("../../assets/icons/google.png")}
+                                style={{ width: 22, height: 22 }}
+                            />
+                            <Text
+                                style={{
+                                    color: "#2A2A2A",
+                                    marginLeft: 10,
+                                    fontSize: 12,
+                                }}
+                            >
+                                Continue with Google
+                            </Text>
+                        </Pressable>
+
+                        <Pressable
+                            titleSize={20}
+                            style={[styles.btn2, styles.fb]}
+                        >
+                            <Image
+                                source={require("../../assets/icons/facebook.png")}
+                                style={{ width: 22, height: 22 }}
+                            />
+                            <Text
+                                style={{
+                                    color: "#2A2A2A",
+                                    marginLeft: 10,
+                                    fontSize: 12,
+                                }}
+                            >
+                                Continue with Facebook
+                            </Text>
+                        </Pressable>
+
                         <View style={styles.signUpContainer}>
-                            <Text>Already have an account?</Text>
+                            <Text style={{ color: "#2A2A2A", fontSize: 12 }}>
+                                Already have an account?
+                            </Text>
                             <TouchableOpacity
                                 onPress={() => navigation.push("LoginForm")}
                             >
-                                <Text style={{ color: "#6BB0F5" }}>
+                                <Text
+                                    style={{ color: "#F27C28", fontSize: 14 }}
+                                >
                                     {" "}
                                     Log In
                                 </Text>
@@ -171,19 +242,31 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         minHeight: 42,
-        borderRadius: 50,
+        borderRadius: 32,
         paddingVertical: 13,
     }),
     buttonText: {
         fontWeight: "600",
         color: "#fff",
-        fontSize: 20,
+        fontSize: 16,
     },
     signUpContainer: {
         flexDirection: "row",
         width: "100%",
         justifyContent: "center",
         marginTop: 50,
+    },
+    btn2: {
+        backgroundColor: "#FEFEFE",
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+        paddingVertical: 14,
+        paddingHorizontal: 70,
+        borderRadius: 32,
+    },
+    fb: {
+        marginTop: 7,
     },
 });
 
