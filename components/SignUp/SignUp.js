@@ -17,11 +17,8 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const signUpSchema = Yup.object().shape({
     email: Yup.string().email().required("Must be present"),
-    username: Yup.string()
-        .required()
-        .min(2, "must not be less than 2 characters"),
     password: Yup.string()
-        .min(5, "characters must not be less than 5")
+        .min(6, "characters must not be less than 5")
         .required(),
 });
 
@@ -39,34 +36,34 @@ const SignUp = ({ navigation }) => {
                 .createUserWithEmailAndPassword(email, password);
             console.log("Firebase SignUp Successful", email, password);
 
-            db.collection("users")
-                .doc(authUser.user.email)
-                .set({
-                    owner_uid: authUser.user.uid,
-                    username: username,
-                    email: authUser.user.email,
-                    profile_picture: await getRandomProfilePicture(),
-                });
+            // db.collection("users")
+            //     .doc(authUser.user.email)
+            //     .set({
+            //         owner_uid: authUser.user.uid,
+            //         username: username,
+            //         email: authUser.user.email,
+            //         profile_picture: await getRandomProfilePicture(),
+            //     });
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
         }
     };
 
-    const signUpWithFirebase = () => {
-        let google_provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-            .auth()
-            .signInWithRedirect(google_provider)
-            .then((res) => {
-                if (res.credential) {
-                    let credential = res.credential;
-                    let token = credential.accessToken;
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
-    };
+    // const signUpWithFirebase = () => {
+    //     let google_provider = new firebase.auth.GoogleAuthProvider();
+    //     firebase
+    //         .auth()
+    //         .signInWithRedirect(google_provider)
+    //         .then((res) => {
+    //             if (res.credential) {
+    //                 let credential = res.credential;
+    //                 let token = credential.accessToken;
+    //             }
+    //         })
+    //         .catch((err) => {
+    //             console.log(err);
+    //         });
+    // };
 
     return (
         <Formik
@@ -167,7 +164,7 @@ const SignUp = ({ navigation }) => {
                         <Pressable
                             titleSize={20}
                             style={styles.btn2}
-                            onPress={signUpWithFirebase}
+                            // onPress={signUpWithFirebase}
                         >
                             <Image
                                 source={require("../../assets/icons/google.png")}
