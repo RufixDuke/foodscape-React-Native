@@ -36,6 +36,8 @@ const SignUp = ({ navigation }) => {
                 .createUserWithEmailAndPassword(email, password);
             console.log("Firebase SignUp Successful", email, password);
 
+            emailVerify(email);
+
             // db.collection("users")
             //     .doc(authUser.user.email)
             //     .set({
@@ -46,6 +48,42 @@ const SignUp = ({ navigation }) => {
             //     });
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
+        }
+    };
+
+    var actionCodeSettings = {
+        url:
+            "https://www.example.com/?email=" +
+            firebase.auth().currentUser.email,
+        iOS: {
+            bundleId: "com.example.ios",
+        },
+        android: {
+            packageName: "com.example.android",
+            installApp: true,
+            minimumVersion: "12",
+        },
+        handleCodeInApp: true,
+        // When multiple custom dynamic link domains are defined, specify which
+        // one to use.
+        dynamicLinkDomain: "example.page.link",
+    };
+
+    const emailVerify = async (email) => {
+        try {
+            firebase
+                .auth()
+                .sendSignInLinkToEmail(email, actionCodeSettings)
+                .then(() => {
+                    // The link was successfully sent. Inform the user.
+                    // Save the email locally so you don't need to ask the user for it again
+                    // if they open the link on the same device.
+                    window.localStorage.setItem("emailForSignIn", email);
+                    // ...
+                    console.log("Done");
+                });
+        } catch (error) {
+            console.log(error);
         }
     };
 
