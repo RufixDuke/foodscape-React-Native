@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Image,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
@@ -20,6 +20,7 @@ const signUpSchema = Yup.object().shape({
 });
 
 const ForgotPassword = ({ navigation }) => {
+    const emailRef = useRef();
     const forgotPassword = async (email) => {
         // return sendPasswordResetEmail(auth, email);
 
@@ -42,13 +43,18 @@ const ForgotPassword = ({ navigation }) => {
         }
     };
 
+    const forgotPasswordHandler = () => {
+        // const email = emailRef.current.value;
+        if (value.email)
+            forgotPassword(email).then(() => {
+                value.email = "";
+            });
+    };
+
     return (
         <Formik
             initialValues={{ email: "" }}
-            onSubmit={(values) => {
-                forgotPassword(values.email);
-                // navigation.push("Homescreen");
-            }}
+            onSubmit={forgotPasswordHandler}
             validationSchema={signUpSchema}
             validateOnMount={true}
         >
