@@ -11,6 +11,7 @@ import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
+import { useUserContext } from "../context/userContext";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email().required("Must be present"),
@@ -20,13 +21,20 @@ const LoginSchema = Yup.object().shape({
 });
 
 const Login = () => {
+    const emailRef = useRef();
+    const psdRef = useRef();
+    const { signInUser } = useUserContext();
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+        const email = emailRef.current.value;
+        const password = psdRef.current.value;
+        if (email && password) signInUser(email, password);
+    };
     return (
         <Formik
             initialValues={{ email: "", password: "" }}
-            onSubmit={(values) => {
-                onLogin(values.email, values.password);
-                // navigation.push("Homescreen");
-            }}
+            onSubmit={onSubmit}
             validationSchema={LoginSchema}
             validateOnMount={true}
         >
@@ -66,6 +74,7 @@ const Login = () => {
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}
+                                ref={emailRef}
                             />
                         </View>
                         <Text style={{ marginBottom: 5, color: "#828282" }}>
@@ -92,6 +101,7 @@ const Login = () => {
                                 onChangeText={handleChange("password")}
                                 onBlur={handleBlur("password")}
                                 value={values.password}
+                                ref={psdRef}
                             />
                         </View>
                         <View
