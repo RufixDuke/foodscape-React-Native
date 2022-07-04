@@ -6,13 +6,27 @@ import {
     TextInput,
     TouchableOpacity,
 } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import Filters from "../components/HomeScreen/Filters";
 import Popular from "../components/HomeScreen/Popular";
 
 const HomeScreen = ({ navigation }) => {
+    const [recipe, setRecipe] = useState([]);
+    const fetchingData = () => {
+        let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
+        fetch(url)
+            .then((response) => response.json())
+            .then((recipe) => {
+                setRecipe(recipe.recipes);
+                console.log(recipe.recipes);
+            });
+    };
+
+    useEffect(() => {
+        fetchingData();
+    }, []);
     return (
         <View style={styles.wrapper}>
             <View style={styles.header}>
@@ -79,11 +93,57 @@ const HomeScreen = ({ navigation }) => {
                     </Formik>
                 </View>
                 <Filters />
-                <Popular navigation={navigation} />
+                <Header />
+                {recipe.map((data) => (
+                    <View
+                        style={{
+                            flex: 1,
+                            flexDirection: "row",
+                        }}
+                    >
+                        <Popular
+                            navigation={navigation}
+                            data={data}
+                            key={data.recipe_id}
+                        />
+                    </View>
+                ))}
             </View>
         </View>
     );
 };
+
+const Header = () => (
+    <View style={{ marginVertical: 20 }}>
+        <View
+            style={{
+                marginVertical: 10,
+                // flex: 1,
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+            }}
+        >
+            <Text
+                style={{
+                    fontSize: 18,
+                    color: "#2A2A2A",
+                }}
+            >
+                Popular Products
+            </Text>
+            <Text
+                // onPress={() => navigation.push('')}
+                style={{
+                    fontSize: 14,
+                    color: "#2A2A2A",
+                }}
+            >
+                See All
+            </Text>
+        </View>
+    </View>
+);
 
 const styles = StyleSheet.create({
     wrapper: {

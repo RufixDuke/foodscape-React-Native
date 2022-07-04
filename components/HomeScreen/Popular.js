@@ -1,53 +1,16 @@
-import { View, Text, Image, Pressable } from "react-native";
-import React, { useEffect } from "react";
+import { View, Text, Image, ScrollView } from "react-native";
 
-const Popular = () => {
-    const fetchingData = () => {
-        let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
-        let recipe;
-        fetch(url)
-            .then((response) => response.json())
-            .then((recipe) => {
-                console.log(recipe.recipes.publisher);
-            });
-    };
-
-    useEffect(() => {
-        fetchingData();
-    }, []);
+const Popular = ({ data, navigation }) => {
+    // console.log("yooooooooooo");
     return (
-        <View style={{ marginVertical: 20 }}>
-            <View
-                style={{
-                    marginVertical: 10,
-                    // flex: 1,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                }}
-            >
-                <Text
-                    style={{
-                        fontSize: 18,
-                        color: "#2A2A2A",
-                    }}
-                >
-                    Popular Products
-                </Text>
-                <Text
-                    // onPress={() => navigation.push('')}
-                    style={{
-                        fontSize: 14,
-                        color: "#2A2A2A",
-                    }}
-                >
-                    See All
-                </Text>
-            </View>
-
+        <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            // style={{ flexDirection: "row", marginRight: 10 }}
+        >
             <View style={{ position: "relative" }}>
                 <Image
-                    source={require("../../assets/icons/meal.png")}
+                    source={{ uri: data.image_url }}
                     style={{ width: 148, height: 148 }}
                 />
                 <Image
@@ -69,7 +32,7 @@ const Popular = () => {
                     }}
                 >
                     <Text style={{ color: "#FAFAFA", fontSize: 12 }}>
-                        Chicken Pizza
+                        {data.title}
                     </Text>
                     <Text
                         style={{
@@ -82,7 +45,7 @@ const Popular = () => {
                     </Text>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     );
 };
 
