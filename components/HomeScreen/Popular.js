@@ -1,5 +1,4 @@
 import { View, Text, Image, ScrollView } from "react-native";
-
 const Popular = ({ data, navigation }) => {
     // console.log("yooooooooooo");
     return (
