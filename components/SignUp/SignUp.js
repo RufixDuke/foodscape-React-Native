@@ -52,9 +52,7 @@ const SignUp = ({ navigation }) => {
     };
 
     var actionCodeSettings = {
-        url:
-            "https://www.example.com/?email=" +
-            firebase.auth().currentUser.email,
+        url: "https://www.example.com/?email=" + firebase.auth().email,
         iOS: {
             bundleId: "com.example.ios",
         },
@@ -87,21 +85,21 @@ const SignUp = ({ navigation }) => {
         }
     };
 
-    // const signUpWithFirebase = () => {
-    //     let google_provider = new firebase.auth.GoogleAuthProvider();
-    //     firebase
-    //         .auth()
-    //         .signInWithRedirect(google_provider)
-    //         .then((res) => {
-    //             if (res.credential) {
-    //                 let credential = res.credential;
-    //                 let token = credential.accessToken;
-    //             }
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // };
+    const signUpWithFirebase = () => {
+        let google_provider = new firebase.auth.GoogleAuthProvider();
+        firebase
+            .auth()
+            .signInWithRedirect(google_provider)
+            .then((res) => {
+                if (res.credential) {
+                    let credential = res.credential;
+                    let token = credential.accessToken;
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
 
     return (
         <Formik
@@ -202,7 +200,7 @@ const SignUp = ({ navigation }) => {
                         <Pressable
                             titleSize={20}
                             style={styles.btn2}
-                            // onPress={signUpWithFirebase}
+                            onPress={signUpWithFirebase}
                         >
                             <Image
                                 source={require("../../assets/icons/google.png")}
@@ -243,7 +241,7 @@ const SignUp = ({ navigation }) => {
                                 Already have an account?
                             </Text>
                             <TouchableOpacity
-                                onPress={() => navigation.push("LoginForm")}
+                                onPress={() => navigation.push("LoginScreen")}
                             >
                                 <Text
                                     style={{ color: "#F27C28", fontSize: 14 }}

@@ -28,7 +28,7 @@ const ForgotPassword = ({ navigation }) => {
             const authUser = await firebase
                 .auth()
                 .sendPasswordResetEmail(email, auth);
-            console.log("Firebase Reset Password Successful", email);
+            console.log("Firebase Reset Password Successfully sent", email);
 
             // db.collection("users")
             //     .doc(authUser.user.email)
@@ -38,16 +38,18 @@ const ForgotPassword = ({ navigation }) => {
             //         email: authUser.user.email,
             //         profile_picture: await getRandomProfilePicture(),
             //     });
+            return authUser;
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
         }
     };
 
     const forgotPasswordHandler = () => {
-        // const email = emailRef.current.value;
-        if (value.email)
+        const email = emailRef.current.value;
+        if (email)
             forgotPassword(email).then(() => {
-                value.email = "";
+                emailRef.current.value = "";
+                console.log("sent");
             });
     };
 
@@ -86,6 +88,7 @@ const ForgotPassword = ({ navigation }) => {
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}
+                                ref={emailRef}
                             />
                         </View>
 

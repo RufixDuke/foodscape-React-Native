@@ -20,7 +20,7 @@ const LoginSchema = Yup.object().shape({
         .required(),
 });
 
-const Login = () => {
+const Login = ({ navigation }) => {
     const onLogin = async (email, password) => {
         try {
             await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -123,7 +123,12 @@ const Login = () => {
                                 marginBottom: 30,
                             }}
                         >
-                            <Text style={{ color: "#828282" }}>
+                            <Text
+                                onPress={() =>
+                                    navigation.push("ForgotPassword")
+                                }
+                                style={{ color: "#828282" }}
+                            >
                                 Forgot Password?
                             </Text>
                         </View>
