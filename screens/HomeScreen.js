@@ -79,7 +79,7 @@ const HomeScreen = ({ navigation }) => {
                     </Formik>
                 </View>
                 <Filters />
-                <Popular />
+                <Popular navigation={navigation} />
             </View>
         </View>
     );
