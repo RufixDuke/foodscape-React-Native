@@ -16,6 +16,7 @@ import Popular from "../components/HomeScreen/Popular";
 const HomeScreen = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
     let slicedRecipe = recipe.slice(0, 4);
+    let swiperSliced = recipe.slice(6, 10);
     console.log(slicedRecipe);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
@@ -110,10 +111,17 @@ const HomeScreen = ({ navigation }) => {
                         />
                     ))}
                 </ScrollView>
+                <SwiperRecipe />
             </View>
         </View>
     );
 };
+
+const SwiperRecipe = ({ swiperSliced }) => (
+    <View>
+        <Swiper index={0} loop={false}></Swiper>
+    </View>
+);
 
 const Header = () => (
     <View style={{ marginVertical: 10, marginBottom: 0 }}>
