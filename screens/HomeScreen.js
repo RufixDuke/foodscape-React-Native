@@ -5,6 +5,7 @@ import {
     Pressable,
     TextInput,
     TouchableOpacity,
+    ScrollView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
@@ -14,6 +15,8 @@ import Popular from "../components/HomeScreen/Popular";
 
 const HomeScreen = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
+    let slicedRecipe = recipe.slice(0, 4);
+    console.log(slicedRecipe);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
@@ -94,27 +97,26 @@ const HomeScreen = ({ navigation }) => {
                 </View>
                 <Filters />
                 <Header />
-                {recipe.map((data) => (
-                    <View
-                        style={{
-                            flex: 1,
-                            flexDirection: "row",
-                        }}
-                    >
+                <ScrollView
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    style={{ marginTop: 1 }}
+                >
+                    {slicedRecipe.map((data) => (
                         <Popular
                             navigation={navigation}
                             data={data}
                             key={data.recipe_id}
                         />
-                    </View>
-                ))}
+                    ))}
+                </ScrollView>
             </View>
         </View>
     );
 };
 
 const Header = () => (
-    <View style={{ marginVertical: 20 }}>
+    <View style={{ marginVertical: 10, marginBottom: 0 }}>
         <View
             style={{
                 marginVertical: 10,
