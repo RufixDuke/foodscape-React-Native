@@ -1,40 +1,42 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 
 export const bottomIcons = [
     {
         name: "Home",
-        active: require("../../assets/home-filled.png"),
-        inactive: require("../../assets/home.png"),
+        active: require("../../assets/BottomTabs/home-filled.png"),
+        inactive: require("../../assets/BottomTabs/home.png"),
+        nav: "HomeScreen",
     },
     {
-        name: "Search",
-        active: require("../../assets/search.png"),
-        inactive: require("../../assets/search.png"),
+        name: "Recent",
+        active: require("../../assets/BottomTabs/recent-filled.png"),
+        inactive: require("../../assets/BottomTabs/recent.png"),
+        nav: "RecentScreen",
     },
     {
-        name: "Reels",
-        active: require("../../assets/frame-filled.png"),
-        inactive: require("../../assets/frame.png"),
+        name: "Favorites",
+        active: require("../../assets/BottomTabs/favorite-filled.png"),
+        inactive: require("../../assets/BottomTabs/favorite.png"),
     },
     {
-        name: "Shop",
-        active: require("../../assets/shop-filled.png"),
-        inactive: require("../../assets/shop.png"),
+        name: "Cart",
+        active: require("../../assets//BottomTabs/cart-filled.png"),
+        inactive: require("../../assets/BottomTabs/cart.png"),
     },
     {
-        name: "User",
-        active: { uri: "https://i.imgur.com/dxjd7FB.jpg" },
-        inactive: { uri: "https://i.imgur.com/dxjd7FB.jpg" },
+        name: "Profile",
+        active: require("../../assets/BottomTabs/profile-filled.png"),
+        inactive: require("../../assets/BottomTabs/profile.png"),
     },
 ];
 
-const BottomTabs = () => {
+const BottomTabs = ({ navigation }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>
                 {bottomIcons.map((icon, index) => (
-                    <Icon key={index} icon={icon} />
+                    <Icon key={index} icon={icon} navigation={navigation} />
                 ))}
             </View>
         </View>
@@ -43,17 +45,15 @@ const BottomTabs = () => {
 
 const Icon = ({ icon }) => {
     const [activeTab, setActiveTab] = useState("Home");
-    const onPress = () => setActiveTab(icon.name);
+    const [activeNav, setActiveNav] = useState("");
+    const onPress = () => {
+        setActiveTab(icon.name);
+        // nagivation.push(activeNav);
+    };
     return (
         <TouchableOpacity onPress={onPress}>
             <Image
-                style={[
-                    styles.text,
-                    icon.name === "User" ? styles.profilePic() : null,
-                    activeTab === "User" && icon.name === activeTab
-                        ? styles.profilePic(activeTab)
-                        : null,
-                ]}
+                style={styles.text}
                 source={activeTab === icon.name ? icon.active : icon.inactive}
             />
         </TouchableOpacity>

@@ -117,7 +117,7 @@ const HomeScreen = ({ navigation }) => {
                             </ScrollView>
                         </View>
 
-                        <BottomTabs />
+                        <BottomTabs navigation={navigation} />
                     </View>
                 </ScrollView>
             </View>
