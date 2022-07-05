@@ -9,15 +9,15 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
-import { Formik } from "formik";
 import Filters from "../components/HomeScreen/Filters";
 import Popular from "../components/HomeScreen/Popular";
-import Swiper from "react-native-swiper";
+import LinearGradient from "react-native-web-linear-gradient";
+import InputForm from "../components/HomeScreen/InputForm";
 
 const HomeScreen = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
     let slicedRecipe = recipe.slice(0, 4);
-    let swiperSliced = recipe.slice(6, 10);
+    let swiperSliced = recipe.slice(8, 12);
     // console.log(swiperSliced);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
@@ -54,81 +54,98 @@ const HomeScreen = ({ navigation }) => {
                 >
                     What do you want to order today?
                 </Text>
-                <View style={styles.inputWrapper}>
-                    <Image
-                        source={require("../assets/icons/Group.png")}
-                        style={{ width: 21.19, height: 17.14 }}
-                    />
-                    <Formik
-                        initialValues={{ name: "" }}
-                        onSubmit={() => {
-                            console.log("Yoooooooooooo");
-                            // navigation.push("Homescreen");
-                        }}
-                    >
-                        {({
-                            handleBlur,
-                            handleChange,
-                            handleSubmit,
-                            values,
-                        }) => (
-                            <>
-                                <View style={styles.inputField}>
-                                    <TextInput
-                                        placeholder="Enter Recipe..."
-                                        placeholderTextColor="gray"
-                                        autoCapitalize="none"
-                                        keyboardType="default"
-                                        textContentType="name"
-                                        // autoFocus={true}
-                                        onChangeText={handleChange("name")}
-                                        onBlur={handleBlur("name")}
-                                        value={values.name}
-                                    />
-                                </View>
-                                <TouchableOpacity onPress={handleSubmit}>
-                                    <Pressable>
-                                        <Image
-                                            source={require("../assets/icons/search.png")}
-                                        />
-                                    </Pressable>
-                                </TouchableOpacity>
-                            </>
-                        )}
-                    </Formik>
-                </View>
+                <InputForm />
                 <Filters />
-                <Header />
-                <ScrollView
-                    horizontal
-                    showsHorizontalScrollIndicator={false}
-                    style={{ marginTop: 1 }}
-                >
-                    {slicedRecipe.map((data) => (
-                        <Popular
-                            navigation={navigation}
-                            data={data}
-                            key={data.recipe_id}
-                        />
-                    ))}
-                </ScrollView>
-                <View style={{ marginTop: 17 }}>
-                    <Text style={{ color: "#2A2A2A", fontSize: 18 }}>
-                        Restaurants near you
-                    </Text>
+                <ScrollView>
+                    <Header />
                     <ScrollView
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         style={{ marginTop: 1 }}
                     >
-                        {swiperSliced.map((swiperSlice) => (
-                            <SwiperRecipe
-                                swiperSlice={swiperSlice}
-                                key={swiperSlice.recipe_id}
+                        {slicedRecipe.map((data) => (
+                            <Popular
+                                navigation={navigation}
+                                data={data}
+                                key={data.recipe_id}
                             />
                         ))}
                     </ScrollView>
-                </View>
+                    <View style={{ marginTop: 17 }}>
+                        <Text
+                            style={{
+                                color: "#2A2A2A",
+                                fontSize: 18,
+                                marginBottom: 10,
+                                fontWeight: "800",
+                            }}
+                        >
+                            Restaurants near you
+                        </Text>
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            style={{ marginTop: 1 }}
+                        >
+                            {swiperSliced.map((swiperSlice) => (
+                                <SwiperRecipe
+                                    swiperSlice={swiperSlice}
+                                    key={swiperSlice.recipe_id}
+                                />
+                            ))}
+                        </ScrollView>
+                    </View>
+
+                    <View style={{ marginTop: 17 }}>
+                        <Text
+                            style={{
+                                color: "#2A2A2A",
+                                fontSize: 18,
+                                marginBottom: 10,
+                                fontWeight: "800",
+                            }}
+                        >
+                            Restaurants near you
+                        </Text>
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            style={{ marginTop: 1 }}
+                        >
+                            {swiperSliced.map((swiperSlice) => (
+                                <SwiperRecipe
+                                    swiperSlice={swiperSlice}
+                                    key={swiperSlice.recipe_id}
+                                />
+                            ))}
+                        </ScrollView>
+                    </View>
+
+                    <View style={{ marginTop: 17 }}>
+                        <Text
+                            style={{
+                                color: "#2A2A2A",
+                                fontSize: 18,
+                                marginBottom: 10,
+                                fontWeight: "800",
+                            }}
+                        >
+                            Restaurants near you
+                        </Text>
+                        <ScrollView
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            style={{ marginTop: 1 }}
+                        >
+                            {swiperSliced.map((swiperSlice) => (
+                                <SwiperRecipe
+                                    swiperSlice={swiperSlice}
+                                    key={swiperSlice.recipe_id}
+                                />
+                            ))}
+                        </ScrollView>
+                    </View>
+                </ScrollView>
             </View>
         </View>
     );
@@ -138,15 +155,32 @@ const SwiperRecipe = ({ swiperSlice }) => (
     <View
         style={{
             position: "relative",
-            justifyContent: "center",
-            // backgroundColor: "blue",
+            marginRight: 12,
         }}
     >
-        <Image
-            source={{ uri: swiperSlice.image_url }}
-            style={{ width: 150, height: 130 }}
-        />
-        <Text>{swiperSlice.publisher}</Text>
+        <LinearGradient colors={["#666666", "#1D1D1D"]}>
+            {/* Uninstall Linear Gradient */}
+            <Image
+                source={{ uri: swiperSlice.image_url }}
+                style={{ width: 140, height: 140, borderRadius: 6 }}
+            />
+        </LinearGradient>
+        <Text
+            style={{
+                position: "absolute",
+                bottom: 5,
+                backgroundColor: "white",
+                // marginBottom: 15,
+                borderRadius: 5,
+                paddingHorizontal: 8,
+                marginHorizontal: 13,
+                textAlign: "center",
+                color: "#333333",
+                fontWeight: "600",
+            }}
+        >
+            {swiperSlice.publisher}
+        </Text>
     </View>
 );
 
@@ -165,6 +199,7 @@ const Header = () => (
                 style={{
                     fontSize: 18,
                     color: "#2A2A2A",
+                    fontWeight: "800",
                 }}
             >
                 Popular Products
