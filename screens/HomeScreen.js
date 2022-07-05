@@ -112,14 +112,23 @@ const HomeScreen = ({ navigation }) => {
                         />
                     ))}
                 </ScrollView>
-                {/* <Swiper loop={false} index={0}> */}
-                {swiperSliced.map((swiperSlice) => (
-                    <SwiperRecipe
-                        swiperSlice={swiperSlice}
-                        key={swiperSlice.recipe_id}
-                    />
-                ))}
-                {/* </Swiper> */}
+                <View style={{ marginTop: 17 }}>
+                    <Text style={{ color: "#2A2A2A", fontSize: 18 }}>
+                        Restaurants near you
+                    </Text>
+                    <ScrollView
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        style={{ marginTop: 1 }}
+                    >
+                        {swiperSliced.map((swiperSlice) => (
+                            <SwiperRecipe
+                                swiperSlice={swiperSlice}
+                                key={swiperSlice.recipe_id}
+                            />
+                        ))}
+                    </ScrollView>
+                </View>
             </View>
         </View>
     );
@@ -130,14 +139,14 @@ const SwiperRecipe = ({ swiperSlice }) => (
         style={{
             position: "relative",
             justifyContent: "center",
-            backgroundColor: "blue",
+            // backgroundColor: "blue",
         }}
     >
         <Image
             source={{ uri: swiperSlice.image_url }}
             style={{ width: 150, height: 130 }}
         />
-        <Text>Hello</Text>
+        <Text>{swiperSlice.publisher}</Text>
     </View>
 );
 

@@ -4,7 +4,6 @@ const Popular = ({ data, navigation }) => {
     let price = (data.social_rank.toFixed() / 2).toString();
     let prices = price + "00";
     let numPrice = parseInt(prices);
-    console.log(typeof numPrice);
     return (
         <View style={{ position: "relative", marginRight: 12 }}>
             <Image
@@ -24,28 +23,34 @@ const Popular = ({ data, navigation }) => {
             <View
                 style={{
                     position: "absolute",
-                    bottom: 5,
+                    bottom: 3,
                     marginLeft: 6,
                     marginBottom: 5,
                 }}
             >
-                <Text style={{ color: "#FAFAFA", fontSize: 14 }}>
+                <Text
+                    style={{
+                        color: "#FAFAFA",
+                        fontSize: 14,
+                        fontWeight: "900",
+                    }}
+                >
                     {data.title.slice(0, 10)}
                 </Text>
                 <Text
                     style={{
                         color: "#FAFAFA",
-                        fontSize: 10,
+                        fontSize: 11,
                         fontWeight: "900",
                     }}
                 >
-                    N 5000.00
+                    N {numPrice}
                 </Text>
             </View>
             <View
                 style={{
                     position: "absolute",
-                    bottom: 5,
+                    bottom: 8,
                     right: 5,
                     flexDirection: "row",
                     backgroundColor: "#F27C28",
