@@ -5,14 +5,14 @@ const Popular = ({ data, navigation }) => {
         <View style={{ position: "relative", marginRight: 12 }}>
             <Image
                 source={{ uri: data.image_url }}
-                style={{ width: 148, height: 148, borderRadius: 6 }}
+                style={{ width: 140, height: 140, borderRadius: 6 }}
             />
             <Image
                 source={require("../../assets/icons/Group.png")}
                 style={{
                     position: "absolute",
                     top: 7,
-                    left: 120,
+                    left: 113,
                     width: 21,
                     height: 20,
                 }}

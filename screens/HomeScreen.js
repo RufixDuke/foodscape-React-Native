@@ -12,19 +12,20 @@ import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import Filters from "../components/HomeScreen/Filters";
 import Popular from "../components/HomeScreen/Popular";
+import Swiper from "react-native-swiper";
 
 const HomeScreen = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
     let slicedRecipe = recipe.slice(0, 4);
     let swiperSliced = recipe.slice(6, 10);
-    console.log(slicedRecipe);
+    // console.log(swiperSliced);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
             .then((response) => response.json())
             .then((recipe) => {
                 setRecipe(recipe.recipes);
-                console.log(recipe.recipes);
+                // console.log(recipe.recipes);
             });
     };
 
@@ -111,15 +112,27 @@ const HomeScreen = ({ navigation }) => {
                         />
                     ))}
                 </ScrollView>
-                <SwiperRecipe />
+                {/* <SwiperRecipe /> */}
+                <Swiper loop={false} index={0}>
+                    {swiperSliced.map((swiperSlice) => (
+                        <SwiperRecipe
+                            swiperSlice={swiperSlice}
+                            key={swiperSlice.recipe_id}
+                        />
+                    ))}
+                </Swiper>
             </View>
         </View>
     );
 };
 
-const SwiperRecipe = ({ swiperSliced }) => (
+const SwiperRecipe = ({ swiperSlice }) => (
     <View>
-        <Swiper index={0} loop={false}></Swiper>
+        <Image
+            source={{ uri: swiperSlice.image_url }}
+            style={{ width: 150, height: 130 }}
+        />
+        <Text>Hello</Text>
     </View>
 );
 
