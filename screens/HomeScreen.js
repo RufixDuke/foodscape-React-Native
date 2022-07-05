@@ -1,24 +1,19 @@
-import {
-    View,
-    Text,
-    Image,
-    Pressable,
-    TextInput,
-    TouchableOpacity,
-    ScrollView,
-} from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import Filters from "../components/HomeScreen/Filters";
 import Popular from "../components/HomeScreen/Popular";
 import LinearGradient from "react-native-web-linear-gradient";
 import InputForm from "../components/HomeScreen/InputForm";
+import SpecialOffers from "../components/HomeScreen/SpecialOffers";
+import BottomTabs from "../components/HomeScreen/BottomTabs";
 
 const HomeScreen = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
     let slicedRecipe = recipe.slice(0, 4);
     let swiperSliced = recipe.slice(8, 12);
-    // console.log(swiperSliced);
+    let specialSliced = recipe.slice(13, 17);
+    // console.log(specialSliced);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
@@ -56,94 +51,73 @@ const HomeScreen = ({ navigation }) => {
                 </Text>
                 <InputForm />
                 <Filters />
-                <ScrollView>
-                    <Header />
-                    <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{ marginTop: 1 }}
-                    >
-                        {slicedRecipe.map((data) => (
-                            <Popular
-                                navigation={navigation}
-                                data={data}
-                                key={data.recipe_id}
-                            />
-                        ))}
-                    </ScrollView>
-                    <View style={{ marginTop: 17 }}>
-                        <Text
-                            style={{
-                                color: "#2A2A2A",
-                                fontSize: 18,
-                                marginBottom: 10,
-                                fontWeight: "800",
-                            }}
-                        >
-                            Restaurants near you
-                        </Text>
+                <ScrollView pagingEnabled>
+                    <View style={{ flex: 1 }}>
+                        <Header />
                         <ScrollView
                             horizontal
                             showsHorizontalScrollIndicator={false}
                             style={{ marginTop: 1 }}
                         >
-                            {swiperSliced.map((swiperSlice) => (
-                                <SwiperRecipe
-                                    swiperSlice={swiperSlice}
-                                    key={swiperSlice.recipe_id}
+                            {slicedRecipe.map((data) => (
+                                <Popular
+                                    navigation={navigation}
+                                    data={data}
+                                    key={data.recipe_id}
                                 />
                             ))}
                         </ScrollView>
-                    </View>
+                        <View style={{ marginTop: 17 }}>
+                            <Text
+                                style={{
+                                    color: "#2A2A2A",
+                                    fontSize: 18,
+                                    marginBottom: 10,
+                                    fontWeight: "800",
+                                }}
+                            >
+                                Restaurants near you
+                            </Text>
+                            <ScrollView
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                                style={{ marginTop: 1 }}
+                            >
+                                {swiperSliced.map((swiperSlice) => (
+                                    <SwiperRecipe
+                                        swiperSlice={swiperSlice}
+                                        key={swiperSlice.recipe_id}
+                                    />
+                                ))}
+                            </ScrollView>
+                        </View>
 
-                    <View style={{ marginTop: 17 }}>
-                        <Text
-                            style={{
-                                color: "#2A2A2A",
-                                fontSize: 18,
-                                marginBottom: 10,
-                                fontWeight: "800",
-                            }}
-                        >
-                            Restaurants near you
-                        </Text>
-                        <ScrollView
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                            style={{ marginTop: 1 }}
-                        >
-                            {swiperSliced.map((swiperSlice) => (
-                                <SwiperRecipe
-                                    swiperSlice={swiperSlice}
-                                    key={swiperSlice.recipe_id}
-                                />
-                            ))}
-                        </ScrollView>
-                    </View>
+                        <View style={{ marginTop: 17 }}>
+                            <Text
+                                style={{
+                                    color: "#2A2A2A",
+                                    fontSize: 18,
+                                    marginBottom: 10,
+                                    fontWeight: "800",
+                                }}
+                            >
+                                Special Offers
+                            </Text>
+                            <ScrollView
+                                horizontal
+                                showsHorizontalScrollIndicator={false}
+                                style={{ marginTop: 1 }}
+                            >
+                                {specialSliced.map((data) => (
+                                    <SpecialOffers
+                                        data={data}
+                                        key={data.recipe_id}
+                                    />
+                                ))}
+                            </ScrollView>
+                        </View>
 
-                    <View style={{ marginTop: 17 }}>
-                        <Text
-                            style={{
-                                color: "#2A2A2A",
-                                fontSize: 18,
-                                marginBottom: 10,
-                                fontWeight: "800",
-                            }}
-                        >
-                            Restaurants near you
-                        </Text>
-                        <ScrollView
-                            horizontal
-                            showsHorizontalScrollIndicator={false}
-                            style={{ marginTop: 1 }}
-                        >
-                            {swiperSliced.map((swiperSlice) => (
-                                <SwiperRecipe
-                                    swiperSlice={swiperSlice}
-                                    key={swiperSlice.recipe_id}
-                                />
-                            ))}
-                        </ScrollView>
+                        <BottomTabs />
                     </View>
                 </ScrollView>
             </View>

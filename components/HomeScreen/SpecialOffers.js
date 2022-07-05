@@ -1,5 +1,5 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
-const Popular = ({ data, navigation }) => {
+const SpecialOffers = ({ data, navigation }) => {
     let rating = (((data.social_rank - 4) / 100) * 5).toFixed(1);
     let price = (data.social_rank.toFixed() / 2).toString();
     let prices = price + "00";
@@ -25,6 +25,7 @@ const Popular = ({ data, navigation }) => {
                     }}
                 />
             </TouchableOpacity>
+
             <View
                 style={{
                     position: "absolute",
@@ -83,4 +84,4 @@ const Popular = ({ data, navigation }) => {
     );
 };
 
-export default Popular;
+export default SpecialOffers;
