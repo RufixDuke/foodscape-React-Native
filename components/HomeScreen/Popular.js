@@ -1,6 +1,10 @@
 import { View, Text, Image, ScrollView } from "react-native";
 const Popular = ({ data, navigation }) => {
-    // console.log("yooooooooooo");
+    let rating = (((data.social_rank - 4) / 100) * 5).toFixed(1);
+    let price = (data.social_rank.toFixed() / 2).toString();
+    let prices = price + "00";
+    let numPrice = parseInt(prices);
+    console.log(typeof numPrice);
     return (
         <View style={{ position: "relative", marginRight: 12 }}>
             <Image
@@ -25,17 +29,44 @@ const Popular = ({ data, navigation }) => {
                     marginBottom: 5,
                 }}
             >
-                <Text style={{ color: "#FAFAFA", fontSize: 12 }}>
-                    {data.title}
+                <Text style={{ color: "#FAFAFA", fontSize: 14 }}>
+                    {data.title.slice(0, 10)}
                 </Text>
                 <Text
                     style={{
                         color: "#FAFAFA",
                         fontSize: 10,
-                        fontWeight: "700",
+                        fontWeight: "900",
                     }}
                 >
                     N 5000.00
+                </Text>
+            </View>
+            <View
+                style={{
+                    position: "absolute",
+                    bottom: 5,
+                    right: 5,
+                    flexDirection: "row",
+                    backgroundColor: "#F27C28",
+                    alignItems: "center",
+                    borderRadius: 16,
+                    paddingHorizontal: 8,
+                    paddingVertical: 2,
+                }}
+            >
+                <Image
+                    style={{ marginRight: 2 }}
+                    source={require("../../assets/icons/star.png")}
+                />
+                <Text
+                    style={{
+                        color: "#FAFAFA",
+                        fontSize: 12,
+                        fontWeight: "600",
+                    }}
+                >
+                    {rating}
                 </Text>
             </View>
         </View>
