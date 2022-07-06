@@ -1,7 +1,7 @@
 import { View, Text, ScrollView, Pressable, Image } from "react-native";
 import React from "react";
 
-const Filters = () => {
+const Filters = ({ navigation }) => {
     return (
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <View style={{ flexDirection: "row", marginTop: 24 }}>
@@ -36,6 +36,7 @@ const Filters = () => {
                         paddingVertical: 12,
                         flexDirection: "row",
                     }}
+                    onPress={() => navigation.push("FoodScreen")}
                 >
                     <Image
                         source={require("../../assets/icons/ep_food.png")}

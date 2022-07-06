@@ -50,7 +50,7 @@ const HomeScreen = ({ navigation }) => {
                     What do you want to order today?
                 </Text>
                 <InputForm />
-                <Filters />
+                <Filters navigation={navigation} />
                 <ScrollView pagingEnabled>
                     <View style={{ flex: 1 }}>
                         <Header />

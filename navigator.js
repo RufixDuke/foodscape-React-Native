@@ -12,6 +12,7 @@ import RecentScreen from "./screens/RecentScreen";
 import Favorite from "./screens/Favorite";
 import Carts from "./screens/Carts";
 import Profile from "./screens/Profile";
+import FoodScreen from "./screens/FoodScreen";
 
 const Stack = createNativeStackNavigator();
 // const Tab = createBottomTabNavigator();
@@ -36,6 +37,7 @@ export const MyStack = () => (
             <Stack.Screen name="Favorite" component={Favorite} />
             <Stack.Screen name="Carts" component={Carts} />
             <Stack.Screen name="Profile" component={Profile} />
+            <Stack.Screen name="FoodScreen" component={FoodScreen} />
         </Stack.Navigator>
 
         {/* <Tab.Navigator>

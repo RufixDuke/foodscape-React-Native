@@ -35,18 +35,16 @@ const BottomTabs = ({ navigation }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>
-                <TouchableOpacity
-                    onPress={() => navigation.replace("HomeScreen")}
-                >
+                <TouchableOpacity onPress={() => navigation.push("HomeScreen")}>
                     <Image
                         style={styles.text}
                         source={require("../../assets/BottomTabs/home-filled.png")}
                     />
-                    <Text style={{ color: "#B6B6B6" }}>Home</Text>
+                    <Text style={{ color: "#F27C28" }}>Home</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    onPress={() => navigation.replace("RecentScreen")}
+                    onPress={() => navigation.push("RecentScreen")}
                 >
                     <Image
                         style={styles.text}
@@ -55,9 +53,7 @@ const BottomTabs = ({ navigation }) => {
                     <Text style={{ color: "#B6B6B6" }}>Recent</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={() => navigation.replace("Favorite")}
-                >
+                <TouchableOpacity onPress={() => navigation.push("Favorite")}>
                     <Image
                         style={[styles.text, styles.fav]}
                         source={require("../../assets/BottomTabs/favorite.png")}
@@ -65,7 +61,7 @@ const BottomTabs = ({ navigation }) => {
                     <Text style={{ color: "#B6B6B6" }}>Favorite</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.replace("Carts")}>
+                <TouchableOpacity onPress={() => navigation.push("Carts")}>
                     <Image
                         style={[styles.text, styles.fav]}
                         source={require("../../assets/BottomTabs/cart.png")}
@@ -73,7 +69,7 @@ const BottomTabs = ({ navigation }) => {
                     <Text style={{ color: "#B6B6B6" }}>Carts</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.replace("Profile")}>
+                <TouchableOpacity onPress={() => navigation.push("Profile")}>
                     <Image
                         style={[styles.text, styles.fav]}
                         source={require("../../assets/BottomTabs/profile.png")}
@@ -102,12 +98,12 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
     },
     text: {
-        width: 20,
-        height: 20,
+        width: 22,
+        height: 22,
         marginLeft: 5,
     },
     fav: {
-        width: 22,
+        width: 23.5,
     },
 });
 
