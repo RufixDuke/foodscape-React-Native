@@ -1,36 +1,6 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React from "react";
 
-export const bottomIcons = [
-    {
-        name: "Home",
-        active: require("../../assets/BottomTabs/home-filled.png"),
-        inactive: require("../../assets/BottomTabs/home.png"),
-        nav: "HomeScreen",
-    },
-    {
-        name: "Recent",
-        active: require("../../assets/BottomTabs/recent-filled.png"),
-        inactive: require("../../assets/BottomTabs/recent.png"),
-        nav: "RecentScreen",
-    },
-    {
-        name: "Favorites",
-        active: require("../../assets/BottomTabs/favorite-filled.png"),
-        inactive: require("../../assets/BottomTabs/favorite.png"),
-    },
-    {
-        name: "Cart",
-        active: require("../../assets//BottomTabs/cart-filled.png"),
-        inactive: require("../../assets/BottomTabs/cart.png"),
-    },
-    {
-        name: "Profile",
-        active: require("../../assets/BottomTabs/profile-filled.png"),
-        inactive: require("../../assets/BottomTabs/profile.png"),
-    },
-];
-
 const BottomTabs = ({ navigation }) => {
     return (
         <View style={styles.wrapper}>
