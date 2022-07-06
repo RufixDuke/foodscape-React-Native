@@ -53,7 +53,7 @@ const HomeScreen = ({ navigation }) => {
                 <Filters navigation={navigation} />
                 <ScrollView pagingEnabled>
                     <View style={{ flex: 1 }}>
-                        <Header />
+                        <Header navigation={navigation} />
                         <ScrollView
                             horizontal
                             showsHorizontalScrollIndicator={false}
@@ -68,16 +68,30 @@ const HomeScreen = ({ navigation }) => {
                             ))}
                         </ScrollView>
                         <View style={{ marginTop: 17 }}>
-                            <Text
-                                style={{
-                                    color: "#2A2A2A",
-                                    fontSize: 18,
-                                    marginBottom: 10,
-                                    fontWeight: "800",
-                                }}
-                            >
-                                Restaurants near you
-                            </Text>
+                            <View>
+                                <Text
+                                    style={{
+                                        color: "#2A2A2A",
+                                        fontSize: 18,
+                                        marginBottom: 10,
+                                        fontWeight: "800",
+                                    }}
+                                >
+                                    Restaurants near you
+                                </Text>
+
+                                <Text
+                                    style={{
+                                        color: "#2A2A2A",
+                                        fontSize: 18,
+                                        marginBottom: 10,
+                                        fontWeight: "800",
+                                    }}
+                                >
+                                    Restaurants near you
+                                </Text>
+                            </View>
+
                             <ScrollView
                                 horizontal
                                 showsHorizontalScrollIndicator={false}
@@ -116,22 +130,6 @@ const HomeScreen = ({ navigation }) => {
                                 ))}
                             </ScrollView>
                         </View>
-
-                        {/* <NavigationContainer independent={true}> */}
-                        {/* <Tab.Navigator>
-                            <Tab.Screen
-                                name="Homescreen"
-                                component={HomeScreen}
-                            />
-                            <Tab.Screen
-                                name="RecentScreen"
-                                component={RecentScreen}
-                            />
-                            <Tab.Screen name="Favorite" component={Favorite} />
-                            <Tab.Screen name="Carts" component={Carts} />
-                            <Tab.Screen name="Profile" component={Profile} />
-                        </Tab.Navigator> */}
-                        {/* </NavigationContainer> */}
                     </View>
                 </ScrollView>
             </View>
@@ -173,7 +171,7 @@ const SwiperRecipe = ({ swiperSlice }) => (
     </View>
 );
 
-const Header = () => (
+const Header = ({ navigation }) => (
     <View style={{ marginVertical: 10, marginBottom: 0 }}>
         <View
             style={{
@@ -194,7 +192,7 @@ const Header = () => (
                 Popular Products
             </Text>
             <Text
-                // onPress={() => navigation.push('')}
+                onPress={() => navigation.push("FoodScreen")}
                 style={{
                     fontSize: 14,
                     color: "#2A2A2A",

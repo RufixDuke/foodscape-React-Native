@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, ScrollView } from "react-native";
 import React, { useState, useEffect } from "react";
 import InputForm from "../components/FoodScreen/InputForm";
 import Restaurant from "../components/Restaurant/Restaurant";
+import BottomTabs from "../components/HomeScreen/BottomTabs";
 
 const RestaurantScreen = ({ navigation }) => {
     const [restaurants, setrestaurants] = useState([]);
@@ -45,6 +46,7 @@ const RestaurantScreen = ({ navigation }) => {
                     />
                 ))}
             </ScrollView>
+            <BottomTabs navigation={navigation} />
         </View>
     );
 };

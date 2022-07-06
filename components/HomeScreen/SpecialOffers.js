@@ -18,7 +18,7 @@ const SpecialOffers = ({ data, navigation }) => {
                 }}
             >
                 <Image
-                    source={require("../../assets/icons/Group.png")}
+                    source={require("../../assets/icons/heart.png")}
                     style={{
                         width: 24,
                         height: 22,

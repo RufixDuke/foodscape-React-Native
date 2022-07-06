@@ -18,7 +18,7 @@ const Popular = ({ data, navigation }) => {
                 }}
             >
                 <Image
-                    source={require("../../assets/icons/Group.png")}
+                    source={require("../../assets/icons/heart.png")}
                     style={{
                         width: 24,
                         height: 22,
@@ -66,7 +66,7 @@ const Popular = ({ data, navigation }) => {
                 }}
             >
                 <Image
-                    style={{ marginRight: 2 }}
+                    style={{ marginRight: 2, width: 10, height: 10 }}
                     source={require("../../assets/icons/star.png")}
                 />
                 <Text

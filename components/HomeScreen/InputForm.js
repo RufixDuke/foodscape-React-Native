@@ -14,7 +14,7 @@ const InputForm = ({ title }) => {
     return (
         <View style={styles.inputWrapper}>
             <Image
-                source={require("../../assets/icons/Group.png")}
+                source={require("../../assets/icons/menu.png")}
                 style={{ width: 21.19, height: 17.14 }}
             />
             <Formik
