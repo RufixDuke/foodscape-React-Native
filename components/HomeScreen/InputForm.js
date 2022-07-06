@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { Formik } from "formik";
 
-const InputForm = () => {
+const InputForm = ({ title }) => {
     return (
         <View style={styles.inputWrapper}>
             <Image
@@ -28,7 +28,7 @@ const InputForm = () => {
                     <>
                         <View style={styles.inputField}>
                             <TextInput
-                                placeholder="Enter Recipe..."
+                                placeholder={title}
                                 placeholderTextColor="gray"
                                 autoCapitalize="none"
                                 keyboardType="default"

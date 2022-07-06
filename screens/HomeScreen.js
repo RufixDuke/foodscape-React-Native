@@ -49,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
                 >
                     What do you want to order today?
                 </Text>
-                <InputForm />
+                <InputForm title={"Enter Recipes..."} />
                 <Filters navigation={navigation} />
                 <ScrollView pagingEnabled>
                     <View style={{ flex: 1 }}>

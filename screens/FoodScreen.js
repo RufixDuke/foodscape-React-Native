@@ -22,7 +22,7 @@ const FoodScreen = ({ navigation }) => {
     }, []);
     return (
         <View style={styles.wrapper}>
-            <InputForm navigation={navigation} />
+            <InputForm navigation={navigation} title={"Enter food..."} />
             <Text
                 style={{
                     textAlign: "center",

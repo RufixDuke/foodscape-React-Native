@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { Formik } from "formik";
 
-const InputForm = ({ navigation }) => {
+const InputForm = ({ navigation, title }) => {
     return (
         <View style={styles.inputWrapper}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -31,7 +31,7 @@ const InputForm = ({ navigation }) => {
                     <>
                         <View style={styles.inputField}>
                             <TextInput
-                                placeholder="Enter Food..."
+                                placeholder={title}
                                 placeholderTextColor="gray"
                                 autoCapitalize="none"
                                 keyboardType="default"

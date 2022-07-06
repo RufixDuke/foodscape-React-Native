@@ -14,6 +14,7 @@ const Filters = ({ navigation }) => {
                         paddingVertical: 12,
                         flexDirection: "row",
                     }}
+                    onPress={() => navigation.push("RestaurantScreen")}
                 >
                     <Image
                         source={require("../../assets/icons/fork.png")}
