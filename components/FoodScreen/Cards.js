@@ -11,10 +11,10 @@ import React, { useState } from "react";
 const Cards = () => {
     const [fav, setFav] = useState(false);
 
-    const onClick = () => {
-        setFav(!fav);
-        console.log("Clicked.....");
-    };
+    // const onClick = () => {
+    //     setFav(!fav);
+    //     console.log("Clicked.....");
+    // };
     return (
         <View style={styles.wrapper}>
             <Image
@@ -25,7 +25,7 @@ const Cards = () => {
                 }}
             />
             <View style={styles.details}>
-                <TouchableOpacity onPress={onClick}>
+                <TouchableOpacity onPress={() => setFav(!fav)}>
                     <Image
                         source={
                             fav
@@ -70,7 +70,10 @@ const Cards = () => {
                             alignItems: "center",
                         }}
                     >
-                        <Pressable style={{ marginRight: 5 }}>
+                        <Pressable
+                            style={{ marginRight: 5 }}
+                            onPress={() => console.log("Addition....")}
+                        >
                             <Image
                                 source={require("../../assets/icons/minus.png")}
                                 style={{ width: 27, height: 26 }}
