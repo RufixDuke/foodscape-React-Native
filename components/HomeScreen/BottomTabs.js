@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 
 export const bottomIcons = [
     {
@@ -35,28 +35,53 @@ const BottomTabs = ({ navigation }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>
-                {bottomIcons.map((icon, index) => (
-                    <Icon key={index} icon={icon} navigation={navigation} />
-                ))}
+                <TouchableOpacity
+                    onPress={() => navigation.replace("HomeScreen")}
+                >
+                    <Image
+                        style={styles.text}
+                        source={require("../../assets/BottomTabs/home-filled.png")}
+                    />
+                    <Text style={{ color: "#B6B6B6" }}>Home</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => navigation.replace("RecentScreen")}
+                >
+                    <Image
+                        style={styles.text}
+                        source={require("../../assets/BottomTabs/recent.png")}
+                    />
+                    <Text style={{ color: "#B6B6B6" }}>Recent</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => navigation.replace("Favorite")}
+                >
+                    <Image
+                        style={[styles.text, styles.fav]}
+                        source={require("../../assets/BottomTabs/favorite.png")}
+                    />
+                    <Text style={{ color: "#B6B6B6" }}>Favorite</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => navigation.replace("Carts")}>
+                    <Image
+                        style={[styles.text, styles.fav]}
+                        source={require("../../assets/BottomTabs/cart.png")}
+                    />
+                    <Text style={{ color: "#B6B6B6" }}>Carts</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity onPress={() => navigation.replace("Profile")}>
+                    <Image
+                        style={[styles.text, styles.fav]}
+                        source={require("../../assets/BottomTabs/profile.png")}
+                    />
+                    <Text style={{ color: "#B6B6B6" }}>Profile</Text>
+                </TouchableOpacity>
             </View>
         </View>
-    );
-};
-
-const Icon = ({ icon }) => {
-    const [activeTab, setActiveTab] = useState("Home");
-    const [activeNav, setActiveNav] = useState("");
-    const onPress = () => {
-        setActiveTab(icon.name);
-        // nagivation.push(activeNav);
-    };
-    return (
-        <TouchableOpacity onPress={onPress}>
-            <Image
-                style={styles.text}
-                source={activeTab === icon.name ? icon.active : icon.inactive}
-            />
-        </TouchableOpacity>
     );
 };
 
@@ -70,15 +95,19 @@ const styles = StyleSheet.create({
         // marginTop: 10,
     },
     container: {
-        height: 50,
+        height: 65,
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
         paddingVertical: 20,
     },
     text: {
-        width: 25,
-        height: 25,
+        width: 20,
+        height: 20,
+        marginLeft: 5,
+    },
+    fav: {
+        width: 22,
     },
 });
 

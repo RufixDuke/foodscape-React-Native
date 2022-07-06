@@ -8,6 +8,10 @@ import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ForgotPassword from "./screens/ForgotPasswordScreen";
 import HomeScreen from "./screens/HomeScreen";
+import RecentScreen from "./screens/RecentScreen";
+import Favorite from "./screens/Favorite";
+import Carts from "./screens/Carts";
+import Profile from "./screens/Profile";
 
 const Stack = createNativeStackNavigator();
 // const Tab = createBottomTabNavigator();
@@ -28,7 +32,10 @@ export const MyStack = () => (
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="HomeScreen" component={HomeScreen} />
-            {/* <Stack.Screen name="RecentScreen" component={RecentScreen} /> */}
+            <Stack.Screen name="RecentScreen" component={RecentScreen} />
+            <Stack.Screen name="Favorite" component={Favorite} />
+            <Stack.Screen name="Carts" component={Carts} />
+            <Stack.Screen name="Profile" component={Profile} />
         </Stack.Navigator>
 
         {/* <Tab.Navigator>

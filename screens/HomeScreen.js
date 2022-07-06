@@ -6,17 +6,7 @@ import Popular from "../components/HomeScreen/Popular";
 import LinearGradient from "react-native-web-linear-gradient";
 import InputForm from "../components/HomeScreen/InputForm";
 import SpecialOffers from "../components/HomeScreen/SpecialOffers";
-// import BottomTabs from "../components/HomeScreen/BottomTabs";
-
-// import HomeScreen from "./HomeScreen";
-import RecentScreen from "./RecentScreen";
-import Favorite from "./Favorite";
-import Carts from "./Carts";
-import Profile from "./Profile";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-const Tab = createBottomTabNavigator();
+import BottomTabs from "../components/HomeScreen/BottomTabs";
 
 const HomeScreen = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
@@ -127,31 +117,25 @@ const HomeScreen = ({ navigation }) => {
                             </ScrollView>
                         </View>
 
-                        {/* <BottomTabs navigation={navigation} /> */}
-                        <NavigationContainer independent={true}>
-                            <Tab.Navigator>
-                                <Tab.Screen
-                                    name="Homescreen"
-                                    component={HomeScreen}
-                                />
-                                <Tab.Screen
-                                    name="RecentScreen"
-                                    component={RecentScreen}
-                                />
-                                <Tab.Screen
-                                    name="Favorite"
-                                    component={Favorite}
-                                />
-                                <Tab.Screen name="Carts" component={Carts} />
-                                <Tab.Screen
-                                    name="Profile"
-                                    component={Profile}
-                                />
-                            </Tab.Navigator>
-                        </NavigationContainer>
+                        {/* <NavigationContainer independent={true}> */}
+                        {/* <Tab.Navigator>
+                            <Tab.Screen
+                                name="Homescreen"
+                                component={HomeScreen}
+                            />
+                            <Tab.Screen
+                                name="RecentScreen"
+                                component={RecentScreen}
+                            />
+                            <Tab.Screen name="Favorite" component={Favorite} />
+                            <Tab.Screen name="Carts" component={Carts} />
+                            <Tab.Screen name="Profile" component={Profile} />
+                        </Tab.Navigator> */}
+                        {/* </NavigationContainer> */}
                     </View>
                 </ScrollView>
             </View>
+            <BottomTabs navigation={navigation} />
         </View>
     );
 };
