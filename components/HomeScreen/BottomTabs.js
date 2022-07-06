@@ -58,7 +58,6 @@ const styles = StyleSheet.create({
         bottom: "0%",
         zIndex: 999,
         backgroundColor: "#FAFAFA",
-        // marginTop: 10,
     },
     container: {
         height: 65,

@@ -1,7 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { NavigationContainer } from "@react-navigation/native";
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import SwiperScreen from "./screens/SwiperScreen";
 import LoginScreen from "./screens/LoginScreen";
@@ -16,7 +14,6 @@ import FoodScreen from "./screens/FoodScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 
 const Stack = createNativeStackNavigator();
-// const Tab = createBottomTabNavigator();
 
 const screenOptions = {
     headerShown: false,
@@ -44,14 +41,6 @@ export const MyStack = () => (
                 component={RestaurantScreen}
             />
         </Stack.Navigator>
-
-        {/* <Tab.Navigator>
-            <Tab.Screen name="Homescreen" component={HomeScreen} />
-            <Tab.Screen name="RecentScreen" component={RecentScreen} />
-            <Tab.Screen name="Favorite" component={Favorite} />
-            <Tab.Screen name="Carts" component={Carts} />
-            <Tab.Screen name="Profile" component={Profile} />
-        </Tab.Navigator> */}
     </NavigationContainer>
 );
 
