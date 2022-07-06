@@ -11,10 +11,8 @@ import React, { useState } from "react";
 const Cards = ({ food, navigation }) => {
     const [fav, setFav] = useState(false);
 
-    const onClick = () => {
-        setFav(!fav);
-        console.log("Clicked.....");
-    };
+    let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
+
     return (
         <View style={styles.wrapper}>
             <Image
@@ -25,16 +23,15 @@ const Cards = ({ food, navigation }) => {
                     width: 91,
                     height: 91,
                     borderRadius: 45.5,
-                    // marginLeft: 0,
                 }}
             />
             <View>
                 <View style={styles.details}>
                     <View
                         style={{
+                            flex: 1,
                             flexDirection: "row",
                             justifyContent: "space-between",
-                            // alignItems: "center",
                             position: "relative",
                         }}
                     >
@@ -48,7 +45,7 @@ const Cards = ({ food, navigation }) => {
                             {food.publisher.slice(0, 15) + "..."}
                         </Text>
                         <Pressable
-                            onPress={onClick}
+                            onPress={() => setFav(!fav)}
                             style={{ marginRight: 28 }}
                         >
                             <Image
@@ -66,7 +63,7 @@ const Cards = ({ food, navigation }) => {
                         </Pressable>
                     </View>
 
-                    <Text style={{ fontSize: 12 }}>
+                    <Text style={{ fontSize: 12, marginTop: 7 }}>
                         {food.title.slice(0, 33) + "..."}
                     </Text>
                     <Text
@@ -74,9 +71,10 @@ const Cards = ({ food, navigation }) => {
                             color: "#2A2A2A",
                             fontSize: 18,
                             fontWeight: "900",
+                            marginTop: 7,
                         }}
                     >
-                        # 1500
+                        #{price}
                     </Text>
 
                     <View style={styles.btns}>
@@ -142,18 +140,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#FAFAFA",
         marginHorizontal: 22,
         paddingVertical: 20,
-        paddingHorizontal: 15,
         borderRadius: 10,
         position: "relative",
         marginVertical: 10,
+        paddingLeft: 10,
+        paddingRight: 25,
     },
     details: {
         marginLeft: 20,
         position: "relative",
+        width: 180,
     },
     btns: {
         flexDirection: "row",
         justifyContent: "space-between",
+        marginTop: 10,
     },
 });
 

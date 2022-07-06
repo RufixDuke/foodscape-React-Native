@@ -43,7 +43,7 @@ const FoodScreen = ({ navigation }) => {
                     />
                 ))}
             </ScrollView>
-            <BottomTabs />
+            <BottomTabs navigation={navigation} />
         </View>
     );
 };
