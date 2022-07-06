@@ -9,6 +9,48 @@ const Restaurant = ({ restaurant, navigation }) => {
                 source={{ uri: restaurant.image_url }}
                 style={{ width: 300, height: 200, borderRadius: 10 }}
             />
+            <View
+                style={{
+                    flex: 1,
+                    flexDirection: "row",
+                    justifyContent: "space-around",
+                    position: "absolute",
+                }}
+            >
+                <View
+                    style={{
+                        backgroundColor: "#F27C28",
+                        flexDirection: "row",
+                        alignItems: "center",
+                        paddingHorizontal: 10,
+                        paddingVertical: 4,
+                        borderRadius: 16,
+                        position: "absolute",
+                        left: 10,
+                        top: 10,
+                    }}
+                >
+                    <Image
+                        source={require("../../assets/icons/star.png")}
+                        style={{ width: 10, height: 10 }}
+                    />
+                    <Text style={{ color: "white", marginLeft: 2 }}>5</Text>
+                </View>
+
+                <Pressable
+                    style={{ position: "absolute", left: 250, top: 10 }}
+                    onPress={() => setLike(!like)}
+                >
+                    <Image
+                        style={{ width: 30, height: 30 }}
+                        source={
+                            like
+                                ? require("../../assets/icons/heart-filled.png")
+                                : require("../../assets/icons/heart.png")
+                        }
+                    />
+                </Pressable>
+            </View>
             <Text
                 style={{
                     flexDirection: "row",
@@ -65,28 +107,6 @@ const Restaurant = ({ restaurant, navigation }) => {
                         30 minutes
                     </Text>
                 </View>
-            </View>
-            <View
-                style={{
-                    position: "absolute",
-                    flex: 1,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                }}
-            >
-                <Pressable>
-                    <Image source={require("../../assets/icons/star.png")} />
-                    <Text>5</Text>
-                </Pressable>
-                <Pressable onPress={() => setLike(!like)}>
-                    <Image
-                        source={
-                            like
-                                ? require("../../assets/icons/heart-filled.png")
-                                : require("../../assets/icons/heart.png")
-                        }
-                    />
-                </Pressable>
             </View>
         </View>
     );
