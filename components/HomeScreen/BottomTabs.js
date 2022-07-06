@@ -38,7 +38,7 @@ const BottomTabs = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.push("HomeScreen")}>
                     <Image
                         style={styles.text}
-                        source={require("../../assets/BottomTabs/home-filled.png")}
+                        source={require("../../assets/icons/home-filled.png")}
                     />
                     <Text style={{ color: "#F27C28" }}>Home</Text>
                 </TouchableOpacity>
@@ -48,7 +48,7 @@ const BottomTabs = ({ navigation }) => {
                 >
                     <Image
                         style={styles.text}
-                        source={require("../../assets/BottomTabs/recent.png")}
+                        source={require("../../assets/icons/recent-gray.png")}
                     />
                     <Text style={{ color: "#B6B6B6" }}>Recent</Text>
                 </TouchableOpacity>
@@ -56,7 +56,7 @@ const BottomTabs = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.push("Favorite")}>
                     <Image
                         style={[styles.text, styles.fav]}
-                        source={require("../../assets/BottomTabs/favorite.png")}
+                        source={require("../../assets/icons/heart-gray.png")}
                     />
                     <Text style={{ color: "#B6B6B6" }}>Favorite</Text>
                 </TouchableOpacity>
@@ -64,7 +64,7 @@ const BottomTabs = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.push("Carts")}>
                     <Image
                         style={[styles.text, styles.fav]}
-                        source={require("../../assets/BottomTabs/cart.png")}
+                        source={require("../../assets/icons/cart-gray.png")}
                     />
                     <Text style={{ color: "#B6B6B6" }}>Carts</Text>
                 </TouchableOpacity>
@@ -72,7 +72,7 @@ const BottomTabs = ({ navigation }) => {
                 <TouchableOpacity onPress={() => navigation.push("Profile")}>
                     <Image
                         style={[styles.text, styles.fav]}
-                        source={require("../../assets/BottomTabs/profile.png")}
+                        source={require("../../assets/icons/user-gray.png")}
                     />
                     <Text style={{ color: "#B6B6B6" }}>Profile</Text>
                 </TouchableOpacity>

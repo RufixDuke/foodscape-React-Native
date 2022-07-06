@@ -22,9 +22,9 @@ const Cards = ({ food, navigation }) => {
                 style={{
                     flexDirection: "row",
                     alignItems: "center",
-                    width: 100,
-                    height: 100,
-                    borderRadius: 50,
+                    width: 91,
+                    height: 91,
+                    borderRadius: 45.5,
                     // marginLeft: 0,
                 }}
             />
@@ -49,7 +49,7 @@ const Cards = ({ food, navigation }) => {
                         </Text>
                         <Pressable
                             onPress={onClick}
-                            style={{ marginRight: 20 }}
+                            style={{ marginRight: 28 }}
                         >
                             <Image
                                 source={
@@ -59,15 +59,15 @@ const Cards = ({ food, navigation }) => {
                                 }
                                 style={{
                                     position: "absolute",
-                                    width: 20,
+                                    width: 24,
                                     height: 19,
                                 }}
                             />
                         </Pressable>
                     </View>
 
-                    <Text style={{ fontSize: 16 }}>
-                        {food.title.slice(0, 27) + "..."}
+                    <Text style={{ fontSize: 12 }}>
+                        {food.title.slice(0, 33) + "..."}
                     </Text>
                     <Text
                         style={{
@@ -135,19 +135,20 @@ const Cards = ({ food, navigation }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
+        flex: 1,
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: "#FAFAFA",
         marginHorizontal: 22,
         paddingVertical: 20,
-        paddingHorizontal: 5,
+        paddingHorizontal: 15,
         borderRadius: 10,
         position: "relative",
         marginVertical: 10,
     },
     details: {
-        marginLeft: 0,
+        marginLeft: 20,
         position: "relative",
     },
     btns: {

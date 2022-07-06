@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import InputForm from "../components/FoodScreen/InputForm";
 import Cards from "../components/FoodScreen/Cards";
+import BottomTabs from "../components/HomeScreen/BottomTabs";
 
 const FoodScreen = ({ navigation }) => {
     const [foods, setFoods] = useState([]);
@@ -12,7 +13,7 @@ const FoodScreen = ({ navigation }) => {
             .then((response) => response.json())
             .then((recipe) => {
                 setFoods(recipe.recipes);
-                console.log(recipe.recipes);
+                // console.log(recipe.recipes);
             });
     };
 
@@ -42,12 +43,14 @@ const FoodScreen = ({ navigation }) => {
                     />
                 ))}
             </ScrollView>
+            <BottomTabs />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     wrapper: {
+        flex: 1,
         paddingTop: 50,
         backgroundColor: "#F5F5F5",
     },
