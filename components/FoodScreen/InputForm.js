@@ -10,10 +10,10 @@ import {
 import React from "react";
 import { Formik } from "formik";
 
-const InputForm = () => {
+const InputForm = ({ navigation }) => {
     return (
         <View style={styles.inputWrapper}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Image
                     source={require("../../assets/icons/left-arrow.png")}
                     // style={{ width: 21.19, height: 17.14 }}
