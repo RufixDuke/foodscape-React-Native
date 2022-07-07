@@ -68,7 +68,12 @@ const HomeScreen = ({ navigation }) => {
                             ))}
                         </ScrollView>
                         <View style={{ marginTop: 17 }}>
-                            <View>
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                }}
+                            >
                                 <Text
                                     style={{
                                         color: "#2A2A2A",
@@ -82,13 +87,14 @@ const HomeScreen = ({ navigation }) => {
 
                                 <Text
                                     style={{
+                                        fontSize: 14,
                                         color: "#2A2A2A",
-                                        fontSize: 18,
-                                        marginBottom: 10,
-                                        fontWeight: "800",
                                     }}
+                                    onPress={() =>
+                                        navigation.push("RestaurantScreen")
+                                    }
                                 >
-                                    Restaurants near you
+                                    See all
                                 </Text>
                             </View>
 
