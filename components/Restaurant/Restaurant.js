@@ -64,6 +64,7 @@ const Restaurant = ({ restaurant, navigation }) => {
                     fontWeight: "600",
                     fontSize: 25,
                 }}
+                onPress={() => navigation.push("SweetSensationScreen")}
             >
                 {restaurant.publisher}
             </Text>
