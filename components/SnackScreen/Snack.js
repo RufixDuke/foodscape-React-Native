@@ -1,7 +1,8 @@
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 import React, { useState } from "react";
+import { StyleSheet } from "react-native";
 
-const Cards = ({ food, navigation }) => {
+const Snack = ({ food }) => {
     const [fav, setFav] = useState(false);
 
     let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
@@ -151,4 +152,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Cards;
+export default Snack;

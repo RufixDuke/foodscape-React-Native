@@ -60,6 +60,7 @@ const Filters = ({ navigation }) => {
                         paddingVertical: 12,
                         flexDirection: "row",
                     }}
+                    onPress={() => navigation.navigate("SnackScreen")}
                 >
                     <Image
                         source={require("../../assets/icons/fluent_food-pizza-24-regular.png")}

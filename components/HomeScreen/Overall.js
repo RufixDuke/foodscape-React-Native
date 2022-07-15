@@ -7,7 +7,7 @@ import InputForm from "./InputForm";
 import SpecialOffers from "./SpecialOffers";
 import BottomTabs from "./BottomTabs";
 
-const Overall = ({ navigation, setQuery, query, fetchingDatas }) => {
+const Overall = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
     let slicedRecipe = recipe.slice(0, 4);
     let swiperSliced = recipe.slice(8, 12);
