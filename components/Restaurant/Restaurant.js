@@ -1,9 +1,8 @@
 import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import React, { useState } from "react";
 
-const Restaurant = ({ restaurant, navigation }) => {
+const Restaurant = ({ restaurant }) => {
     const [like, setLike] = useState(false);
-    const [text, setText] = useState("Hello Here");
     return (
         <View style={styles.wrapper}>
             <Image
@@ -65,9 +64,13 @@ const Restaurant = ({ restaurant, navigation }) => {
                     fontWeight: "600",
                     fontSize: 25,
                 }}
-                onPress={() =>
-                    navigation.navigate("SweetSensationScreen", text)
-                }
+                // onPress={() =>
+                //     navigation.navigate("SweetSensationScreen", {
+                //         recipeID: restaurant.recipe_id,
+                //         title: restaurant.title,
+                //         publisher: restaurant.publisher,
+                //     })
+                // }
             >
                 {restaurant.publisher}
             </Text>
@@ -81,7 +84,12 @@ const Restaurant = ({ restaurant, navigation }) => {
                     right: 0,
                 }}
             >
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                    }}
+                >
                     <Image
                         source={require("../../assets/icons/location.png")}
                         style={{ width: 20, height: 20 }}
@@ -96,7 +104,12 @@ const Restaurant = ({ restaurant, navigation }) => {
                         Oke-Ilewo, Abeokuta
                     </Text>
                 </View>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                    }}
+                >
                     <Image
                         source={require("../../assets/icons/clock.png")}
                         style={{ width: 20, height: 20 }}

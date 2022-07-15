@@ -13,6 +13,7 @@ import Profile from "./screens/Profile";
 import FoodScreen from "./screens/FoodScreen";
 import RestaurantScreen from "./screens/RestaurantScreen";
 import SweetSensationScreen from "./screens/SweetSensationScreen";
+import Overall from "./components/HomeScreen/Overall";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,10 +42,7 @@ export const MyStack = () => (
                 name="RestaurantScreen"
                 component={RestaurantScreen}
             />
-            <Stack.Screen
-                name="SweetSensationScreen"
-                component={SweetSensationScreen}
-            />
+            <Stack.Screen name="Overall" component={Overall} />
         </Stack.Navigator>
     </NavigationContainer>
 );

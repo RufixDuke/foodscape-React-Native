@@ -7,48 +7,33 @@ import {
     Image,
     TouchableOpacity,
 } from "react-native";
-import React from "react";
-import { Formik } from "formik";
+import React, { useState } from "react";
 
 const InputForm = ({ title }) => {
+    const [name, setName] = useState("");
     return (
         <View style={styles.inputWrapper}>
             <Image
                 source={require("../../assets/icons/menu.png")}
                 style={{ width: 21.19, height: 17.14 }}
             />
-            <Formik
-                initialValues={{ name: "" }}
-                onSubmit={() => {
-                    console.log("Yoooooooooooo");
-                    // navigation.push("Homescreen");
-                }}
-            >
-                {({ handleBlur, handleChange, handleSubmit, values }) => (
-                    <>
-                        <View style={styles.inputField}>
-                            <TextInput
-                                placeholder={title}
-                                placeholderTextColor="gray"
-                                autoCapitalize="none"
-                                keyboardType="default"
-                                textContentType="name"
-                                // autoFocus={true}
-                                onChangeText={handleChange("name")}
-                                onBlur={handleBlur("name")}
-                                value={values.name}
-                            />
-                        </View>
-                        <TouchableOpacity onPress={handleSubmit}>
-                            <Pressable>
-                                <Image
-                                    source={require("../../assets/icons/search.png")}
-                                />
-                            </Pressable>
-                        </TouchableOpacity>
-                    </>
-                )}
-            </Formik>
+
+            <View style={styles.inputField}>
+                <TextInput
+                    placeholder={title}
+                    placeholderTextColor="gray"
+                    autoCapitalize="none"
+                    keyboardType="default"
+                    textContentType="name"
+                    // autoFocus={true}
+                    onChangeText={(name) => setName(name)}
+                    // onSubmitEditing={fetchingDatas}
+                    value={name}
+                />
+            </View>
+            <Pressable>
+                <Image source={require("../../assets/icons/search.png")} />
+            </Pressable>
         </View>
     );
 };
