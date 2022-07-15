@@ -6,7 +6,12 @@ import BottomTabs from "../components/HomeScreen/BottomTabs";
 
 const RestaurantScreen = ({ navigation }) => {
     const [restaurants, setrestaurants] = useState([]);
-    let slicedRestaurant = restaurants.slice(0, 10);
+    const set = new Set();
+    let uniqueRestaurant = restaurants.filter(
+        (rest) => !set.has(rest["publisher"]) && set.add(rest["publisher"])
+    );
+    console.log(uniqueRestaurant);
+    // let slicedRestaurant = restaurants.slice(0, 10);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=bean";
         fetch(url)
@@ -38,7 +43,7 @@ const RestaurantScreen = ({ navigation }) => {
                 </Text>
             </View>
             <ScrollView>
-                {slicedRestaurant.map((restaurant) => (
+                {uniqueRestaurant.map((restaurant) => (
                     <Restaurant
                         restaurant={restaurant}
                         navigation={navigation}

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 
 const Restaurant = ({ restaurant, navigation }) => {
     const [like, setLike] = useState(false);
+    const [text, setText] = useState("Hello Here");
     return (
         <View style={styles.wrapper}>
             <Image
@@ -64,7 +65,9 @@ const Restaurant = ({ restaurant, navigation }) => {
                     fontWeight: "600",
                     fontSize: 25,
                 }}
-                onPress={() => navigation.push("SweetSensationScreen")}
+                onPress={() =>
+                    navigation.navigate("SweetSensationScreen", text)
+                }
             >
                 {restaurant.publisher}
             </Text>
