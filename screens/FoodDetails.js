@@ -50,14 +50,14 @@ const FoodDetails = ({ navigation }) => {
                         source={require("../assets/icons/clock-filled.png")}
                     />
                     <Text style={styles.detailsText}>
-                        {(details.social_rank - 10) / 3} minutes
+                        {((details.social_rank - 10) / 3).toFixed()} minutes
                     </Text>
                 </View>
 
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                     <Image source={require("../assets/icons/distance.png")} />
                     <Text style={styles.detailsText}>
-                        {(details.social_rank + 10) / 100} Km
+                        {((details.social_rank + 10) / 100).toFixed(1)} Km
                     </Text>
                 </View>
             </View>
@@ -75,9 +75,7 @@ const FoodDetails = ({ navigation }) => {
                 >
                     Ingredients
                 </Text>
-                <Text style={styles.ingreDetails}>
-                    {details.ingredients.join()}
-                </Text>
+                <Text style={styles.ingreDetails}>{details.ingredients}</Text>
             </View>
 
             <View
@@ -90,7 +88,13 @@ const FoodDetails = ({ navigation }) => {
                 }}
             >
                 <View>
-                    <Text style={{ color: "#4F4F4F", fontWeight: "600" }}>
+                    <Text
+                        style={{
+                            color: "#4F4F4F",
+                            fontWeight: "600",
+                            fontSize: 15,
+                        }}
+                    >
                         {(details.recipe_id / 200).toFixed()} g |{" "}
                         {(details.recipe_id / 270).toFixed()} cal
                     </Text>
@@ -106,22 +110,20 @@ const FoodDetails = ({ navigation }) => {
                         source={require("../assets/icons/star-filled.png")}
                         style={{ width: 11, height: 11, marginRight: 1 }}
                     />
-                    <Text style={{ color: "#4F4F4F", fontWeight: "600" }}>
+                    <Text
+                        style={{
+                            color: "#4F4F4F",
+                            fontWeight: "600",
+                            fontSize: 15,
+                        }}
+                    >
                         {(details.social_rank / 21).toFixed(1)}(
                         {(details.social_rank + 47).toFixed()})
                     </Text>
                 </View>
             </View>
 
-            <View
-                style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    marginHorizontal: 20,
-                    marginTop: 30,
-                }}
-            >
+            <View style={styles.priceContainer}>
                 <View
                     style={{
                         flexDirection: "row",
@@ -129,12 +131,7 @@ const FoodDetails = ({ navigation }) => {
                     }}
                 >
                     <Pressable
-                        style={{
-                            marginRight: 5,
-                            backgroundColor: "#FDFDFD",
-                            padding: 8,
-                            borderRadius: 6,
-                        }}
+                        style={styles.btn}
                         onPress={() => console.log("Addition....")}
                     >
                         <Image
@@ -143,14 +140,7 @@ const FoodDetails = ({ navigation }) => {
                         />
                     </Pressable>
                     <Text style={{ fontWeight: "700" }}> 1 </Text>
-                    <Pressable
-                        style={{
-                            marginLeft: 5,
-                            backgroundColor: "#FDFDFD",
-                            padding: 8,
-                            borderRadius: 6,
-                        }}
-                    >
+                    <Pressable style={styles.btn}>
                         <Image
                             source={require("../assets/icons/plus-filled.png")}
                             style={{ width: 15, height: 15 }}
@@ -158,15 +148,7 @@ const FoodDetails = ({ navigation }) => {
                     </Pressable>
                 </View>
 
-                <Text
-                    style={{
-                        color: "#A74601",
-                        fontWeight: "900",
-                        fontSize: 20,
-                    }}
-                >
-                    {price}
-                </Text>
+                <Text style={styles.priceText}>#{price}</Text>
             </View>
         </View>
     );
@@ -219,6 +201,24 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: "center",
         marginTop: 10,
+    },
+    btn: {
+        marginLeft: 5,
+        backgroundColor: "#FDFDFD",
+        padding: 8,
+        borderRadius: 6,
+    },
+    priceContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginHorizontal: 20,
+        marginTop: 30,
+    },
+    priceText: {
+        color: "#A74601",
+        fontWeight: "900",
+        fontSize: 24,
     },
 });
 
