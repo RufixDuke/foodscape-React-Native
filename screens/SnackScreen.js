@@ -9,8 +9,9 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import Snack from "../components/SnackScreen/Snack";
+import BottomTabs from "../components/HomeScreen/BottomTabs";
 
-const SnackScreen = () => {
+const SnackScreen = ({ navigation }) => {
     const [query, setQuery] = useState("pizza");
     const [foods, setFood] = useState([]);
     const fetchingData = () => {
@@ -22,7 +23,7 @@ const SnackScreen = () => {
                 // console.log(recipe.recipes);
             });
     };
-    console.log(foods);
+    // console.log(foods);
     return (
         <View style={styles.wrapper}>
             <View style={styles.inputWrapper}>
@@ -61,9 +62,15 @@ const SnackScreen = () => {
 
             <ScrollView>
                 {foods.map((food) => (
-                    <Snack key={food.recipe_id} food={food} />
+                    <Snack
+                        key={food.recipe_id}
+                        food={food}
+                        navigation={navigation}
+                    />
                 ))}
             </ScrollView>
+
+            <BottomTabs />
         </View>
     );
 };
@@ -71,6 +78,7 @@ const SnackScreen = () => {
 const styles = StyleSheet.create({
     wrapper: {
         paddingTop: 70,
+        flex: 1,
     },
     inputWrapper: {
         justifyContent: "space-between",

@@ -2,10 +2,11 @@ import { View, Text, Image, Pressable } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 
-const Snack = ({ food }) => {
+const Snack = ({ food, navigation }) => {
     const [fav, setFav] = useState(false);
 
-    let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
+    // let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
+    let price = (parseInt(food.recipe_id) / 9).toFixed(2);
 
     return (
         <View style={styles.wrapper}>
@@ -66,6 +67,7 @@ const Snack = ({ food }) => {
                             fontSize: 18,
                             fontWeight: "900",
                             marginTop: 7,
+                            letterSpacing: 0.7,
                         }}
                     >
                         #{price}
@@ -106,7 +108,15 @@ const Snack = ({ food }) => {
                                 paddingVertical: 10,
                                 borderRadius: 8,
                             }}
-                            onPress={() => console.log("Ordered.....")}
+                            onPress={() =>
+                                navigation.navigate("FoodDetails", {
+                                    // title: food.title,
+                                    // image: food.image_url,
+                                    // publisher: food.publisher,
+                                    recipeID: food.recipe_id,
+                                    price,
+                                })
+                            }
                         >
                             <Text
                                 style={{
