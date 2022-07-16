@@ -59,7 +59,7 @@ const Carts = ({ navigation }) => {
                     style={{
                         backgroundColor: "#F59D5E",
                         paddingHorizontal: 20,
-                        paddingVertical: 8,
+                        paddingVertical: 10,
                         borderRadius: 8,
                     }}
                 >
@@ -80,7 +80,7 @@ const Carts = ({ navigation }) => {
                     <Text
                         style={{
                             color: "#333333",
-                            fontWeight: "700",
+                            fontWeight: "500",
                             fontSize: 18,
                         }}
                     >
@@ -100,7 +100,7 @@ const Carts = ({ navigation }) => {
                     <Text
                         style={{
                             color: "#333333",
-                            fontWeight: "700",
+                            fontWeight: "500",
                             fontSize: 18,
                         }}
                     >
@@ -140,11 +140,17 @@ const Carts = ({ navigation }) => {
                 </View>
             </View>
 
-            <Pressable style={styles.cartBtn}>
+            <Pressable
+                style={styles.cartBtn}
+                onPress={() => navigation.navigate("CheckoutScreen")}
+            >
                 <Text style={styles.cartBtnText}>Proceed to Checkout</Text>
             </Pressable>
 
-            <Pressable style={styles.btn}>
+            <Pressable
+                style={styles.btn}
+                onPress={() => navigation.navigate("SnackScreen")}
+            >
                 <Text style={styles.btnText}>Continue Shopping</Text>
             </Pressable>
         </View>
@@ -164,7 +170,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         paddingLeft: 24,
         paddingRight: 6,
-        paddingVertical: 8,
+        paddingVertical: 5,
     },
     cartBtn: {
         backgroundColor: "#F27C28",
