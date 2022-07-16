@@ -112,6 +112,62 @@ const FoodDetails = ({ navigation }) => {
                     </Text>
                 </View>
             </View>
+
+            <View
+                style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    marginHorizontal: 20,
+                    marginTop: 30,
+                }}
+            >
+                <View
+                    style={{
+                        flexDirection: "row",
+                        alignItems: "center",
+                    }}
+                >
+                    <Pressable
+                        style={{
+                            marginRight: 5,
+                            backgroundColor: "#FDFDFD",
+                            padding: 8,
+                            borderRadius: 6,
+                        }}
+                        onPress={() => console.log("Addition....")}
+                    >
+                        <Image
+                            source={require("../assets/icons/minus-filled.png")}
+                            style={{ width: 15, height: 15 }}
+                        />
+                    </Pressable>
+                    <Text style={{ fontWeight: "700" }}> 1 </Text>
+                    <Pressable
+                        style={{
+                            marginLeft: 5,
+                            backgroundColor: "#FDFDFD",
+                            padding: 8,
+                            borderRadius: 6,
+                        }}
+                    >
+                        <Image
+                            source={require("../assets/icons/plus-filled.png")}
+                            style={{ width: 15, height: 15 }}
+                        />
+                    </Pressable>
+                </View>
+
+                <Text
+                    style={{
+                        color: "#A74601",
+                        fontWeight: "900",
+                        fontSize: 20,
+                    }}
+                >
+                    {price}
+                </Text>
+            </View>
         </View>
     );
 };

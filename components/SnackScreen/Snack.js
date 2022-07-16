@@ -81,19 +81,31 @@ const Snack = ({ food, navigation }) => {
                             }}
                         >
                             <Pressable
-                                style={{ marginRight: 5 }}
+                                style={{
+                                    marginRight: 5,
+                                    backgroundColor: "#FDFDFD",
+                                    padding: 8,
+                                    borderRadius: 6,
+                                }}
                                 onPress={() => console.log("Addition....")}
                             >
                                 <Image
-                                    source={require("../../assets/icons/minus.png")}
-                                    style={{ width: 27, height: 26 }}
+                                    source={require("../../assets/icons/minus-filled.png")}
+                                    style={{ width: 15, height: 15 }}
                                 />
                             </Pressable>
                             <Text style={{ fontWeight: "700" }}> 1 </Text>
-                            <Pressable style={{ marginLeft: 5 }}>
+                            <Pressable
+                                style={{
+                                    marginLeft: 5,
+                                    backgroundColor: "#FDFDFD",
+                                    padding: 8,
+                                    borderRadius: 6,
+                                }}
+                            >
                                 <Image
-                                    source={require("../../assets/icons/plus.png")}
-                                    style={{ width: 27, height: 26 }}
+                                    source={require("../../assets/icons/plus-filled.png")}
+                                    style={{ width: 15, height: 15 }}
                                 />
                             </Pressable>
                         </View>

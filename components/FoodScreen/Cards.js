@@ -87,9 +87,16 @@ const Cards = ({ food, navigation }) => {
                                 />
                             </Pressable>
                             <Text style={{ fontWeight: "700" }}> 1 </Text>
-                            <Pressable style={{ marginLeft: 5 }}>
+                            <Pressable
+                                style={{
+                                    marginLeft: 5,
+                                    backgroundColor: "#FDFDFD",
+                                    padding: 8,
+                                    borderRadius: 6,
+                                }}
+                            >
                                 <Image
-                                    source={require("../../assets/icons/plus.png")}
+                                    source={require("../../assets/icons/plus-filled.png")}
                                     style={{ width: 27, height: 26 }}
                                 />
                             </Pressable>
