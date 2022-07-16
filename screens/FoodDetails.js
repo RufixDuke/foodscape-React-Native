@@ -1,4 +1,11 @@
-import { View, Text, Image, Pressable, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    Image,
+    Pressable,
+    StyleSheet,
+    ScrollView,
+} from "react-native";
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 
@@ -37,119 +44,137 @@ const FoodDetails = ({ navigation }) => {
                 source={{ uri: details.image_url }}
                 style={styles.foodImage}
             />
-            <View style={styles.details}>
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <Image
-                        source={require("../assets/icons/location-filled.png")}
-                    />
-                    <Text style={styles.detailsText}>{details.publisher}</Text>
+            <ScrollView>
+                <View style={styles.details}>
+                    <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                    >
+                        <Image
+                            source={require("../assets/icons/location-filled.png")}
+                        />
+                        <Text style={styles.detailsText}>
+                            {details.publisher}
+                        </Text>
+                    </View>
+
+                    <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                    >
+                        <Image
+                            source={require("../assets/icons/clock-filled.png")}
+                        />
+                        <Text style={styles.detailsText}>
+                            {((details.social_rank - 10) / 3).toFixed()} minutes
+                        </Text>
+                    </View>
+
+                    <View
+                        style={{ flexDirection: "row", alignItems: "center" }}
+                    >
+                        <Image
+                            source={require("../assets/icons/distance.png")}
+                        />
+                        <Text style={styles.detailsText}>
+                            {((details.social_rank + 10) / 100).toFixed(1)} Km
+                        </Text>
+                    </View>
                 </View>
 
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <Image
-                        source={require("../assets/icons/clock-filled.png")}
-                    />
-                    <Text style={styles.detailsText}>
-                        {((details.social_rank - 10) / 3).toFixed()} minutes
-                    </Text>
-                </View>
-
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                    <Image source={require("../assets/icons/distance.png")} />
-                    <Text style={styles.detailsText}>
-                        {((details.social_rank + 10) / 100).toFixed(1)} Km
-                    </Text>
-                </View>
-            </View>
-
-            <View style={styles.ingredients}>
-                <Text
-                    style={{
-                        color: "#333333",
-                        fontSize: 18,
-                        fontWeight: "600",
-                        textAlign: "center",
-                        marginTop: 10,
-                        textDecorationLine: "underline",
-                    }}
-                >
-                    Ingredients
-                </Text>
-                <Text style={styles.ingreDetails}>{details.ingredients}</Text>
-            </View>
-
-            <View
-                style={{
-                    marginTop: 40,
-                    marginHorizontal: 20,
-                    flexDirection: "row",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                }}
-            >
-                <View>
+                <View style={styles.ingredients}>
                     <Text
                         style={{
-                            color: "#4F4F4F",
+                            color: "#333333",
+                            fontSize: 18,
                             fontWeight: "600",
-                            fontSize: 15,
+                            textAlign: "center",
+                            marginTop: 10,
+                            textDecorationLine: "underline",
                         }}
                     >
-                        {(details.recipe_id / 200).toFixed()} g |{" "}
-                        {(details.recipe_id / 270).toFixed()} cal
+                        Ingredients
+                    </Text>
+                    <Text style={styles.ingreDetails}>
+                        {details.ingredients}
                     </Text>
                 </View>
 
                 <View
                     style={{
+                        marginTop: 40,
+                        marginHorizontal: 20,
                         flexDirection: "row",
                         alignItems: "center",
+                        justifyContent: "space-between",
                     }}
                 >
-                    <Image
-                        source={require("../assets/icons/star-filled.png")}
-                        style={{ width: 11, height: 11, marginRight: 1 }}
-                    />
-                    <Text
+                    <View>
+                        <Text
+                            style={{
+                                color: "#4F4F4F",
+                                fontWeight: "600",
+                                fontSize: 15,
+                            }}
+                        >
+                            {(details.recipe_id / 200).toFixed()} g |{" "}
+                            {(details.recipe_id / 270).toFixed()} cal
+                        </Text>
+                    </View>
+
+                    <View
                         style={{
-                            color: "#4F4F4F",
-                            fontWeight: "600",
-                            fontSize: 15,
+                            flexDirection: "row",
+                            alignItems: "center",
                         }}
                     >
-                        {(details.social_rank / 21).toFixed(1)}(
-                        {(details.social_rank + 47).toFixed()})
-                    </Text>
+                        <Image
+                            source={require("../assets/icons/star-filled.png")}
+                            style={{ width: 11, height: 11, marginRight: 1 }}
+                        />
+                        <Text
+                            style={{
+                                color: "#4F4F4F",
+                                fontWeight: "600",
+                                fontSize: 15,
+                            }}
+                        >
+                            {(details.social_rank / 21).toFixed(1)}(
+                            {(details.social_rank + 47).toFixed()})
+                        </Text>
+                    </View>
                 </View>
-            </View>
 
-            <View style={styles.priceContainer}>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                    }}
-                >
-                    <Pressable
-                        style={styles.btn}
-                        onPress={() => console.log("Addition....")}
+                <View style={styles.priceContainer}>
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            alignItems: "center",
+                        }}
                     >
-                        <Image
-                            source={require("../assets/icons/minus-filled.png")}
-                            style={{ width: 15, height: 15 }}
-                        />
-                    </Pressable>
-                    <Text style={{ fontWeight: "700" }}> 1 </Text>
-                    <Pressable style={styles.btn}>
-                        <Image
-                            source={require("../assets/icons/plus-filled.png")}
-                            style={{ width: 15, height: 15 }}
-                        />
-                    </Pressable>
+                        <Pressable
+                            style={styles.btn}
+                            onPress={() => console.log("Addition....")}
+                        >
+                            <Image
+                                source={require("../assets/icons/minus-filled.png")}
+                                style={{ width: 15, height: 15 }}
+                            />
+                        </Pressable>
+                        <Text style={{ fontWeight: "700" }}> 1 </Text>
+                        <Pressable style={styles.btn}>
+                            <Image
+                                source={require("../assets/icons/plus-filled.png")}
+                                style={{ width: 15, height: 15 }}
+                            />
+                        </Pressable>
+                    </View>
+
+                    <Text style={styles.priceText}>#{price}</Text>
                 </View>
 
-                <Text style={styles.priceText}>#{price}</Text>
-            </View>
+                <Pressable style={styles.cartBtn}>
+                    <Text style={styles.cartBtnText}>Add to Cart</Text>
+                </Pressable>
+            </ScrollView>
         </View>
     );
 };
@@ -219,6 +244,19 @@ const styles = StyleSheet.create({
         color: "#A74601",
         fontWeight: "900",
         fontSize: 24,
+    },
+    cartBtn: {
+        backgroundColor: "#F27C28",
+        marginHorizontal: 20,
+        paddingHorizontal: 70,
+        paddingVertical: 16,
+        borderRadius: 32,
+        marginVertical: 40,
+    },
+    cartBtnText: {
+        textAlign: "center",
+        color: "#FAFAFA",
+        fontSize: 20,
     },
 });
 
