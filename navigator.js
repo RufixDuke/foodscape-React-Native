@@ -23,10 +23,7 @@ const screenOptions = {
 
 export const MyStack = () => (
     <NavigationContainer>
-        <Stack.Navigator
-            initialRouteName="HomeScreen"
-            screenOptions={screenOptions}
-        >
+        <Stack.Navigator initialRouteName="Carts" screenOptions={screenOptions}>
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />

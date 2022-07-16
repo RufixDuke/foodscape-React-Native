@@ -79,6 +79,7 @@ const styles = StyleSheet.create({
     wrapper: {
         paddingTop: 70,
         flex: 1,
+        backgroundColor: "#F5F5F5",
     },
     inputWrapper: {
         justifyContent: "space-between",
