@@ -6,9 +6,11 @@ import {
     TextInput,
     StyleSheet,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
 const AddressInput = ({ navigation }) => {
+    const [title, setTitle] = useState("");
+    const [desc, setDesc] = useState("");
     return (
         <View
             style={{
@@ -44,16 +46,36 @@ const AddressInput = ({ navigation }) => {
                 </Text>
                 <Text></Text>
             </View>
-            <TextInput style={styles.input} placeholder="Title" />
-            <TextInput style={styles.input} placeholder="Address" multiline />
+            <TextInput
+                style={styles.input}
+                placeholder="Home, Workplace e.t.c"
+                onChangeText={(value) => setTitle(value)}
+                value={title}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Address"
+                multiline
+                onChangeText={(value) => setDesc(value)}
+                value={desc}
+            />
             <Pressable
                 style={{
                     backgroundColor: "#F27C28",
                     paddingVertical: 20,
-                    borderRadius: 10,
+                    borderRadius: 20,
+                    marginHorizontal: 20,
                 }}
             >
-                <Text>Save Address</Text>
+                <Text
+                    style={{
+                        textAlign: "center",
+                        color: "#FFFFFF",
+                        fontSize: 16,
+                    }}
+                >
+                    Save Address
+                </Text>
             </Pressable>
         </View>
     );
@@ -61,13 +83,13 @@ const AddressInput = ({ navigation }) => {
 const styles = StyleSheet.create({
     input: {
         width: "100%",
-        borderWidth: 1,
+        // borderWidth: 1,
         borderColor: "#555555",
         borderRadius: 10,
         backgroundColor: "#ffffff",
         textAlign: "left",
-        fontSize: 20,
-        margin: 10,
+        fontSize: 14,
+        marginVertical: 10,
         paddingHorizontal: 10,
         paddingVertical: 10,
     },

@@ -1,3 +1,6 @@
+export const SET_TASKS = "SET_TASKS";
+export const SET_TASKS_ID = "SET_TASKS_ID";
+
 export const addItem = (product) => {
     return {
         type: "ADDITEM",
@@ -12,16 +15,30 @@ export const delItem = (product) => {
     };
 };
 
-export const minusPrice = (product) => {
-    return {
-        type: "MINUS",
-        payload: product,
-    };
+export const setTasks = (tasks) => (dispatch) => {
+    dispatch({
+        type: SET_TASKS,
+        payload: tasks,
+    });
 };
 
-export const addPrice = (product) => {
-    return {
-        type: "ADD",
-        payload: product,
-    };
+export const setTaskID = (taskID) => (dispatch) => {
+    dispatch({
+        type: SET_TASKS_ID,
+        payload: taskID,
+    });
 };
+
+// export const minusPrice = (product) => {
+//     return {
+//         type: "MINUS",
+//         payload: product,
+//     };
+// };
+
+// export const addPrice = (product) => {
+//     return {
+//         type: "ADD",
+//         payload: product,
+//     };
+// };

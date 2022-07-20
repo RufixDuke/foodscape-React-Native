@@ -1,7 +1,28 @@
 import { View, Text, Pressable, Image } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import AsyncStorage from "react-native";
+import { setTasks, setTaskID } from "../redux/action";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Address = ({ navigation }) => {
+    const { tasks } = useSelector((state) => state.taskReducer);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        getTasks();
+    }, []);
+
+    const getTasks = () => {
+        AsyncStorage.getItem("Tasks")
+            .then((tasks) => {
+                const parseTasks = JSON.parse(tasks);
+                if (parseTasks && typeof parseTasks === "object") {
+                    dispatch(setTasks(parseTasks));
+                }
+            })
+            .catch((err) => console.log(err));
+    };
     return (
         <View
             style={{
@@ -51,7 +72,10 @@ const Address = ({ navigation }) => {
                         right: 0,
                         bottom: 100,
                     }}
-                    onPress={() => navigation.navigate("AddressInput")}
+                    onPress={() => {
+                        dispatch(setTaskID(tasks.length + 1));
+                        navigation.navigate("AddressInput");
+                    }}
                 >
                     <Image
                         source={require("../assets/icons/plus-white.png")}
