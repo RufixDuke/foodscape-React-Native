@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { View, Text, Image, ScrollView, Pressable } from "react-native";
+=======
+import { View, Text, Image, ScrollView } from "react-native";
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import Filters from "./Filters";
@@ -48,6 +52,7 @@ const Overall = ({ navigation }) => {
                 >
                     What do you want to order today?
                 </Text>
+<<<<<<< HEAD
             </View>
             <InputForm title={"Enter Recipes..."} navigation={navigation} />
             {/* <Pressable onPress={() => navigation.openDrawer()}>
@@ -59,6 +64,11 @@ const Overall = ({ navigation }) => {
             <Filters navigation={navigation} />
             <ScrollView>
                 <View style={{ flex: 1, paddingHorizontal: 20 }}>
+=======
+                <InputForm title={"Enter Recipes..."} />
+                <Filters navigation={navigation} />
+                <ScrollView>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                     <Header navigation={navigation} />
                     <ScrollView
                         horizontal
@@ -142,6 +152,7 @@ const Overall = ({ navigation }) => {
                             ))}
                         </ScrollView>
                     </View>
+<<<<<<< HEAD
 
                     <View style={{ marginTop: 17 }}>
                         <Text
@@ -170,6 +181,10 @@ const Overall = ({ navigation }) => {
                 </View>
             </ScrollView>
 
+=======
+                </ScrollView>
+            </View>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
             <BottomTabs navigation={navigation} />
         </View>
     );
@@ -209,7 +224,11 @@ const SwiperRecipe = ({ swiperSlice }) => (
 );
 
 const Header = ({ navigation }) => (
+<<<<<<< HEAD
     <View style={{ marginBottom: 0 }}>
+=======
+    <View style={{ marginVertical: 10, marginBottom: 0 }}>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         <View
             style={{
                 marginVertical: 10,

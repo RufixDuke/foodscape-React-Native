@@ -111,6 +111,7 @@ const Snack = ({ food, navigation }) => {
                         </View>
 
                         <Pressable
+<<<<<<< HEAD
                             style={({ pressed }) => [
                                 {
                                     flexDirection: "row",
@@ -126,6 +127,22 @@ const Snack = ({ food, navigation }) => {
                             ]}
                             onPress={() =>
                                 navigation.navigate("FoodDetails", {
+=======
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "flex-end",
+                                alignItems: "center",
+                                backgroundColor: "#F27C28",
+                                paddingHorizontal: 18,
+                                paddingVertical: 10,
+                                borderRadius: 8,
+                            }}
+                            onPress={() =>
+                                navigation.navigate("FoodDetails", {
+                                    // title: food.title,
+                                    // image: food.image_url,
+                                    // publisher: food.publisher,
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                                     recipeID: food.recipe_id,
                                     price,
                                 })

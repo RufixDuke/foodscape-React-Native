@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 import React from "react";
 import Card from "../components/Checkout/Card";
@@ -88,10 +89,20 @@ const CheckoutScreen = () => {
             >
                 <Text style={styles.cartBtnText}>Place Order</Text>
             </Pressable>
+=======
+import { View, Text } from "react-native";
+import React from "react";
+
+const CheckoutScreen = () => {
+    return (
+        <View>
+            <Text>CheckoutScreen</Text>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         </View>
     );
 };
 
+<<<<<<< HEAD
 const styles = StyleSheet.create({
     wrapper: {
         flexDirection: "row",
@@ -154,4 +165,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
 });
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 export default CheckoutScreen;

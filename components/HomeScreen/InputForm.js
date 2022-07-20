@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { View, Pressable, StyleSheet, TextInput, Image } from "react-native";
 import React, { useState } from "react";
 
@@ -11,6 +12,27 @@ const InputForm = ({ title, navigation }) => {
                     style={{ width: 21.19, height: 17.14 }}
                 />
             </Pressable>
+=======
+import {
+    View,
+    Text,
+    Pressable,
+    StyleSheet,
+    TextInput,
+    Image,
+    TouchableOpacity,
+} from "react-native";
+import React, { useState } from "react";
+
+const InputForm = ({ title }) => {
+    const [name, setName] = useState("");
+    return (
+        <View style={styles.inputWrapper}>
+            <Image
+                source={require("../../assets/icons/menu.png")}
+                style={{ width: 21.19, height: 17.14 }}
+            />
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 
             <View style={styles.inputField}>
                 <TextInput
@@ -39,7 +61,10 @@ const styles = StyleSheet.create({
         justifyContent: "space-between",
         alignItems: "center",
         flexDirection: "row",
+<<<<<<< HEAD
         paddingHorizontal: 20,
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     },
     inputField: {
         borderWidth: 0,

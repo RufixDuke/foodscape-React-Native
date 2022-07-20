@@ -5,7 +5,11 @@ import SwiperScreen from "./screens/SwiperScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ForgotPassword from "./screens/ForgotPasswordScreen";
+<<<<<<< HEAD
 // import HomeScreen from "./screens/HomeScreen";
+=======
+import HomeScreen from "./screens/HomeScreen";
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 import RecentScreen from "./screens/RecentScreen";
 import Favorite from "./screens/Favorite";
 import Carts from "./screens/Carts";
@@ -15,10 +19,13 @@ import RestaurantScreen from "./screens/RestaurantScreen";
 import SnackScreen from "./screens/SnackScreen";
 import FoodDetails from "./screens/FoodDetails";
 import CheckoutScreen from "./screens/CheckoutScreen";
+<<<<<<< HEAD
 import Address from "./screens/Address";
 import PaymentCards from "./screens/PaymentCards";
 
 import DrawerNavigator from "./drawerNav";
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 
 const Stack = createNativeStackNavigator();
 
@@ -28,20 +35,32 @@ const screenOptions = {
 
 export const MyStack = () => (
     <NavigationContainer>
+<<<<<<< HEAD
         <Stack.Navigator
             initialRouteName="SnackScreen"
             screenOptions={screenOptions}
         >
+=======
+        <Stack.Navigator initialRouteName="Carts" screenOptions={screenOptions}>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+<<<<<<< HEAD
             <Stack.Screen name="HomeScreen" component={DrawerNavigator} />
             <Stack.Screen name="RecentScreen" component={RecentScreen} />
             <Stack.Screen name="Favorite" component={Favorite} />
             <Stack.Screen name="Carts" component={Carts} />
             {/* <Stack.Screen name="Profile" component={Profile} /> */}
+=======
+            <Stack.Screen name="HomeScreen" component={HomeScreen} />
+            <Stack.Screen name="RecentScreen" component={RecentScreen} />
+            <Stack.Screen name="Favorite" component={Favorite} />
+            <Stack.Screen name="Carts" component={Carts} />
+            <Stack.Screen name="Profile" component={Profile} />
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
             <Stack.Screen name="FoodScreen" component={FoodScreen} />
             <Stack.Screen
                 name="RestaurantScreen"
@@ -50,8 +69,11 @@ export const MyStack = () => (
             <Stack.Screen name="SnackScreen" component={SnackScreen} />
             <Stack.Screen name="FoodDetails" component={FoodDetails} />
             <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
+<<<<<<< HEAD
             {/* <Stack.Screen name="Address" component={Address} /> */}
             {/* <Stack.Screen name="PaymentCards" component={PaymentCards} /> */}
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         </Stack.Navigator>
     </NavigationContainer>
 );
@@ -67,6 +89,7 @@ export const SignedOutStack = () => (
         </Stack.Navigator>
     </NavigationContainer>
 );
+<<<<<<< HEAD
 
 // export const TabNavigator = () => {
 //     return (
@@ -87,3 +110,5 @@ export const SignedOutStack = () => (
 //         </NavigationContainer>
 //     );
 // };
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e

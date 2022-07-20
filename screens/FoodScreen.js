@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
     View,
     Text,
@@ -7,11 +8,15 @@ import {
     TextInput,
     TouchableOpacity,
 } from "react-native";
+=======
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
 import InputForm from "../components/FoodScreen/InputForm";
 import Cards from "../components/FoodScreen/Cards";
 import BottomTabs from "../components/HomeScreen/BottomTabs";
+<<<<<<< HEAD
 import { Picker } from "@react-native-picker/picker";
 
 const FoodScreen = ({ navigation }) => {
@@ -19,10 +24,18 @@ const FoodScreen = ({ navigation }) => {
     const [query, setQuery] = useState("");
     const fetchingData = () => {
         let url = `https://forkify-api.herokuapp.com/api/search?q=${query}`;
+=======
+
+const FoodScreen = ({ navigation }) => {
+    const [foods, setFoods] = useState([]);
+    const fetchingData = () => {
+        let url = "https://forkify-api.herokuapp.com/api/search?q=bean";
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         fetch(url)
             .then((response) => response.json())
             .then((recipe) => {
                 setFoods(recipe.recipes);
+<<<<<<< HEAD
             });
     };
     return (
@@ -72,6 +85,18 @@ const FoodScreen = ({ navigation }) => {
                     />
                 </TouchableOpacity>
             </View>
+=======
+                // console.log(recipe.recipes);
+            });
+    };
+
+    useEffect(() => {
+        fetchingData();
+    }, []);
+    return (
+        <View style={styles.wrapper}>
+            <InputForm navigation={navigation} title={"Enter food..."} />
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
             <Text
                 style={{
                     textAlign: "center",
@@ -103,6 +128,7 @@ const styles = StyleSheet.create({
         paddingTop: 50,
         backgroundColor: "#F5F5F5",
     },
+<<<<<<< HEAD
     inputWrapper: {
         justifyContent: "space-between",
         alignItems: "center",
@@ -118,6 +144,8 @@ const styles = StyleSheet.create({
         width: 200,
         justifyContent: "space-between",
     },
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
 });
 
 export default FoodScreen;

@@ -62,10 +62,14 @@ const SwiperScreen = ({ navigation }) => {
                     clicks.
                 </Text>
                 <Pressable
+<<<<<<< HEAD
                     style={({ pressed }) => [
                         { backgroundColor: pressed ? "#F8BE94" : "#F27C28" },
                         styles.btn,
                     ]}
+=======
+                    style={styles.btn}
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                     onPress={() => navigation.push("LoginScreen")}
                 >
                     <Text style={styles.btnText}>Next</Text>
@@ -107,7 +111,11 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     btn: {
+<<<<<<< HEAD
         // backgroundColor: "#F27C28",
+=======
+        backgroundColor: "#F27C28",
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         paddingVertical: 15,
         paddingHorizontal: 100,
         borderRadius: 50,

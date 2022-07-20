@@ -6109,7 +6109,11 @@
     "normalize-css-color" "^1.0.2"
     "prop-types" "^15.6.0"
 
+<<<<<<< HEAD
 "react-native@*", "react-native@>=0.42.0", "react-native@>=0.57", "react-native@>=0.59", "react-native@0.68.2":
+=======
+"react-native@*", "react-native@>=0.42.0", "react-native@>=0.59", "react-native@0.68.2":
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
   "integrity" "sha512-qNMz+mdIirCEmlrhapAtAG+SWVx6MAiSfCbFNhfHqiqu1xw1OKXdzIrjaBEPihRC2pcORCoCHduHGQe/Pz9Yuw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.68.2.tgz"
   "version" "0.68.2"
@@ -6172,7 +6176,11 @@
     "object-assign" "^4.1.1"
     "react-is" "^16.12.0 || ^17.0.0"
 
+<<<<<<< HEAD
 "react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.0", "react@>=16.3.0", "react@>=16.8.0", "react@>=17.0.1", "react@16 || 17", "react@17.0.2":
+=======
+"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^17.0.0", "react@>=16.3.0", "react@>=16.8.0", "react@>=17.0.1", "react@17.0.2":
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
   "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
   "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
   "version" "17.0.2"
@@ -6590,7 +6598,21 @@
   "resolved" "https://registry.npmjs.org/shebang-regex/-/shebang-regex-1.0.0.tgz"
   "version" "1.0.0"
 
+<<<<<<< HEAD
 "shell-quote@^1.6.1", "shell-quote@^1.7.3":
+=======
+"shell-quote@^1.6.1", "shell-quote@1.6.1":
+  "integrity" "sha512-V0iQEZ/uoem3NmD91rD8XiuozJnq9/ZJnbHVXHnWqP1ucAhS3yJ7sLIIzEi57wFFcK3oi3kFUC46uSyWr35mxg=="
+  "resolved" "https://registry.npmjs.org/shell-quote/-/shell-quote-1.6.1.tgz"
+  "version" "1.6.1"
+  dependencies:
+    "array-filter" "~0.0.0"
+    "array-map" "~0.0.0"
+    "array-reduce" "~0.0.0"
+    "jsonify" "~0.0.0"
+
+"shell-quote@^1.7.3":
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
   "integrity" "sha512-Vpfqwm4EnqGdlsBFNmHhxhElJYrdfcxPThu+ryKS5J8L/fhAwLazFZtq+S+TWZ9ANj2piSQLGj6NQg+lKPmxrw=="
   "resolved" "https://registry.npmjs.org/shell-quote/-/shell-quote-1.7.3.tgz"
   "version" "1.7.3"

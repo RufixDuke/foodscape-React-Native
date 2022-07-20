@@ -1,7 +1,11 @@
 import { View, Text, Pressable, Image } from "react-native";
 import React from "react";
 
+<<<<<<< HEAD
 const Product = ({ cartItem, handleClose }) => {
+=======
+const Product = () => {
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     return (
         <View
             style={{
@@ -9,7 +13,11 @@ const Product = ({ cartItem, handleClose }) => {
                 marginHorizontal: 20,
                 paddingHorizontal: 20,
                 paddingVertical: 24,
+<<<<<<< HEAD
                 marginTop: 5,
+=======
+                marginTop: 20,
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                 flexDirection: "row",
                 justifyContent: "space-between",
                 borderRadius: 10,
@@ -34,10 +42,17 @@ const Product = ({ cartItem, handleClose }) => {
                             fontWeight: "900",
                         }}
                     >
+<<<<<<< HEAD
                         {cartItem.title}
                     </Text>
                     <Text style={{ color: "#F59D5E", fontSize: 14 }}>
                         {cartItem.publisher}
+=======
+                        Beef Burger
+                    </Text>
+                    <Text style={{ color: "#F59D5E", fontSize: 14 }}>
+                        Sweet Sensation
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                     </Text>
                 </View>
             </View>
@@ -49,7 +64,11 @@ const Product = ({ cartItem, handleClose }) => {
                         fontWeight: "900",
                     }}
                 >
+<<<<<<< HEAD
                     {cartItem.price}
+=======
+                    # 1500
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                 </Text>
                 <Pressable
                     style={{
@@ -58,7 +77,10 @@ const Product = ({ cartItem, handleClose }) => {
                         padding: 5,
                         borderRadius: 8,
                     }}
+<<<<<<< HEAD
                     onPress={() => handleClose(cartItem)}
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                 >
                     <Image
                         source={require("../../assets/icons/close-cart.png")}

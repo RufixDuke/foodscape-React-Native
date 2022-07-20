@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { View, Text, StyleSheet, SafeAreaView } from "react-native";
 import React from "react";
 import { useEffect } from "react";
@@ -8,18 +9,32 @@ const WelcomeScreen = ({ navigation }) => {
             navigation.replace("SwiperScreen");
         }, 5000);
     });
+=======
+import { View, Text, StyleSheet, Pressable, SafeAreaView } from "react-native";
+import React from "react";
+
+const WelcomeScreen = ({ navigation }) => {
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.text}>foodscape</Text>
             </View>
 
+<<<<<<< HEAD
             {/* <Pressable
+=======
+            <Pressable
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                 style={styles.btn}
                 onPress={() => navigation.push("SwiperScreen")}
             >
                 <Text style={styles.btnText}>Get Started</Text>
+<<<<<<< HEAD
             </Pressable> */}
+=======
+            </Pressable>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         </SafeAreaView>
     );
 };

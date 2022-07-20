@@ -1,10 +1,15 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import React from "react";
+<<<<<<< HEAD
 import { useSelector } from "react-redux";
 
 const BottomTabs = ({ navigation }) => {
     const state = useSelector((state) => state.handleCarts);
     // console.log(state.length);
+=======
+
+const BottomTabs = ({ navigation }) => {
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>
@@ -34,15 +39,20 @@ const BottomTabs = ({ navigation }) => {
                     <Text style={{ color: "#B6B6B6" }}>Favorite</Text>
                 </TouchableOpacity>
 
+<<<<<<< HEAD
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Carts")}
                     style={{ position: "relative" }}
                 >
+=======
+                <TouchableOpacity onPress={() => navigation.push("Carts")}>
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                     <Image
                         style={[styles.text, styles.fav]}
                         source={require("../../assets/icons/cart-gray.png")}
                     />
                     <Text style={{ color: "#B6B6B6" }}>Carts</Text>
+<<<<<<< HEAD
                     <Text
                         style={{
                             position: "absolute",
@@ -57,6 +67,8 @@ const BottomTabs = ({ navigation }) => {
                     >
                         1
                     </Text>
+=======
+>>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                 </TouchableOpacity>
 
                 <TouchableOpacity onPress={() => navigation.push("Profile")}>
