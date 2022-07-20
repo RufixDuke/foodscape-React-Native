@@ -19,6 +19,7 @@ import Address from "./screens/Address";
 import PaymentCards from "./screens/PaymentCards";
 
 import DrawerNavigator from "./drawerNav";
+import AddressInput from "./screens/AddressInput";
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +51,7 @@ export const MyStack = () => (
             <Stack.Screen name="SnackScreen" component={SnackScreen} />
             <Stack.Screen name="FoodDetails" component={FoodDetails} />
             <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
+            <Stack.Screen name="AddressInput" component={AddressInput} />
             {/* <Stack.Screen name="Address" component={Address} /> */}
             {/* <Stack.Screen name="PaymentCards" component={PaymentCards} /> */}
         </Stack.Navigator>
