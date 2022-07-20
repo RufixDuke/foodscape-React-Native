@@ -3,11 +3,7 @@ import React, { useState } from "react";
 
 const Cards = ({ food, navigation }) => {
     const [fav, setFav] = useState(false);
-
-<<<<<<< HEAD
     // let price = (parseInt(food.recipe_id) / 9).toFixed(2);
-=======
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
 
     return (
@@ -39,12 +35,9 @@ const Cards = ({ food, navigation }) => {
                                 fontWeight: "900",
                             }}
                         >
-<<<<<<< HEAD
                             {food.title.slice(0, 20) + "..."}
                             {/* {food.title} */}
-=======
-                            {food.publisher.slice(0, 15) + "..."}
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
+                            {/* {food.publisher.slice(0, 15) + "..."} */}
                         </Text>
                         <Pressable
                             onPress={() => setFav(!fav)}
@@ -64,26 +57,6 @@ const Cards = ({ food, navigation }) => {
                             />
                         </Pressable>
                     </View>
-
-<<<<<<< HEAD
-                    <Text style={{ fontSize: 15, marginTop: 7 }}>
-                        {/* {food.publisher.slice(0, 33) + "..."} */}
-                        {food.publisher}
-=======
-                    <Text style={{ fontSize: 12, marginTop: 7 }}>
-                        {food.title.slice(0, 33) + "..."}
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
-                    </Text>
-                    <Text
-                        style={{
-                            color: "#2A2A2A",
-                            fontSize: 18,
-                            fontWeight: "900",
-                            marginTop: 7,
-                        }}
-                    >
-                        #{price}
-                    </Text>
 
                     <View style={styles.btns}>
                         <View
@@ -127,16 +100,12 @@ const Cards = ({ food, navigation }) => {
                                 paddingVertical: 10,
                                 borderRadius: 8,
                             }}
-<<<<<<< HEAD
                             onPress={() =>
                                 navigation.navigate("FoodDetails", {
                                     recipeID: food.recipe_id,
                                     price,
                                 })
                             }
-=======
-                            onPress={() => console.log("Ordered.....")}
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                         >
                             <Text
                                 style={{

@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
-<<<<<<< HEAD
 import { useDispatch } from "react-redux";
 import { addItem, detItem } from "../redux/action/index";
 
@@ -20,14 +19,6 @@ const FoodDetails = ({ navigation }) => {
 
     const dispatch = useDispatch();
 
-=======
-
-const FoodDetails = ({ navigation }) => {
-    const [details, setDetails] = useState({});
-    const route = useRoute();
-    const { recipeID, price } = route.params;
-
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     const fetchDetails = () => {
         let url = `https://forkify-api.herokuapp.com/api/get?rId=${recipeID}`;
         fetch(url)
@@ -41,7 +32,6 @@ const FoodDetails = ({ navigation }) => {
         fetchDetails();
     }, []);
 
-<<<<<<< HEAD
     const handleCart = (details) => {
         if (cartBtn === "Add to Cart") {
             dispatch(addItem(details));
@@ -52,8 +42,6 @@ const FoodDetails = ({ navigation }) => {
         }
     };
 
-=======
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
     return (
         <View style={styles.wrapper}>
             <View style={styles.header}>
@@ -198,7 +186,6 @@ const FoodDetails = ({ navigation }) => {
                     <Text style={styles.priceText}>#{price}</Text>
                 </View>
 
-<<<<<<< HEAD
                 <Pressable
                     style={({ pressed }) => [
                         { backgroundColor: pressed ? "#F8BE94" : "#F27C28" },
@@ -207,10 +194,6 @@ const FoodDetails = ({ navigation }) => {
                     onPress={() => handleCart(details)}
                 >
                     <Text style={styles.cartBtnText}>{cartBtn}</Text>
-=======
-                <Pressable style={styles.cartBtn}>
-                    <Text style={styles.cartBtnText}>Add to Cart</Text>
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
                 </Pressable>
             </ScrollView>
         </View>
@@ -284,11 +267,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
     cartBtn: {
-<<<<<<< HEAD
         // backgroundColor: "#F27C28",
-=======
-        backgroundColor: "#F27C28",
->>>>>>> 964fbfb9ff3003ba3579153d0d219b311166199e
         marginHorizontal: 20,
         paddingHorizontal: 70,
         paddingVertical: 16,
