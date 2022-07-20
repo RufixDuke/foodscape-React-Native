@@ -4,12 +4,10 @@ import {
     Image,
     ScrollView,
     Pressable,
-    TextInput,
     TouchableOpacity,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-import InputForm from "../components/FoodScreen/InputForm";
 import Cards from "../components/FoodScreen/Cards";
 import BottomTabs from "../components/HomeScreen/BottomTabs";
 import { Picker } from "@react-native-picker/picker";
@@ -71,28 +69,28 @@ const FoodScreen = ({ navigation }) => {
                         style={{ width: 17, height: 17 }}
                     />
                 </TouchableOpacity>
-
-                <Text
-                    style={{
-                        textAlign: "center",
-                        fontSize: 22,
-                        fontWeight: "700",
-                        color: "#333333",
-                        marginBottom: 10,
-                    }}
-                >
-                    Foods
-                </Text>
-                <ScrollView>
-                    {foods.map((food) => (
-                        <Cards
-                            key={food.recipe_id}
-                            food={food}
-                            navigation={navigation}
-                        />
-                    ))}
-                </ScrollView>
             </View>
+            <Text
+                style={{
+                    textAlign: "center",
+                    fontSize: 22,
+                    fontWeight: "700",
+                    color: "#333333",
+                    marginBottom: 10,
+                }}
+            >
+                Foods
+            </Text>
+            <ScrollView>
+                {foods.map((food) => (
+                    <Cards
+                        key={food.recipe_id}
+                        food={food}
+                        navigation={navigation}
+                    />
+                ))}
+            </ScrollView>
+            <BottomTabs />
         </View>
     );
 };
