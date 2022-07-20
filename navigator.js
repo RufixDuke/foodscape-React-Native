@@ -29,7 +29,7 @@ const screenOptions = {
 export const MyStack = () => (
     <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="SnackScreen"
+            initialRouteName="HomeScreen"
             screenOptions={screenOptions}
         >
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
@@ -41,7 +41,7 @@ export const MyStack = () => (
             <Stack.Screen name="RecentScreen" component={RecentScreen} />
             <Stack.Screen name="Favorite" component={Favorite} />
             <Stack.Screen name="Carts" component={Carts} />
-            {/* <Stack.Screen name="Profile" component={Profile} /> */}
+            <Stack.Screen name="Profile" component={Profile} />
             <Stack.Screen name="FoodScreen" component={FoodScreen} />
             <Stack.Screen
                 name="RestaurantScreen"

@@ -23,7 +23,7 @@ export default DrawerNavigator = () => {
     return (
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawer {...props} />}
-            initialRouteName="HomeScreen"
+            initialRouteName="Profile"
             screenOptions={screenOptions}
             hideStatusBar={true}
             // drawerStyle={{ backgroundColor: "red", width: 100 }}
@@ -57,6 +57,7 @@ export default DrawerNavigator = () => {
                             }}
                         />
                     ),
+                    headerShown: false,
                 }}
             />
             <Drawer.Screen

@@ -10,7 +10,7 @@ const Filters = ({ navigation }) => {
                 // flexDirection: "row",
                 marginVertical: 10,
                 paddingHorizontal: 20,
-                // height: 55,
+                height: 50,
             }}
         >
             <Pressable
