@@ -15,8 +15,6 @@ import RestaurantScreen from "./screens/RestaurantScreen";
 import SnackScreen from "./screens/SnackScreen";
 import FoodDetails from "./screens/FoodDetails";
 import CheckoutScreen from "./screens/CheckoutScreen";
-import Address from "./screens/Address";
-import PaymentCards from "./screens/PaymentCards";
 import PaymentInput from "./screens/PaymentInput";
 
 import DrawerNavigator from "./drawerNav";

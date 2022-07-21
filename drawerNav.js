@@ -9,6 +9,7 @@ import PaymentCards from "./screens/PaymentCards";
 import { Image } from "react-native";
 
 import CustomDrawer from "./components/Drawer/Custom";
+import Map from "./screens/Map";
 
 const Drawer = createDrawerNavigator();
 
@@ -79,6 +80,22 @@ export default DrawerNavigator = () => {
             <Drawer.Screen
                 name="PaymentCards"
                 component={PaymentCards}
+                options={{
+                    drawerIcon: ({ focused }) => (
+                        <Image
+                            source={require("./assets/icons/payment-card.png")}
+                            style={{
+                                width: focused ? 20 : 18,
+                                height: focused ? 20 : 18,
+                            }}
+                        />
+                    ),
+                    headerShown: false,
+                }}
+            />
+            <Drawer.Screen
+                name="Map"
+                component={Map}
                 options={{
                     drawerIcon: ({ focused }) => (
                         <Image

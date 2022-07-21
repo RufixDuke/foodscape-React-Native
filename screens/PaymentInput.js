@@ -6,6 +6,7 @@ import {
     // TextInput,
     StyleSheet,
     Alert,
+    ImageBackground,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
@@ -99,23 +100,95 @@ const PaymentInput = ({ navigation }) => {
                 </Text>
                 <Text></Text>
             </View>
-            {/* <TextInput
-                style={styles.input}
-                placeholder="Home, Workplace e.t.c"
-                onChangeText={(value) => setTitle(value)}
-                value={title}
-            /> */}
-            <View style={styles.inputField}>
-                <Picker
-                    selectedValue={title}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setTitle(itemValue)
-                    }
-                >
-                    <Picker.Item label="Select a card" value="Select a card" />
-                    <Picker.Item label="MasterCard" value="MasterCard" />
-                    <Picker.Item label="VISA" value="VISA" />
-                </Picker>
+
+            <View style={{ marginTop: 30 }}>
+                <View>
+                    <ImageBackground
+                        source={require("../assets/Credit-card-mockup.png")}
+                        style={{
+                            width: "100%",
+                            height: 170,
+                            justifyContent: "space-between",
+                        }}
+                    >
+                        <Text
+                            style={{
+                                color: "#FFFFFF",
+                                marginLeft: 20,
+                                marginTop: 15,
+                                fontSize: 16,
+                                fontWeight: "700",
+                            }}
+                        >
+                            Untitled
+                        </Text>
+                        <View>
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    marginLeft: 30,
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        color: "#FFFFFF",
+                                        fontSize: 14,
+                                        fontWeight: "700",
+                                    }}
+                                >
+                                    OLIVIA RHYE
+                                </Text>
+                                <View style={{ flexDirection: "row" }}>
+                                    <Text style={{ color: "#FFFFFF" }}>
+                                        06/24
+                                    </Text>
+                                </View>
+                                <Text></Text>
+                            </View>
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    justifyContent: "space-between",
+                                    alignItems: "center",
+                                    marginBottom: 20,
+                                    marginHorizontal: 30,
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        color: "#FFFFFF",
+                                        fontSize: 16,
+                                        fontWeight: "700",
+                                    }}
+                                >
+                                    1234 1234 1234 1234
+                                </Text>
+                                <Image
+                                    source={require("../assets/icons/mastercard.png")}
+                                    style={{ width: 35, height: 35 }}
+                                />
+                            </View>
+                        </View>
+                    </ImageBackground>
+                </View>
+                <Text>Card Name</Text>
+                <View style={styles.inputField}>
+                    <Picker
+                        selectedValue={title}
+                        onValueChange={(itemValue, itemIndex) =>
+                            setTitle(itemValue)
+                        }
+                    >
+                        <Picker.Item
+                            label="Select a card"
+                            value="Select a card"
+                        />
+                        <Picker.Item label="MasterCard" value="MasterCard" />
+                        <Picker.Item label="VISA" value="VISA" />
+                    </Picker>
+                </View>
             </View>
 
             <TextInput
@@ -170,7 +243,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         width: 320,
         justifyContent: "space-between",
-        marginTop: 40,
+        marginTop: 5,
         marginBottom: 10,
     },
 });
