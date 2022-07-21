@@ -1,7 +1,13 @@
-import { View, Text, Pressable, Image } from "react-native";
+import {
+    View,
+    Text,
+    Pressable,
+    Image,
+    FlatList,
+    StyleSheet,
+} from "react-native";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import AsyncStorage from "react-native";
 import { setTasks, setTaskID } from "../redux/action";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -27,7 +33,7 @@ const Address = ({ navigation }) => {
         <View
             style={{
                 paddingTop: 60,
-                marginHorizontal: 20,
+                marginHorizontal: 10,
                 backgroundColor: "#F5F5F5",
                 flex: 1,
             }}
@@ -37,6 +43,8 @@ const Address = ({ navigation }) => {
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    marginHorizontal: 10,
+                    marginBottom: 30,
                 }}
             >
                 <Pressable onPress={() => navigation.goBack()}>
@@ -58,6 +66,32 @@ const Address = ({ navigation }) => {
                 <Text></Text>
             </View>
 
+            <FlatList
+                data={tasks}
+                renderItem={({ item }) => (
+                    <Pressable
+                        style={styles.wrapper}
+                        onPress={() => {
+                            dispatch(setTaskID(item.ID));
+                            navigation.navigate("AddressInput");
+                        }}
+                    >
+                        <Image
+                            source={require("../assets/icons/map-address.png")}
+                        />
+                        <View style={{ marginHorizontal: 10 }}>
+                            <Text numberOfLines={1}>{item.Title}</Text>
+                            <Text numberOfLines={1}>{item.Desc}</Text>
+                        </View>
+                        <Image
+                            source={require("../assets/icons/arrow-right.png")}
+                            style={{ position: "absolute", right: 7 }}
+                        />
+                    </Pressable>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+            />
+
             <View style={{ position: "relative", flex: 1 }}>
                 <Pressable
                     style={{
@@ -69,7 +103,7 @@ const Address = ({ navigation }) => {
                         alignItems: "center",
                         borderRadius: 27.5,
                         position: "absolute",
-                        right: 0,
+                        right: 10,
                         bottom: 100,
                     }}
                     onPress={() => {
@@ -89,5 +123,19 @@ const Address = ({ navigation }) => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    wrapper: {
+        flexDirection: "row",
+        marginHorizontal: 20,
+        paddingLeft: 8,
+        paddingVertical: 13,
+        backgroundColor: "#FEFEFE",
+        alignItems: "center",
+        position: "relative",
+        marginTop: 10,
+        borderRadius: 6,
+    },
+});
 
 export default Address;

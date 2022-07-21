@@ -1,10 +1,11 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import React from "react";
+import { setTaskID } from "../../redux/action";
 
 const Card = ({ image, title, details }) => {
     return (
         <View>
-            <View style={styles.wrapper}>
+            <Pressable style={styles.wrapper}>
                 <Image source={image} />
                 <View style={{ marginHorizontal: 10 }}>
                     <Text>{title}</Text>
@@ -14,7 +15,7 @@ const Card = ({ image, title, details }) => {
                     source={require("../../assets/icons/arrow-right.png")}
                     style={{ position: "absolute", right: 7 }}
                 />
-            </View>
+            </Pressable>
         </View>
     );
 };
@@ -22,7 +23,7 @@ const Card = ({ image, title, details }) => {
 const styles = StyleSheet.create({
     wrapper: {
         flexDirection: "row",
-        marginHorizontal: 30,
+        marginHorizontal: 20,
         paddingLeft: 8,
         paddingVertical: 13,
         backgroundColor: "#FEFEFE",

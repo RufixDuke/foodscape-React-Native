@@ -3,12 +3,13 @@ import {
     Text,
     Pressable,
     Image,
-    TextInput,
+    // TextInput,
     StyleSheet,
+    Alert,
 } from "react-native";
-import React, { useState } from "react";
+import { TextInput } from "react-native-gesture-handler";
+import React, { useState, useEffect } from "react";
 import { setTasks } from "../redux/action";
-import { Alert } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -18,6 +19,18 @@ const AddressInput = ({ navigation }) => {
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+
+    useEffect(() => {
+        getTask();
+    }, []);
+
+    const getTask = () => {
+        const Task = tasks.find((task) => task.ID === taskID);
+        if (Task) {
+            setTitle(Task.Title);
+            setDesc(Task.Desc);
+        }
+    };
 
     const setTask = () => {
         if (title.length == 0) {
@@ -29,7 +42,14 @@ const AddressInput = ({ navigation }) => {
                     Title: title,
                     Desc: desc,
                 };
-                let newTasks = [...tasks, Task];
+                const index = tasks.findIndex((task) => task.ID === taskID);
+                let newTasks = [];
+                if (index > -1) {
+                    newTasks = [...tasks];
+                    newTasks[index] = Task;
+                } else {
+                    newTasks = [...tasks, Task];
+                }
                 AsyncStorage.setItem("Tasks", JSON.stringify(newTasks)).then(
                     () => {
                         dispatch(setTasks(newTasks));
