@@ -7,10 +7,41 @@ import {
     StyleSheet,
 } from "react-native";
 import React, { useState } from "react";
+import { setTasks } from "../redux/action";
+import { Alert } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const AddressInput = ({ navigation }) => {
+    const { tasks, taskID } = useSelector((state) => state.taskReducer);
+    const dispatch = useDispatch();
+
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+
+    const setTask = () => {
+        if (title.length == 0) {
+            Alert.alert("Warning", "Please write your address title.");
+        } else {
+            try {
+                var Task = {
+                    ID: taskID,
+                    Title: title,
+                    Desc: desc,
+                };
+                let newTasks = [...tasks, Task];
+                AsyncStorage.setItem("Tasks", JSON.stringify(newTasks)).then(
+                    () => {
+                        dispatch(setTasks(newTasks));
+                        Alert.alert("Success!", "Address saved successfully.");
+                        navigation.goBack();
+                    }
+                );
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    };
     return (
         <View
             style={{
@@ -66,6 +97,7 @@ const AddressInput = ({ navigation }) => {
                     borderRadius: 20,
                     marginHorizontal: 20,
                 }}
+                onPress={setTask}
             >
                 <Text
                     style={{
