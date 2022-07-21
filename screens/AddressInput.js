@@ -111,12 +111,14 @@ const AddressInput = ({ navigation }) => {
                 value={desc}
             />
             <Pressable
-                style={{
-                    backgroundColor: "#F27C28",
-                    paddingVertical: 20,
-                    borderRadius: 20,
-                    marginHorizontal: 20,
-                }}
+                style={({ pressed }) => [
+                    {
+                        backgroundColor: pressed ? "#F8BE94" : "#F27C28",
+                        paddingVertical: 20,
+                        borderRadius: 20,
+                        marginHorizontal: 20,
+                    },
+                ]}
                 onPress={setTask}
             >
                 <Text

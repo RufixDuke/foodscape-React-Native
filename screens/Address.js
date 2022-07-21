@@ -119,8 +119,6 @@ const Address = ({ navigation }) => {
 
                         <View
                             style={{
-                                // position: "absolute",
-                                // right: 0,
                                 flexDirection: "row",
                                 alignItems: "center",
                             }}
@@ -132,7 +130,7 @@ const Address = ({ navigation }) => {
                             >
                                 <Image
                                     source={require("../assets/icons/trash.png")}
-                                    style={{ width: 20, height: 20 }}
+                                    style={{ width: 25, height: 25 }}
                                 />
                             </Pressable>
 
@@ -148,18 +146,20 @@ const Address = ({ navigation }) => {
 
             <View style={{ position: "relative", flex: 1 }}>
                 <Pressable
-                    style={{
-                        width: 55,
-                        height: 55,
-                        backgroundColor: "#F27C28",
-                        flexDirection: "row",
-                        justifyContent: "center",
-                        alignItems: "center",
-                        borderRadius: 27.5,
-                        position: "absolute",
-                        right: 10,
-                        bottom: 100,
-                    }}
+                    style={({ pressed }) => [
+                        {
+                            width: 55,
+                            height: 55,
+                            backgroundColor: pressed ? "#F8BE94" : "#F27C28",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            borderRadius: 27.5,
+                            position: "absolute",
+                            right: 10,
+                            bottom: 100,
+                        },
+                    ]}
                     onPress={() => {
                         dispatch(setTaskID(tasks.length + 1));
                         navigation.navigate("AddressInput");
@@ -182,11 +182,9 @@ const styles = StyleSheet.create({
     wrapper: {
         flexDirection: "row",
         marginHorizontal: 20,
-        // paddingLeft: 6,
         paddingVertical: 13,
         backgroundColor: "#FEFEFE",
         alignItems: "center",
-        // position: "relative",
         justifyContent: "space-between",
         marginTop: 10,
         borderRadius: 6,
