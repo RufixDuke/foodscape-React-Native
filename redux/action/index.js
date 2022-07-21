@@ -1,5 +1,6 @@
 export const SET_TASKS = "SET_TASKS";
 export const SET_TASKS_ID = "SET_TASKS_ID";
+export const DEL_ITEM = "DELITEM";
 
 export const addItem = (product) => {
     return {
@@ -10,7 +11,7 @@ export const addItem = (product) => {
 
 export const delItem = (product) => {
     return {
-        type: "DELITEM",
+        type: DEL_ITEM,
         payload: product,
     };
 };

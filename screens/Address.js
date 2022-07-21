@@ -5,10 +5,11 @@ import {
     Image,
     FlatList,
     StyleSheet,
+    Alert,
 } from "react-native";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTasks, setTaskID } from "../redux/action";
+import { setTasks, setTaskID, delItem } from "../redux/action";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Address = ({ navigation }) => {
@@ -28,6 +29,36 @@ const Address = ({ navigation }) => {
                 }
             })
             .catch((err) => console.log(err));
+    };
+
+    const deleteAddress = (id) => {
+        const filteredAddress = tasks.filter((task) => task.ID !== id);
+        AsyncStorage.setItem("Tasks", JSON.stringify(filteredAddress))
+            .then(() => {
+                dispatch(setTasks(filteredAddress));
+                Alert.alert("Success!", "Address removed successfully.");
+            })
+            .catch((err) => console.log(err));
+    };
+
+    const alertPrompt = (id) => {
+        Alert.alert(
+            "Hey, Hold on!!",
+            "Are you sure you want to delete this address???",
+            [
+                {
+                    text: "Yes",
+                    onPress: () => {
+                        deleteAddress(id);
+                    },
+                },
+                {
+                    text: "No",
+                    onPress: () => {},
+                    style: "cancel",
+                },
+            ]
+        );
     };
     return (
         <View
@@ -76,17 +107,40 @@ const Address = ({ navigation }) => {
                             navigation.navigate("AddressInput");
                         }}
                     >
-                        <Image
-                            source={require("../assets/icons/map-address.png")}
-                        />
-                        <View style={{ marginHorizontal: 10 }}>
-                            <Text numberOfLines={1}>{item.Title}</Text>
-                            <Text numberOfLines={1}>{item.Desc}</Text>
+                        <View style={{ flexDirection: "row", width: 200 }}>
+                            <Image
+                                source={require("../assets/icons/map-address.png")}
+                            />
+                            <View style={{ marginHorizontal: 5 }}>
+                                <Text numberOfLines={1}>{item.Title}</Text>
+                                <Text numberOfLines={2}>{item.Desc}</Text>
+                            </View>
                         </View>
-                        <Image
-                            source={require("../assets/icons/arrow-right.png")}
-                            style={{ position: "absolute", right: 7 }}
-                        />
+
+                        <View
+                            style={{
+                                // position: "absolute",
+                                // right: 0,
+                                flexDirection: "row",
+                                alignItems: "center",
+                            }}
+                        >
+                            <Pressable
+                                onPress={() => {
+                                    alertPrompt(item.ID);
+                                }}
+                            >
+                                <Image
+                                    source={require("../assets/icons/trash.png")}
+                                    style={{ width: 20, height: 20 }}
+                                />
+                            </Pressable>
+
+                            <Image
+                                source={require("../assets/icons/arrow-right.png")}
+                                style={{ marginLeft: 8 }}
+                            />
+                        </View>
                     </Pressable>
                 )}
                 keyExtractor={(item, index) => index.toString()}
@@ -128,11 +182,12 @@ const styles = StyleSheet.create({
     wrapper: {
         flexDirection: "row",
         marginHorizontal: 20,
-        paddingLeft: 8,
+        // paddingLeft: 6,
         paddingVertical: 13,
         backgroundColor: "#FEFEFE",
         alignItems: "center",
-        position: "relative",
+        // position: "relative",
+        justifyContent: "space-between",
         marginTop: 10,
         borderRadius: 6,
     },

@@ -1,4 +1,4 @@
-import { SET_TASKS, SET_TASK_ID } from "../action/index";
+import { SET_TASKS, SET_TASKS_ID, DEL_ITEM } from "../action/index";
 
 const initialState = {
     tasks: [],
@@ -9,8 +9,12 @@ function taskReducer(state = initialState, action) {
     switch (action.type) {
         case SET_TASKS:
             return { ...state, tasks: action.payload };
-        case SET_TASK_ID:
+        case SET_TASKS_ID:
             return { ...state, taskID: action.payload };
+        case DEL_ITEM:
+            return state.filter((x) => {
+                return x.id !== action.payload.id;
+            });
         default:
             return state;
     }
