@@ -17,6 +17,7 @@ import FoodDetails from "./screens/FoodDetails";
 import CheckoutScreen from "./screens/CheckoutScreen";
 import Address from "./screens/Address";
 import PaymentCards from "./screens/PaymentCards";
+import PaymentInput from "./screens/PaymentInput";
 
 import DrawerNavigator from "./drawerNav";
 import AddressInput from "./screens/AddressInput";
@@ -52,7 +53,7 @@ export const MyStack = () => (
             <Stack.Screen name="FoodDetails" component={FoodDetails} />
             <Stack.Screen name="CheckoutScreen" component={CheckoutScreen} />
             <Stack.Screen name="AddressInput" component={AddressInput} />
-            {/* <Stack.Screen name="Address" component={Address} /> */}
+            <Stack.Screen name="PaymentInput" component={PaymentInput} />
             {/* <Stack.Screen name="PaymentCards" component={PaymentCards} /> */}
         </Stack.Navigator>
     </NavigationContainer>

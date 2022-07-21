@@ -23,13 +23,13 @@ export default DrawerNavigator = () => {
     return (
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawer {...props} />}
-            initialRouteName="Address"
+            initialRouteName="PaymentCards"
             screenOptions={screenOptions}
             hideStatusBar={true}
             // drawerStyle={{ backgroundColor: "red", width: 100 }}
         >
             <Drawer.Screen
-                name="HomeScreen2"
+                name="Home"
                 component={HomeScreen}
                 options={{
                     drawerIcon: ({ focused }) => (
@@ -89,6 +89,7 @@ export default DrawerNavigator = () => {
                             }}
                         />
                     ),
+                    headerShown: false,
                 }}
             />
         </Drawer.Navigator>

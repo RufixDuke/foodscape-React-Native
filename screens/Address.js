@@ -11,6 +11,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTasks, setTaskID, delItem } from "../redux/action";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import AddressPage from "../components/ErrorMessage/AddressPage";
 
 const Address = ({ navigation }) => {
     const { tasks } = useSelector((state) => state.taskReducer);
@@ -96,53 +97,56 @@ const Address = ({ navigation }) => {
                 </Text>
                 <Text></Text>
             </View>
-
-            <FlatList
-                data={tasks}
-                renderItem={({ item }) => (
-                    <Pressable
-                        style={styles.wrapper}
-                        onPress={() => {
-                            dispatch(setTaskID(item.ID));
-                            navigation.navigate("AddressInput");
-                        }}
-                    >
-                        <View style={{ flexDirection: "row", width: 200 }}>
-                            <Image
-                                source={require("../assets/icons/map-address.png")}
-                            />
-                            <View style={{ marginHorizontal: 5 }}>
-                                <Text numberOfLines={1}>{item.Title}</Text>
-                                <Text numberOfLines={2}>{item.Desc}</Text>
-                            </View>
-                        </View>
-
-                        <View
-                            style={{
-                                flexDirection: "row",
-                                alignItems: "center",
+            {tasks.length === 0 ? (
+                <AddressPage />
+            ) : (
+                <FlatList
+                    data={tasks}
+                    renderItem={({ item }) => (
+                        <Pressable
+                            style={styles.wrapper}
+                            onPress={() => {
+                                dispatch(setTaskID(item.ID));
+                                navigation.navigate("AddressInput");
                             }}
                         >
-                            <Pressable
-                                onPress={() => {
-                                    alertPrompt(item.ID);
+                            <View style={{ flexDirection: "row", width: 200 }}>
+                                <Image
+                                    source={require("../assets/icons/map-address.png")}
+                                />
+                                <View style={{ marginHorizontal: 5 }}>
+                                    <Text numberOfLines={1}>{item.Title}</Text>
+                                    <Text numberOfLines={2}>{item.Desc}</Text>
+                                </View>
+                            </View>
+
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    alignItems: "center",
                                 }}
                             >
-                                <Image
-                                    source={require("../assets/icons/trash.png")}
-                                    style={{ width: 25, height: 25 }}
-                                />
-                            </Pressable>
+                                <Pressable
+                                    onPress={() => {
+                                        alertPrompt(item.ID);
+                                    }}
+                                >
+                                    <Image
+                                        source={require("../assets/icons/trash.png")}
+                                        style={{ width: 25, height: 25 }}
+                                    />
+                                </Pressable>
 
-                            <Image
-                                source={require("../assets/icons/arrow-right.png")}
-                                style={{ marginLeft: 8 }}
-                            />
-                        </View>
-                    </Pressable>
-                )}
-                keyExtractor={(item, index) => index.toString()}
-            />
+                                <Image
+                                    source={require("../assets/icons/arrow-right.png")}
+                                    style={{ marginLeft: 8 }}
+                                />
+                            </View>
+                        </Pressable>
+                    )}
+                    keyExtractor={(item, index) => index.toString()}
+                />
+            )}
 
             <View style={{ position: "relative", flex: 1 }}>
                 <Pressable
