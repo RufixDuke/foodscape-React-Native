@@ -16,12 +16,18 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Picker } from "@react-native-picker/picker";
 
 const PaymentInput = ({ navigation }) => {
-    const [card, setCard] = useState("");
     const { tasks, taskID } = useSelector((state) => state.taskReducer);
     const dispatch = useDispatch();
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
+    const [expire, setExpire] = useState("");
+    const [cvv, setCVV] = useState("");
+    const [name, setName] = useState("");
+
+    let newDesc = desc.match(/.{1,4}/g);
+    console.log(newDesc);
+    let descInput = desc.length === 0 ? desc : newDesc.join(" ");
 
     useEffect(() => {
         getTask();
@@ -138,11 +144,11 @@ const PaymentInput = ({ navigation }) => {
                                         fontWeight: "700",
                                     }}
                                 >
-                                    OLIVIA RHYE
+                                    {name}
                                 </Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ color: "#FFFFFF" }}>
-                                        06/24
+                                        {expire}
                                     </Text>
                                 </View>
                                 <Text></Text>
@@ -161,9 +167,13 @@ const PaymentInput = ({ navigation }) => {
                                         color: "#FFFFFF",
                                         fontSize: 16,
                                         fontWeight: "700",
+                                        letterSpacing: 2,
                                     }}
                                 >
-                                    1234 1234 1234 1234
+                                    {desc.length === 0
+                                        ? desc
+                                        : newDesc.join(" ")}
+                                    {/* {newDesc} */}
                                 </Text>
                                 <Image
                                     source={require("../assets/icons/mastercard.png")}
@@ -173,7 +183,7 @@ const PaymentInput = ({ navigation }) => {
                         </View>
                     </ImageBackground>
                 </View>
-                <Text>Card Name</Text>
+                <Text style={{ color: "#828282" }}>Card Name</Text>
                 <View style={styles.inputField}>
                     <Picker
                         selectedValue={title}
@@ -184,6 +194,7 @@ const PaymentInput = ({ navigation }) => {
                         <Picker.Item
                             label="Select a card"
                             value="Select a card"
+                            style={{ color: "#828282" }}
                         />
                         <Picker.Item label="MasterCard" value="MasterCard" />
                         <Picker.Item label="VISA" value="VISA" />
@@ -191,13 +202,56 @@ const PaymentInput = ({ navigation }) => {
                 </View>
             </View>
 
+            <Text style={{ color: "#828282" }}>Account Name</Text>
             <TextInput
                 style={styles.input}
-                placeholder="Address"
+                placeholder="John Doe"
+                multiline
+                onChangeText={(value) => setName(value)}
+                value={name}
+            />
+
+            <Text style={{ color: "#828282" }}>Card Number</Text>
+            <TextInput
+                style={[styles.input]}
+                placeholder="0000 0000 0000 0000"
                 multiline
                 onChangeText={(value) => setDesc(value)}
-                value={desc}
+                value={descInput}
+                maxLength={16}
             />
+
+            <View
+                style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                }}
+            >
+                <View>
+                    <Text style={{ color: "#828282" }}>Expiration Date</Text>
+                    <TextInput
+                        style={[styles.input, { width: 180 }]}
+                        placeholder="00/00"
+                        multiline
+                        onChangeText={(value) => setExpire(value)}
+                        value={expire}
+                        maxLength={5}
+                    />
+                </View>
+
+                <View>
+                    <Text style={{ color: "#828282" }}>CVV</Text>
+                    <TextInput
+                        style={[styles.input, { width: 120 }]}
+                        placeholder="000"
+                        multiline
+                        onChangeText={(value) => setCVV(value)}
+                        value={cvv}
+                        maxLength={3}
+                    />
+                </View>
+            </View>
+
             <Pressable
                 style={({ pressed }) => [
                     {
