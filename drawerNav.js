@@ -24,7 +24,7 @@ export default DrawerNavigator = () => {
     return (
         <Drawer.Navigator
             drawerContent={(props) => <CustomDrawer {...props} />}
-            initialRouteName="PaymentCards"
+            initialRouteName="Home"
             screenOptions={screenOptions}
             hideStatusBar={true}
             // drawerStyle={{ backgroundColor: "red", width: 100 }}

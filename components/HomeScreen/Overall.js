@@ -28,7 +28,7 @@ const Overall = ({ navigation }) => {
     }, []);
     return (
         <View style={styles.wrapper}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
                 <Text
                     style={{
                         marginTop: 50,
@@ -49,14 +49,14 @@ const Overall = ({ navigation }) => {
                     What do you want to order today?
                 </Text>
             </View>
-            <InputForm title={"Enter Recipes..."} navigation={navigation} />
+            <InputForm title={"Enter Recipes..."} navigation={navigation} /> */}
             {/* <Pressable onPress={() => navigation.openDrawer()}>
                 <Image
                     source={require("../../assets/icons/menu.png")}
                     style={{ width: 21.19, height: 17.14 }}
                 />
             </Pressable> */}
-            <Filters navigation={navigation} />
+            {/* <Filters navigation={navigation} /> */}
             <ScrollView>
                 <View style={{ flex: 1, paddingHorizontal: 20 }}>
                     <Header navigation={navigation} />
@@ -170,7 +170,7 @@ const Overall = ({ navigation }) => {
                 </View>
             </ScrollView>
 
-            <BottomTabs navigation={navigation} />
+            {/* <BottomTabs navigation={navigation} /> */}
         </View>
     );
 };

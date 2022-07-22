@@ -3,21 +3,19 @@ import React from "react";
 
 const Filters = ({ navigation }) => {
     return (
-        <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
+        <View
             style={{
-                // flexDirection: "row",
+                flexDirection: "row",
                 marginVertical: 10,
                 paddingHorizontal: 20,
-                height: 50,
+                // height: 50,
             }}
         >
             <Pressable
                 style={{
                     backgroundColor: "#FCDEC9",
                     marginRight: 12,
-                    paddingHorizontal: 24,
+                    paddingHorizontal: 40,
                     borderRadius: 10,
                     paddingVertical: 12,
                     flexDirection: "row",
@@ -39,7 +37,7 @@ const Filters = ({ navigation }) => {
                 style={{
                     backgroundColor: "#FCDEC9",
                     marginRight: 12,
-                    paddingHorizontal: 24,
+                    paddingHorizontal: 40,
                     borderRadius: 10,
                     paddingVertical: 12,
                     flexDirection: "row",
@@ -56,7 +54,7 @@ const Filters = ({ navigation }) => {
                 />
                 <Text style={{ color: "#A74601", fontSize: 14 }}>Snacks</Text>
             </Pressable>
-        </ScrollView>
+        </View>
     );
 };
 
