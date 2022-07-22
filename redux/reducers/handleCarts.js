@@ -1,10 +1,12 @@
-const cart = [];
+import { ADD_ITEM, SET_ITEM_ID } from "../action";
+const carts = { cart: [], itemID: 1 };
 
-const handleCart = (state = cart, action) => {
+const handleCart = (state = carts, action) => {
     switch (action.type) {
-        case "ADDITEM":
-            return [...state, action.payload];
-
+        case ADD_ITEM:
+            return { ...state, cart: action.payload };
+        case SET_ITEM_ID:
+            return { ...state, itemID: action.payload };
         case "DELITEM":
             return (state = state.filter((x) => {
                 return x.id !== action.payload.id;

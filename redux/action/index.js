@@ -2,12 +2,20 @@ export const SET_TASKS = "SET_TASKS";
 export const SET_TASKS_ID = "SET_TASKS_ID";
 export const DEL_ITEM = "DELITEM";
 export const ADD_ITEM = "ADDITEM";
+export const SET_ITEM_ID = "SET_ITEM_ID";
 
-export const addItem = (product) => {
+export const addItem = (cart) => {
     return {
         type: ADD_ITEM,
-        payload: product,
+        payload: cart,
     };
+};
+
+export const setItemID = (itemID) => (dispatch) => {
+    dispatch({
+        type: SET_ITEM_ID,
+        payload: itemID,
+    });
 };
 
 export const delItem = (product) => {

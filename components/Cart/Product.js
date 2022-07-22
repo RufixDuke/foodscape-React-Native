@@ -34,10 +34,10 @@ const Product = ({ cartItem, handleClose }) => {
                             fontWeight: "900",
                         }}
                     >
-                        {cartItem.title}
+                        {cartItem.Title}
                     </Text>
                     <Text style={{ color: "#F59D5E", fontSize: 14 }}>
-                        {cartItem.publisher}
+                        {cartItem.Desc}
                     </Text>
                 </View>
             </View>
@@ -49,7 +49,7 @@ const Product = ({ cartItem, handleClose }) => {
                         fontWeight: "900",
                     }}
                 >
-                    {cartItem.price}
+                    {cartItem.Price}
                 </Text>
                 <Pressable
                     style={{

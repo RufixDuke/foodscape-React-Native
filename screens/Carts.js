@@ -1,25 +1,71 @@
-import { View, Text, Pressable, ScrollView, TextInput } from "react-native";
-import React from "react";
+import {
+    View,
+    Text,
+    Pressable,
+    ScrollView,
+    TextInput,
+    FlatList,
+    Alert,
+} from "react-native";
+import React, { useEffect } from "react";
 import { Image } from "react-native";
-import Product from "../components/Cart/Product";
 import { StyleSheet } from "react-native";
 import { useState } from "react";
-
-import { delItem } from "../redux/action/index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { addItem, delItem } from "../redux/action/index";
 import { useDispatch, useSelector } from "react-redux";
 
 const Carts = ({ navigation }) => {
     const [query, setQuery] = useState("");
-    const state = useSelector((state) => state.handleCart);
+    const { cart } = useSelector((state) => state.handleCart);
     const dispatch = useDispatch();
 
-    const handleClose = (item) => {
-        dispatch(delItem(item));
+    const deleteAddress = (id) => {
+        const filteredAddress = cart.filter((car) => car.ID !== id);
+        AsyncStorage.setItem("Cart", JSON.stringify(filteredAddress))
+            .then(() => {
+                dispatch(addItem(filteredAddress));
+                Alert.alert("Success!", "Address removed successfully.");
+            })
+            .catch((err) => console.log(err));
     };
 
-    const cartItems = (cartItem) => {
+    useEffect(() => {
+        getTasks();
+    }, []);
+
+    const getTasks = () => {
+        AsyncStorage.getItem("Cart")
+            .then((cart) => {
+                const parseTasks = JSON.parse(cart);
+                if (parseTasks && typeof parseTasks === "object") {
+                    dispatch(addItem(parseTasks));
+                }
+            })
+            .catch((err) => console.log(err));
+    };
+
+    let totalPrice = 0;
+    totalPrice = totalPrice + cart.Price;
+
+    // var total = 0;
+    // const itemList = (item) => {
+    //     total = total + item.Price;
+    //     let sliced = item.title.slice(0, 50);
+    //     return (
+    //         <div className={classes.flex}>
+    //             <div>
+    //                 <h3>{sliced}</h3>
+    //                 <p>Brief Description</p>
+    //             </div>
+    //             <p>${item.price}</p>
+    //         </div>
+    //     );
+    // };
+
+    const CartItems = () => {
         return (
-            <View style={{ paddingTop: 50, backgroundColor: "#F5F5F5" }}>
+            <View style={{ paddingTop: 60, backgroundColor: "#F5F5F5" }}>
                 <View
                     style={{
                         flexDirection: "row",
@@ -47,13 +93,93 @@ const Carts = ({ navigation }) => {
                     <Text></Text>
                 </View>
 
-                <ScrollView style={{ height: 360 }}>
-                    <Product cartItem={cartItem} handleClose={handleClose} />
-                    <Product cartItem={cartItem} handleClose={handleClose} />
-                    <Product cartItem={cartItem} handleClose={handleClose} />
-                    <Product cartItem={cartItem} handleClose={handleClose} />
-                    <Product cartItem={cartItem} handleClose={handleClose} />
-                </ScrollView>
+                <FlatList
+                    style={{ height: 320 }}
+                    data={cart}
+                    renderItem={({ item }) => (
+                        <View
+                            style={{
+                                backgroundColor: "#FCDEC9",
+                                marginHorizontal: 20,
+                                paddingHorizontal: 20,
+                                paddingVertical: 24,
+                                marginTop: 5,
+                                flexDirection: "row",
+                                justifyContent: "space-between",
+                                borderRadius: 10,
+                                alignItems: "center",
+                            }}
+                        >
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        marginRight: 8,
+                                        color: "#A74601",
+                                        fontSize: 20,
+                                        fontWeight: "900",
+                                    }}
+                                >
+                                    x1
+                                </Text>
+                                <View>
+                                    <Text
+                                        style={{
+                                            color: "#A74601",
+                                            fontSize: 18,
+                                            fontWeight: "900",
+                                            width: 150,
+                                        }}
+                                    >
+                                        {item.Title}
+                                    </Text>
+                                    <Text
+                                        style={{
+                                            color: "#F59D5E",
+                                            fontSize: 14,
+                                        }}
+                                    >
+                                        {item.Desc}
+                                    </Text>
+                                </View>
+                            </View>
+                            <View
+                                style={{
+                                    flexDirection: "row",
+                                    alignItems: "flex-start",
+                                }}
+                            >
+                                <Text
+                                    style={{
+                                        color: "#A74601",
+                                        fontSize: 20,
+                                        fontWeight: "900",
+                                    }}
+                                >
+                                    #{parseInt(item.Price)}
+                                </Text>
+                                <Pressable
+                                    style={{
+                                        marginLeft: 15,
+                                        backgroundColor: "#F3F3F3",
+                                        padding: 5,
+                                        borderRadius: 8,
+                                    }}
+                                    onPress={() => deleteAddress(item.ID)}
+                                >
+                                    <Image
+                                        source={require("../assets/icons/close-cart.png")}
+                                        style={{ width: 15, height: 15 }}
+                                    />
+                                </Pressable>
+                            </View>
+                        </View>
+                    )}
+                />
 
                 <View style={styles.inputField}>
                     <TextInput
@@ -98,7 +224,7 @@ const Carts = ({ navigation }) => {
                                 fontSize: 18,
                             }}
                         >
-                            # 1500
+                            # {Number(totalPrice)}
                         </Text>
                     </View>
 
@@ -171,18 +297,19 @@ const Carts = ({ navigation }) => {
         );
     };
 
-    const emptyCart = () => {
+    const EmptyCart = () => {
         return (
-            <div className={classes.bgs}>
-                <h3>Your Cart is Empty</h3>
-            </div>
+            <View>
+                <Text>Your Cart is Empty</Text>
+            </View>
         );
     };
 
     return (
         <>
-            {state.length === 0 && emptyCart()}
-            {state.length !== 0 && state.map(cartItems)}
+            {/* {state.length === 0 && emptyCart()} */}
+            {/* {state.length !== 0 && state.map(cartItems)} */}
+            {cart.length === 0 ? <EmptyCart /> : <CartItems cartItem={cart} />}
         </>
     );
 };

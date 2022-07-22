@@ -5,11 +5,13 @@ import {
     Pressable,
     StyleSheet,
     ScrollView,
+    Alert,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
-import { useDispatch } from "react-redux";
-import { addItem, detItem } from "../redux/action/index";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, setItemID } from "../redux/action/index";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FoodDetails = ({ navigation }) => {
     const [details, setDetails] = useState({});
@@ -17,6 +19,7 @@ const FoodDetails = ({ navigation }) => {
     const route = useRoute();
     const { recipeID, price } = route.params;
 
+    const { cart, itemID } = useSelector((state) => state.handleCart);
     const dispatch = useDispatch();
 
     const fetchDetails = () => {
@@ -28,18 +31,42 @@ const FoodDetails = ({ navigation }) => {
             });
     };
 
+    const setTask = () => {
+        var Cart = {
+            ID: recipeID,
+            Title: details.title,
+            Desc: details.publisher,
+            Price: price,
+        };
+        const index = cart.findIndex((car) => car.ID === itemID);
+        let newCart = [];
+        if (index > -1) {
+            newCart = [...cart];
+            newCart[index] = Cart;
+        } else {
+            newCart = [...cart, Cart];
+        }
+        AsyncStorage.setItem("Cart", JSON.stringify(newCart)).then(() => {
+            dispatch(addItem(newCart));
+            Alert.alert("Success!", "Item saved successfully.");
+            // navigation.goBack();
+        });
+    };
+
     useEffect(() => {
         fetchDetails();
     }, []);
 
-    const handleCart = (details) => {
+    const handleCarts = () => {
         if (cartBtn === "Add to Cart") {
-            dispatch(addItem(details));
+            setTask();
+            dispatch(setItemID(cart.length + 1));
             setCartBtn("Remove from Cart");
-        } else {
-            dispatch(detItem(details));
-            setCartBtn("Add to Cart");
         }
+        // else {
+        //     dispatch(detItem(details));
+        //     setCartBtn("Add to Cart");
+        // }
     };
 
     return (
@@ -191,7 +218,7 @@ const FoodDetails = ({ navigation }) => {
                         { backgroundColor: pressed ? "#F8BE94" : "#F27C28" },
                         styles.cartBtn,
                     ]}
-                    onPress={() => handleCart(details)}
+                    onPress={() => handleCarts()}
                 >
                     <Text style={styles.cartBtnText}>{cartBtn}</Text>
                 </Pressable>

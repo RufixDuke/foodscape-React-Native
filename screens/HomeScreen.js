@@ -105,7 +105,7 @@ const HomeScreen = ({ navigation }) => {
             ) : (
                 <Overall navigation={navigation} />
             )}
-            <BottomTabs />
+            <BottomTabs navigation={navigation} />
         </View>
     );
 };

@@ -6,7 +6,12 @@ import {
 } from "@react-navigation/drawer";
 const CustomDrawer = (props) => {
     return (
-        <View style={{ flex: 1, backgroundColor: "#F5F5F5" }}>
+        <View
+            style={{
+                flex: 1,
+                backgroundColor: "#F5F5F5",
+            }}
+        >
             <DrawerContentScrollView {...props}>
                 <View
                     style={{
