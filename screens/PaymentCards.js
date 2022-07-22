@@ -17,6 +17,8 @@ const PaymentCards = ({ navigation }) => {
     const { tasks } = useSelector((state) => state.taskReducer);
     const dispatch = useDispatch();
 
+    // let newDesc = item.D.match(/.{1,4}/g);
+
     useEffect(() => {
         getTasks();
     }, []);
@@ -138,7 +140,9 @@ const PaymentCards = ({ navigation }) => {
                                     >
                                         {item.Title}
                                     </Text>
-                                    <Text numberOfLines={2}>{item.Desc}</Text>
+                                    <Text numberOfLines={2}>
+                                        {item.Desc.match(/.{1,4}/g).join(" ")}
+                                    </Text>
                                 </View>
                             </View>
 

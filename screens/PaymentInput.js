@@ -3,7 +3,6 @@ import {
     Text,
     Pressable,
     Image,
-    // TextInput,
     StyleSheet,
     Alert,
     ImageBackground,
@@ -26,8 +25,6 @@ const PaymentInput = ({ navigation }) => {
     const [name, setName] = useState("");
 
     let newDesc = desc.match(/.{1,4}/g);
-    console.log(newDesc);
-    let descInput = desc.length === 0 ? desc : newDesc.join(" ");
 
     useEffect(() => {
         getTask();
@@ -78,7 +75,6 @@ const PaymentInput = ({ navigation }) => {
                 marginHorizontal: 20,
                 backgroundColor: "#F5F5F5",
                 flex: 1,
-                // alignItems: "center",
             }}
         >
             <View
@@ -173,12 +169,20 @@ const PaymentInput = ({ navigation }) => {
                                     {desc.length === 0
                                         ? desc
                                         : newDesc.join(" ")}
-                                    {/* {newDesc} */}
                                 </Text>
-                                <Image
-                                    source={require("../assets/icons/mastercard.png")}
-                                    style={{ width: 35, height: 35 }}
-                                />
+                                {title === "" ? (
+                                    <Text></Text>
+                                ) : title === "MasterCard" ? (
+                                    <Image
+                                        source={require("../assets/icons/mastercard.png")}
+                                        style={{ width: 35, height: 35 }}
+                                    />
+                                ) : (
+                                    <Image
+                                        source={require("../assets/icons/visa.png")}
+                                        style={{ width: 35, height: 35 }}
+                                    />
+                                )}
                             </View>
                         </View>
                     </ImageBackground>
@@ -191,11 +195,7 @@ const PaymentInput = ({ navigation }) => {
                             setTitle(itemValue)
                         }
                     >
-                        <Picker.Item
-                            label="Select a card"
-                            value="Select a card"
-                            style={{ color: "#828282" }}
-                        />
+                        <Picker.Item label="" value="" />
                         <Picker.Item label="MasterCard" value="MasterCard" />
                         <Picker.Item label="VISA" value="VISA" />
                     </Picker>
@@ -217,7 +217,7 @@ const PaymentInput = ({ navigation }) => {
                 placeholder="0000 0000 0000 0000"
                 multiline
                 onChangeText={(value) => setDesc(value)}
-                value={descInput}
+                value={desc}
                 maxLength={16}
             />
 
@@ -258,7 +258,7 @@ const PaymentInput = ({ navigation }) => {
                         backgroundColor: pressed ? "#F8BE94" : "#F27C28",
                         paddingVertical: 20,
                         borderRadius: 20,
-                        marginHorizontal: 20,
+                        marginTop: 20,
                     },
                 ]}
                 onPress={setTask}
@@ -279,7 +279,6 @@ const PaymentInput = ({ navigation }) => {
 const styles = StyleSheet.create({
     input: {
         width: "100%",
-        // borderWidth: 1,
         borderColor: "#555555",
         borderRadius: 10,
         backgroundColor: "#ffffff",
