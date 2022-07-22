@@ -25,6 +25,7 @@ const PaymentInput = ({ navigation }) => {
     const [name, setName] = useState("");
 
     let newDesc = desc.match(/.{1,4}/g);
+    let newExpire = expire.match(/.{1,2}/g);
 
     useEffect(() => {
         getTask();
@@ -144,7 +145,10 @@ const PaymentInput = ({ navigation }) => {
                                 </Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ color: "#FFFFFF" }}>
-                                        {expire}
+                                        {/* {expire} */}
+                                        {expire.length === 0
+                                            ? expire
+                                            : newExpire.join("/")}
                                     </Text>
                                 </View>
                                 <Text></Text>
@@ -209,6 +213,7 @@ const PaymentInput = ({ navigation }) => {
                 multiline
                 onChangeText={(value) => setName(value)}
                 value={name}
+                textContentType="name"
             />
 
             <Text style={{ color: "#828282" }}>Card Number</Text>
@@ -219,6 +224,7 @@ const PaymentInput = ({ navigation }) => {
                 onChangeText={(value) => setDesc(value)}
                 value={desc}
                 maxLength={16}
+                keyboardType="numeric"
             />
 
             <View
@@ -236,6 +242,7 @@ const PaymentInput = ({ navigation }) => {
                         onChangeText={(value) => setExpire(value)}
                         value={expire}
                         maxLength={5}
+                        keyboardType="numeric"
                     />
                 </View>
 
@@ -248,6 +255,7 @@ const PaymentInput = ({ navigation }) => {
                         onChangeText={(value) => setCVV(value)}
                         value={cvv}
                         maxLength={3}
+                        keyboardType="numeric"
                     />
                 </View>
             </View>
