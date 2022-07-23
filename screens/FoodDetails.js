@@ -17,7 +17,7 @@ const FoodDetails = ({ navigation }) => {
     const [details, setDetails] = useState({});
     const [cartBtn, setCartBtn] = useState("Add to Cart");
     const route = useRoute();
-    const { recipeID, price } = route.params;
+    const { recipeID, price, title, publisher, social, image } = route.params;
 
     const { cart, itemID } = useSelector((state) => state.handleCart);
     const dispatch = useDispatch();
@@ -34,8 +34,8 @@ const FoodDetails = ({ navigation }) => {
     const setTask = () => {
         var Cart = {
             ID: recipeID,
-            Title: details.title,
-            Desc: details.publisher,
+            Title: title,
+            Desc: publisher,
             Price: price,
         };
         const index = cart.findIndex((car) => car.ID === itemID);
@@ -79,13 +79,10 @@ const FoodDetails = ({ navigation }) => {
                     />
                 </Pressable>
 
-                <Text style={styles.headerTitle}>{details.title}</Text>
+                <Text style={styles.headerTitle}>{title}</Text>
                 <Text></Text>
             </View>
-            <Image
-                source={{ uri: details.image_url }}
-                style={styles.foodImage}
-            />
+            <Image source={{ uri: image }} style={styles.foodImage} />
             <ScrollView>
                 <View style={styles.details}>
                     <View
@@ -94,9 +91,7 @@ const FoodDetails = ({ navigation }) => {
                         <Image
                             source={require("../assets/icons/location-filled.png")}
                         />
-                        <Text style={styles.detailsText}>
-                            {details.publisher}
-                        </Text>
+                        <Text style={styles.detailsText}>{publisher}</Text>
                     </View>
 
                     <View
@@ -106,7 +101,7 @@ const FoodDetails = ({ navigation }) => {
                             source={require("../assets/icons/clock-filled.png")}
                         />
                         <Text style={styles.detailsText}>
-                            {((details.social_rank - 10) / 3).toFixed()} minutes
+                            {((social - 10) / 3).toFixed()} minutes
                         </Text>
                     </View>
 
@@ -117,7 +112,7 @@ const FoodDetails = ({ navigation }) => {
                             source={require("../assets/icons/distance.png")}
                         />
                         <Text style={styles.detailsText}>
-                            {((details.social_rank + 10) / 100).toFixed(1)} Km
+                            {((social + 10) / 100).toFixed(1)} Km
                         </Text>
                     </View>
                 </View>
@@ -157,8 +152,8 @@ const FoodDetails = ({ navigation }) => {
                                 fontSize: 15,
                             }}
                         >
-                            {(details.recipe_id / 200).toFixed()} g |{" "}
-                            {(details.recipe_id / 270).toFixed()} cal
+                            {(recipeID / 200).toFixed()} g |{" "}
+                            {(recipeID / 270).toFixed()} cal
                         </Text>
                     </View>
 
@@ -179,8 +174,8 @@ const FoodDetails = ({ navigation }) => {
                                 fontSize: 15,
                             }}
                         >
-                            {(details.social_rank / 21).toFixed(1)}(
-                            {(details.social_rank + 47).toFixed()})
+                            {(social / 21).toFixed(1)}({(social + 47).toFixed()}
+                            )
                         </Text>
                     </View>
                 </View>

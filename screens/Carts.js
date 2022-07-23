@@ -14,6 +14,7 @@ import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { addItem, delItem } from "../redux/action/index";
 import { useDispatch, useSelector } from "react-redux";
+import CartPage from "../components/ErrorMessage/CartPage";
 
 const Carts = ({ navigation }) => {
     const [query, setQuery] = useState("");
@@ -47,6 +48,7 @@ const Carts = ({ navigation }) => {
 
     let totalPrice = 0;
     totalPrice = totalPrice + cart.Price;
+    console.log(totalPrice);
 
     // var total = 0;
     // const itemList = (item) => {
@@ -66,33 +68,6 @@ const Carts = ({ navigation }) => {
     const CartItems = () => {
         return (
             <View style={{ paddingTop: 60, backgroundColor: "#F5F5F5" }}>
-                <View
-                    style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                        marginHorizontal: 20,
-                        marginBottom: 20,
-                    }}
-                >
-                    <Pressable onPress={() => navigation.goBack()}>
-                        <Image
-                            source={require("../assets/icons/left-arrow.png")}
-                        />
-                    </Pressable>
-                    <Text
-                        style={{
-                            marginRight: 20,
-                            fontSize: 25,
-                            fontWeight: "700",
-                            color: "#333333",
-                        }}
-                    >
-                        Cart
-                    </Text>
-                    <Text></Text>
-                </View>
-
                 <FlatList
                     style={{ height: 320 }}
                     data={cart}
@@ -298,17 +273,35 @@ const Carts = ({ navigation }) => {
     };
 
     const EmptyCart = () => {
-        return (
-            <View>
-                <Text>Your Cart is Empty</Text>
-            </View>
-        );
+        return <CartPage navigation={navigation} />;
     };
 
     return (
         <>
-            {/* {state.length === 0 && emptyCart()} */}
-            {/* {state.length !== 0 && state.map(cartItems)} */}
+            <View
+                style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginHorizontal: 20,
+                    paddingTop: 50,
+                }}
+            >
+                <Pressable onPress={() => navigation.goBack()}>
+                    <Image source={require("../assets/icons/left-arrow.png")} />
+                </Pressable>
+                <Text
+                    style={{
+                        marginRight: 20,
+                        fontSize: 25,
+                        fontWeight: "700",
+                        color: "#333333",
+                    }}
+                >
+                    Cart
+                </Text>
+                <Text></Text>
+            </View>
             {cart.length === 0 ? <EmptyCart /> : <CartItems cartItem={cart} />}
         </>
     );

@@ -128,6 +128,10 @@ const Snack = ({ food, navigation }) => {
                                 navigation.navigate("FoodDetails", {
                                     recipeID: food.recipe_id,
                                     price,
+                                    title: food.title,
+                                    publisher: food.publisher,
+                                    social: food.social_rank,
+                                    image: food.image_url,
                                 })
                             }
                         >
