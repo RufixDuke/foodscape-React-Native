@@ -26,9 +26,39 @@ const Carts = ({ navigation }) => {
         AsyncStorage.setItem("Cart", JSON.stringify(filteredAddress))
             .then(() => {
                 dispatch(addItem(filteredAddress));
-                Alert.alert("Success!", "Address removed successfully.");
+                Alert.alert("Success!", "Item removed successfully.");
             })
             .catch((err) => console.log(err));
+    };
+
+    // const deleteAddress = (id) => {
+    //     const filteredAddress = tasks.filter((task) => task.ID !== id);
+    //     AsyncStorage.setItem("Tasks", JSON.stringify(filteredAddress))
+    //         .then(() => {
+    //             dispatch(setTasks(filteredAddress));
+    //             Alert.alert("Success!", "Address removed successfully.");
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
+
+    const alertPrompt = (id) => {
+        Alert.alert(
+            "Hey, Hold on!!",
+            "Are you sure you want to remove this item??? \nYou really want to miss out on this exquisite meal??",
+            [
+                {
+                    text: "Yes",
+                    onPress: () => {
+                        deleteAddress(id);
+                    },
+                },
+                {
+                    text: "No",
+                    onPress: () => {},
+                    style: "cancel",
+                },
+            ]
+        );
     };
 
     useEffect(() => {
@@ -47,27 +77,21 @@ const Carts = ({ navigation }) => {
     };
 
     let totalPrice = 0;
-    totalPrice = totalPrice + cart.Price;
-    console.log(totalPrice);
-
-    // var total = 0;
-    // const itemList = (item) => {
-    //     total = total + item.Price;
-    //     let sliced = item.title.slice(0, 50);
-    //     return (
-    //         <div className={classes.flex}>
-    //             <div>
-    //                 <h3>{sliced}</h3>
-    //                 <p>Brief Description</p>
-    //             </div>
-    //             <p>${item.price}</p>
-    //         </div>
-    //     );
-    // };
+    let promo = 250;
+    // console.log(typeof cart[1].Price);
+    for (let i = 0; i < cart.length; i++) {
+        if (cart.length === 0) {
+            totalPrice = 0;
+        } else if (cart[i].Price === NaN) {
+            cart[i].Price = 0;
+        } else {
+            totalPrice = totalPrice + parseInt(cart[i].Price);
+        }
+    }
 
     const CartItems = () => {
         return (
-            <View style={{ paddingTop: 60, backgroundColor: "#F5F5F5" }}>
+            <View style={{ marginTop: 20, backgroundColor: "#F5F5F5" }}>
                 <FlatList
                     style={{ height: 320 }}
                     data={cart}
@@ -144,7 +168,9 @@ const Carts = ({ navigation }) => {
                                         padding: 5,
                                         borderRadius: 8,
                                     }}
-                                    onPress={() => deleteAddress(item.ID)}
+                                    onPress={() => {
+                                        alertPrompt(item.ID);
+                                    }}
                                 >
                                     <Image
                                         source={require("../assets/icons/close-cart.png")}
@@ -195,7 +221,7 @@ const Carts = ({ navigation }) => {
                         <Text
                             style={{
                                 color: "#333333",
-                                fontWeight: "500",
+                                fontWeight: "700",
                                 fontSize: 18,
                             }}
                         >
@@ -215,7 +241,7 @@ const Carts = ({ navigation }) => {
                         <Text
                             style={{
                                 color: "#333333",
-                                fontWeight: "500",
+                                fontWeight: "700",
                                 fontSize: 18,
                             }}
                         >
@@ -250,7 +276,7 @@ const Carts = ({ navigation }) => {
                                 fontSize: 18,
                             }}
                         >
-                            # 1500
+                            # {totalPrice + promo}
                         </Text>
                     </View>
                 </View>

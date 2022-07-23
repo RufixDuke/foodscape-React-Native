@@ -42,7 +42,7 @@ const SnackScreen = ({ navigation }) => {
                                 setQuery(itemValue)
                             }
                         >
-                            <Picker.Item label="hamburger" value="hamburger" />
+                            {/* <Picker.Item label="hamburger" value="hamburger" /> */}
                             <Picker.Item label="chips" value="chips" />
                             <Picker.Item label="toast" value="toast" />
                             <Picker.Item label="chicken" value="chicken" />

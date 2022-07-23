@@ -3,7 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const BottomTabs = ({ navigation }) => {
-    const state = useSelector((state) => state.handleCarts);
+    const { cart } = useSelector((state) => state.handleCart);
     // console.log(state.length);
     return (
         <View style={styles.wrapper}>
@@ -55,7 +55,7 @@ const BottomTabs = ({ navigation }) => {
                             fontWeight: "600",
                         }}
                     >
-                        1
+                        {cart.length}
                     </Text>
                 </TouchableOpacity>
 
