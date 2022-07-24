@@ -31,16 +31,6 @@ const Carts = ({ navigation }) => {
             .catch((err) => console.log(err));
     };
 
-    // const deleteAddress = (id) => {
-    //     const filteredAddress = tasks.filter((task) => task.ID !== id);
-    //     AsyncStorage.setItem("Tasks", JSON.stringify(filteredAddress))
-    //         .then(() => {
-    //             dispatch(setTasks(filteredAddress));
-    //             Alert.alert("Success!", "Address removed successfully.");
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
-
     const alertPrompt = (id) => {
         Alert.alert(
             "Hey, Hold on!!",
@@ -78,11 +68,8 @@ const Carts = ({ navigation }) => {
 
     let totalPrice = 0;
     let promo = 250;
-    // console.log(typeof cart[1].Price);
     for (let i = 0; i < cart.length; i++) {
-        if (cart.length === 0) {
-            totalPrice = 0;
-        } else if (cart[i].Price === NaN) {
+        if (cart[i].Price === "NaN") {
             cart[i].Price = 0;
         } else {
             totalPrice = totalPrice + parseInt(cart[i].Price);

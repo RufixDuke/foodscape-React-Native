@@ -3,8 +3,15 @@ import React, { useState } from "react";
 
 const Cards = ({ food, navigation }) => {
     const [fav, setFav] = useState(false);
-    // let price = (parseInt(food.recipe_id) / 9).toFixed(2);
-    let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
+
+    let price;
+    if ((parseInt(food.recipe_id) / 9).toFixed(2) === "NaN") {
+        price = 2500.0;
+    } else if (parseInt(food.recipe_id) / 9 < 100) {
+        price = 2900.0;
+    } else {
+        price = (parseInt(food.recipe_id) / 9).toFixed(2);
+    }
 
     return (
         <View style={styles.wrapper}>
@@ -35,9 +42,9 @@ const Cards = ({ food, navigation }) => {
                                 fontWeight: "900",
                             }}
                         >
-                            {food.title.slice(0, 20) + "..."}
+                            {/* {food.title.slice(0, 20) + "..."} */}
                             {/* {food.title} */}
-                            {/* {food.publisher.slice(0, 15) + "..."} */}
+                            {food.publisher.slice(0, 15) + "..."}
                         </Text>
                         <Pressable
                             onPress={() => setFav(!fav)}
@@ -58,6 +65,22 @@ const Cards = ({ food, navigation }) => {
                         </Pressable>
                     </View>
 
+                    <Text style={{ fontSize: 12, marginTop: 7 }}>
+                        {food.title.slice(0, 33) + "..."}
+                    </Text>
+
+                    <Text
+                        style={{
+                            color: "#2A2A2A",
+                            fontSize: 18,
+                            fontWeight: "900",
+                            marginTop: 7,
+                            letterSpacing: 0.7,
+                        }}
+                    >
+                        #{price}
+                    </Text>
+
                     <View style={styles.btns}>
                         <View
                             style={{
@@ -66,44 +89,57 @@ const Cards = ({ food, navigation }) => {
                             }}
                         >
                             <Pressable
-                                style={{ marginRight: 5 }}
+                                style={{
+                                    marginRight: 5,
+                                    backgroundColor: "#FFFFFF",
+                                    padding: 8,
+                                    borderRadius: 6,
+                                }}
                                 onPress={() => console.log("Addition....")}
                             >
                                 <Image
-                                    source={require("../../assets/icons/minus.png")}
-                                    style={{ width: 27, height: 26 }}
+                                    source={require("../../assets/icons/minus-filled.png")}
+                                    style={{ width: 15, height: 15 }}
                                 />
                             </Pressable>
                             <Text style={{ fontWeight: "700" }}> 1 </Text>
                             <Pressable
                                 style={{
                                     marginLeft: 5,
-                                    backgroundColor: "#FDFDFD",
+                                    backgroundColor: "#FFFFFF",
                                     padding: 8,
                                     borderRadius: 6,
                                 }}
                             >
                                 <Image
                                     source={require("../../assets/icons/plus-filled.png")}
-                                    style={{ width: 27, height: 26 }}
+                                    style={{ width: 15, height: 15 }}
                                 />
                             </Pressable>
                         </View>
 
                         <Pressable
-                            style={{
-                                flexDirection: "row",
-                                justifyContent: "flex-end",
-                                alignItems: "center",
-                                backgroundColor: "#F27C28",
-                                paddingHorizontal: 18,
-                                paddingVertical: 10,
-                                borderRadius: 8,
-                            }}
+                            style={({ pressed }) => [
+                                {
+                                    flexDirection: "row",
+                                    justifyContent: "flex-end",
+                                    alignItems: "center",
+                                    backgroundColor: pressed
+                                        ? "#F8BE94"
+                                        : "#F27C28",
+                                    paddingHorizontal: 18,
+                                    paddingVertical: 10,
+                                    borderRadius: 8,
+                                },
+                            ]}
                             onPress={() =>
                                 navigation.navigate("FoodDetails", {
                                     recipeID: food.recipe_id,
                                     price,
+                                    title: food.title,
+                                    publisher: food.publisher,
+                                    social: food.social_rank,
+                                    image: food.image_url,
                                 })
                             }
                         >

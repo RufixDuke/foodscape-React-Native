@@ -41,6 +41,11 @@ const FoodScreen = ({ navigation }) => {
                                 setQuery(itemValue)
                             }
                         >
+                            <Picker.Item
+                                label="Enter your food...."
+                                value="Enter your food...."
+                                style={{ color: "#BDBDBD" }}
+                            />
                             <Picker.Item label="pizza" value="pizza" />
                             <Picker.Item label="pasta" value="pasta" />
                             <Picker.Item label="bean" value="bean" />

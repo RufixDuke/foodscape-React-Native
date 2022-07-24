@@ -2,7 +2,7 @@ import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 import React from "react";
 import Card from "../components/Checkout/Card";
 
-const CheckoutScreen = () => {
+const CheckoutScreen = ({ navigation }) => {
     return (
         <View style={{ paddingTop: 50, backgroundColor: "#F5F5F5" }}>
             <View style={styles.wrapper}>

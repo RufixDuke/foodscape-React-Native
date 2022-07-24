@@ -5,9 +5,15 @@ import { StyleSheet } from "react-native";
 const Snack = ({ food, navigation }) => {
     const [fav, setFav] = useState(false);
 
-    // let price = parseInt(food.social_rank.toFixed().toString() + "0") * 5;
-    let price = (parseInt(food.recipe_id) / 9).toFixed(2);
-
+    // console.log(typeof parseInt(food.recipe_id / 9));
+    let price;
+    if ((parseInt(food.recipe_id) / 9).toFixed(2) === "NaN") {
+        price = 2500.0;
+    } else if (parseInt(food.recipe_id) / 9 < 100) {
+        price = 2900.0;
+    } else {
+        price = (parseInt(food.recipe_id) / 9).toFixed(2);
+    }
     return (
         <View style={styles.wrapper}>
             <Image
@@ -83,7 +89,7 @@ const Snack = ({ food, navigation }) => {
                             <Pressable
                                 style={{
                                     marginRight: 5,
-                                    backgroundColor: "#FDFDFD",
+                                    backgroundColor: "#FFFFFF",
                                     padding: 8,
                                     borderRadius: 6,
                                 }}
@@ -98,7 +104,7 @@ const Snack = ({ food, navigation }) => {
                             <Pressable
                                 style={{
                                     marginLeft: 5,
-                                    backgroundColor: "#FDFDFD",
+                                    backgroundColor: "#FFFFFF",
                                     padding: 8,
                                     borderRadius: 6,
                                 }}

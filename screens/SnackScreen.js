@@ -42,25 +42,30 @@ const SnackScreen = ({ navigation }) => {
                                 setQuery(itemValue)
                             }
                         >
-                            {/* <Picker.Item label="hamburger" value="hamburger" /> */}
+                            <Picker.Item
+                                label="Enter your food...."
+                                value="Enter your food...."
+                                style={{ color: "#BDBDBD" }}
+                            />
+                            <Picker.Item label="hamburger" value="hamburger" />
                             <Picker.Item label="chips" value="chips" />
                             <Picker.Item label="toast" value="toast" />
-                            <Picker.Item label="chicken" value="chicken" />
-                            <Picker.Item label="corn" value="corn" />
-                            <Picker.Item label="fish" value="fish" />
-                            <Picker.Item label="salad" value="salad" />
+                            <Picker.Item label="pie" value="pie" />
+                            <Picker.Item label="cake" value="cake" />
+                            <Picker.Item label="bbq" value="bbq" />
+                            <Picker.Item label="sausage" value="sausage" />
                             <Picker.Item label="fries" value="fries" />
-                            <Picker.Item label="coconut" value="coconut" />
-                            <Picker.Item label="popcorn" value="popcorn" />
-                            <Picker.Item label="sushi" value="sushi" />
-                            <Picker.Item label="bacon" value="bacon" />
-                            <Picker.Item label="cucumber" value="cucumber" />
-                            <Picker.Item label="potato" value="potato" />
+                            <Picker.Item label="masala" value="masala" />
+                            <Picker.Item label="chocolate" value="chocolate" />
+                            <Picker.Item label="ice cream" value="ice cream" />
+                            <Picker.Item label="ketchup" value="ketchup" />
                             <Picker.Item
-                                label="sweet potato"
-                                value="sweet potato"
+                                label="watermelon"
+                                value="watermelon"
                             />
-                            <Picker.Item label="bacon" value="bacon" />
+                            <Picker.Item label="pudding" value="pudding" />
+                            <Picker.Item label="tacos" value="tacos" />
+                            <Picker.Item label="masala" value="masala" />
                         </Picker>
                     </ScrollView>
                 </View>

@@ -10,7 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, setItemID } from "../redux/action/index";
+import { addItem, setItemID, delItem } from "../redux/action/index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FoodDetails = ({ navigation }) => {
@@ -30,13 +30,15 @@ const FoodDetails = ({ navigation }) => {
                 setDetails(recipe.recipe);
             });
     };
+    let newPrice = price === "NaN" ? (newPrice = 2500.0) : price;
+    console.log(typeof parseInt(newPrice));
 
     const setTask = () => {
         var Cart = {
             ID: recipeID,
             Title: title,
             Desc: publisher,
-            Price: price,
+            Price: parseInt(newPrice),
         };
         const index = cart.findIndex((car) => car.ID === itemID);
         let newCart = [];
@@ -64,9 +66,20 @@ const FoodDetails = ({ navigation }) => {
             setCartBtn("Remove from Cart");
         }
         // else {
-        //     dispatch(detItem(details));
+        //     // dispatch(delItem(cart));
+        //     deleteAddress({ cart });
         //     setCartBtn("Add to Cart");
         // }
+    };
+
+    const deleteAddress = (id) => {
+        const filteredAddress = cart.filter((car) => car.ID !== id);
+        AsyncStorage.setItem("Cart", JSON.stringify(filteredAddress))
+            .then(() => {
+                dispatch(addItem(filteredAddress));
+                Alert.alert("Success!", "Item removed successfully.");
+            })
+            .catch((err) => console.log(err));
     };
 
     return (
@@ -205,7 +218,7 @@ const FoodDetails = ({ navigation }) => {
                         </Pressable>
                     </View>
 
-                    <Text style={styles.priceText}>#{price}</Text>
+                    <Text style={styles.priceText}>#{newPrice}</Text>
                 </View>
 
                 <Pressable

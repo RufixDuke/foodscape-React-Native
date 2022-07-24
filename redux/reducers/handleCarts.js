@@ -1,4 +1,4 @@
-import { ADD_ITEM, SET_ITEM_ID } from "../action";
+import { ADD_ITEM, SET_ITEM_ID, DEL_ITEM } from "../action";
 const carts = { cart: [], itemID: 1 };
 
 const handleCart = (state = carts, action) => {
@@ -7,10 +7,10 @@ const handleCart = (state = carts, action) => {
             return { ...state, cart: action.payload };
         case SET_ITEM_ID:
             return { ...state, itemID: action.payload };
-        case "DELITEM":
-            return (state = state.filter((x) => {
+        case DEL_ITEM:
+            return state.filter((x) => {
                 return x.id !== action.payload.id;
-            }));
+            });
 
         case "ADD":
             const exist = state.find((x) => x.id === action.payload.id);
