@@ -205,7 +205,7 @@ const FoodDetails = ({ navigation }) => {
                         <Pressable
                             style={styles.btn}
                             onPress={() => {
-                                addPrice(recipeID);
+                                addPrice(newPrice + 1);
                                 console.log("yoooo");
                             }}
                         >
