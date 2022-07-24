@@ -47,9 +47,9 @@ export const setTaskID = (taskID) => (dispatch) => {
 //     };
 // };
 
-export const addPrice = (itemID) => (dispatch) => {
+export const addPrice = (newPrice) => (dispatch) => {
     dispatch({
         type: ADD,
-        payload: itemID,
+        payload: newPrice + 1,
     });
 };
