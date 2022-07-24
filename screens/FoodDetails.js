@@ -10,7 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, setItemID, delItem } from "../redux/action/index";
+import { addItem, setItemID, addPrice } from "../redux/action/index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FoodDetails = ({ navigation }) => {
@@ -31,7 +31,9 @@ const FoodDetails = ({ navigation }) => {
             });
     };
     let newPrice = price === "NaN" ? (newPrice = 2500.0) : price;
-    console.log(typeof parseInt(newPrice));
+    let newRecipeID =
+        typeof recipeID === "string" ? (newRecipeID = 54729) : recipeID;
+    // console.log(newRecipeID);
 
     const setTask = () => {
         var Cart = {
@@ -165,8 +167,8 @@ const FoodDetails = ({ navigation }) => {
                                 fontSize: 15,
                             }}
                         >
-                            {(recipeID / 200).toFixed()} g |{" "}
-                            {(recipeID / 270).toFixed()} cal
+                            {(newRecipeID / 200).toFixed()} g |{" "}
+                            {(newRecipeID / 270).toFixed()} cal
                         </Text>
                     </View>
 
@@ -202,7 +204,10 @@ const FoodDetails = ({ navigation }) => {
                     >
                         <Pressable
                             style={styles.btn}
-                            onPress={() => console.log("Addition....")}
+                            onPress={() => {
+                                addPrice(recipeID);
+                                console.log("yoooo");
+                            }}
                         >
                             <Image
                                 source={require("../assets/icons/minus-filled.png")}

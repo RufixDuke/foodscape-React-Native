@@ -3,6 +3,7 @@ export const SET_TASKS_ID = "SET_TASKS_ID";
 export const DEL_ITEM = "DELITEM";
 export const ADD_ITEM = "ADDITEM";
 export const SET_ITEM_ID = "SET_ITEM_ID";
+export const ADD = "ADD";
 
 export const addItem = (cart) => {
     return {
@@ -46,9 +47,9 @@ export const setTaskID = (taskID) => (dispatch) => {
 //     };
 // };
 
-// export const addPrice = (product) => {
-//     return {
-//         type: "ADD",
-//         payload: product,
-//     };
-// };
+export const addPrice = (itemID) => (dispatch) => {
+    dispatch({
+        type: ADD,
+        payload: itemID,
+    });
+};
