@@ -18,6 +18,7 @@ const CheckoutScreen = ({ navigation }) => {
             setLoading(false);
         }, 3000);
     };
+
     return (
         <View style={{ paddingTop: 50, backgroundColor: "#F5F5F5" }}>
             <View style={styles.wrapper}>
@@ -103,7 +104,7 @@ const CheckoutScreen = ({ navigation }) => {
                 onPress={() => alertMessage()}
             >
                 <Text style={styles.cartBtnText}>
-                    {loading ? "Hold on..." : "Place Order"}
+                    {loading ? "...." : "Place Order"}
                 </Text>
             </Pressable>
         </View>

@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, SafeAreaView } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, Image } from "react-native";
 import React from "react";
 import { useEffect } from "react";
 
@@ -11,7 +11,7 @@ const WelcomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-                <Text style={styles.text}>foodscape</Text>
+                <Image source={require("../assets/icons/Foodscape.png")} />
             </View>
         </SafeAreaView>
     );
