@@ -24,7 +24,8 @@ const Login = ({ navigation }) => {
     const onLogin = async (email, password) => {
         try {
             await firebase.auth().signInWithEmailAndPassword(email, password);
-            console.log("Firebase Login Successful", email, password);
+            navigation.navigate("HomeScreen");
+            console.log("logged in");
         } catch (error) {
             Alert.alert(
                 `Hello ${email}`,
@@ -32,12 +33,11 @@ const Login = ({ navigation }) => {
                 [
                     {
                         text: "OK",
-                        onPress: () => console.log("OK"),
                         style: "cancel",
                     },
                     {
                         text: "Sign Up",
-                        onPress: () => navigation.push("SignUpForm"),
+                        onPress: () => navigation.navigate("SignUpScreen"),
                     },
                 ]
             );
@@ -122,7 +122,7 @@ const Login = ({ navigation }) => {
                         >
                             <Text
                                 onPress={() =>
-                                    navigation.push("ForgotPassword")
+                                    navigation.navigate("ForgotPassword")
                                 }
                                 style={{ color: "#828282" }}
                             >

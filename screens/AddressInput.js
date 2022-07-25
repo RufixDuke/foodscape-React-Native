@@ -1,12 +1,4 @@
-import {
-    View,
-    Text,
-    Pressable,
-    Image,
-    // TextInput,
-    StyleSheet,
-    Alert,
-} from "react-native";
+import { View, Text, Pressable, Image, StyleSheet, Alert } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import React, { useState, useEffect } from "react";
 import { setTasks } from "../redux/action";
@@ -69,7 +61,6 @@ const AddressInput = ({ navigation }) => {
                 marginHorizontal: 20,
                 backgroundColor: "#F5F5F5",
                 flex: 1,
-                // alignItems: "center",
             }}
         >
             <View
@@ -137,7 +128,6 @@ const AddressInput = ({ navigation }) => {
 const styles = StyleSheet.create({
     input: {
         width: "100%",
-        // borderWidth: 1,
         borderColor: "#555555",
         borderRadius: 10,
         backgroundColor: "#ffffff",

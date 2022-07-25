@@ -4,7 +4,16 @@ import {
     DrawerContentScrollView,
     DrawerItemList,
 } from "@react-navigation/drawer";
+import { firebase } from "../../firebase";
 const CustomDrawer = (props) => {
+    const onLogin = async () => {
+        try {
+            await firebase.auth().signOut();
+            props.navigation.replace("LoginScreen");
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <View
             style={{
@@ -73,7 +82,11 @@ const CustomDrawer = (props) => {
                     borderTopColor: "#ccc",
                 }}
             >
-                <TouchableOpacity onPress={() => {}}>
+                <TouchableOpacity
+                    onPress={() => {
+                        onLogin();
+                    }}
+                >
                     <View
                         style={{
                             flexDirection: "row",

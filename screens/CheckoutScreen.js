@@ -1,4 +1,11 @@
-import { View, Text, Pressable, Image, StyleSheet } from "react-native";
+import {
+    View,
+    Text,
+    Pressable,
+    Image,
+    StyleSheet,
+    ActivityIndicator,
+} from "react-native";
 import React from "react";
 import Card from "../components/Checkout/Card";
 import { useRoute } from "@react-navigation/native";
@@ -19,6 +26,7 @@ const CheckoutScreen = ({ navigation }) => {
         }, 3000);
     };
 
+    const Loading = () => <ActivityIndicator size="small" />;
     return (
         <View style={{ paddingTop: 50, backgroundColor: "#F5F5F5" }}>
             <View style={styles.wrapper}>
@@ -104,7 +112,7 @@ const CheckoutScreen = ({ navigation }) => {
                 onPress={() => alertMessage()}
             >
                 <Text style={styles.cartBtnText}>
-                    {loading ? "...." : "Place Order"}
+                    {loading ? <Loading /> : "Place Order"}
                 </Text>
             </Pressable>
         </View>

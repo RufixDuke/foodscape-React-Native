@@ -14,13 +14,16 @@ import * as Yup from "yup";
 import Validator from "email-validator";
 import { firebase, db } from "../../firebase";
 import { auth } from "../../firebase";
+import { useState } from "react";
 
 const signUpSchema = Yup.object().shape({
     email: Yup.string().email().required("Must be present"),
 });
 
 const ForgotPassword = ({ navigation }) => {
-    const emailRef = useRef();
+    const emailRef = useRef("");
+    const [email, setEmail] = useState("");
+
     const forgotPassword = async (email) => {
         // return sendPasswordResetEmail(auth, email);
 
@@ -45,65 +48,56 @@ const ForgotPassword = ({ navigation }) => {
     };
 
     const forgotPasswordHandler = () => {
-        const email = emailRef.current.value;
+        // email = emailRef.current;
+        console.log("hmmm");
         if (email)
             forgotPassword(email).then(() => {
-                emailRef.current.value = "";
-                console.log("sent");
+                emailRef.current = "";
+                console.log(typeof emailRef.current);
             });
     };
 
     return (
-        <Formik
-            initialValues={{ email: "" }}
-            onSubmit={forgotPasswordHandler}
-            validationSchema={signUpSchema}
-            validateOnMount={true}
-        >
-            {({ handleBlur, handleChange, handleSubmit, values, isValid }) => (
-                <>
-                    <View style={styles.wrapper}>
-                        <Text style={{ color: "#828282", fontSize: 12 }}>
-                            Email Address
-                        </Text>
-                        <View
-                            style={[
-                                styles.inputField,
-                                {
-                                    borderColor:
-                                        values.email.length < 1 ||
-                                        Validator.validate(values.email)
-                                            ? "#F59D5E"
-                                            : "#EB5757",
-                                },
-                            ]}
-                        >
-                            <TextInput
-                                placeholder="Email, phone number"
-                                placeholderTextColor="gray"
-                                autoCapitalize="none"
-                                keyboardType="email-address"
-                                textContentType="emailAddress"
-                                // autoFocus={true}
-                                onChangeText={handleChange("email")}
-                                onBlur={handleBlur("email")}
-                                value={values.email}
-                                ref={emailRef}
-                            />
-                        </View>
+        <>
+            <View style={styles.wrapper}>
+                <Text style={{ color: "#828282", fontSize: 12 }}>
+                    Email Address
+                </Text>
+                <View
+                    style={[
+                        styles.inputField,
+                        // {
+                        //     borderColor:
+                        //         values.email.length < 1 ||
+                        //         Validator.validate(values.email)
+                        //             ? "#F59D5E"
+                        //             : "#EB5757",
+                        // },
+                    ]}
+                >
+                    <TextInput
+                        placeholder="Email, phone number"
+                        placeholderTextColor="gray"
+                        autoCapitalize="none"
+                        keyboardType="email-address"
+                        textContentType="emailAddress"
+                        onChangeText={(values) => setEmail(values)}
+                        // onBlur={handleBlur("email")}
+                        value={email}
+                        // ref={emailRef}
+                    />
+                </View>
 
-                        <Pressable
-                            titleSize={20}
-                            style={styles.button(isValid)}
-                            onPress={handleSubmit}
-                            disabled={!isValid}
-                        >
-                            <Text style={styles.buttonText}>Send Link</Text>
-                        </Pressable>
-                    </View>
-                </>
-            )}
-        </Formik>
+                <Pressable
+                    titleSize={20}
+                    style={styles.button}
+                    onPress={forgotPasswordHandler}
+                    // disabled={!isValid}
+                >
+                    <Text style={styles.buttonText}>Send Link</Text>
+                </Pressable>
+            </View>
+        </>
     );
 };
 
@@ -119,14 +113,14 @@ const styles = StyleSheet.create({
         padding: 12,
         marginBottom: 10,
     },
-    button: (isValid) => ({
-        backgroundColor: isValid ? "#F27C28" : "#E0E0E0",
+    button: {
+        backgroundColor: "#F27C28",
         alignItems: "center",
         justifyContent: "center",
         minHeight: 42,
         borderRadius: 32,
         paddingVertical: 13,
-    }),
+    },
     buttonText: {
         fontWeight: "600",
         color: "#fff",

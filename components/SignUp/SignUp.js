@@ -34,7 +34,7 @@ const SignUp = ({ navigation }) => {
             const authUser = await firebase
                 .auth()
                 .createUserWithEmailAndPassword(email, password);
-            console.log("Firebase SignUp Successful", email, password);
+            navigation.navigate("HomeScreen");
 
             emailVerify(email);
 
@@ -46,6 +46,7 @@ const SignUp = ({ navigation }) => {
             //         email: authUser.user.email,
             //         profile_picture: await getRandomProfilePicture(),
             //     });
+            return authUser;
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
         }
@@ -106,7 +107,6 @@ const SignUp = ({ navigation }) => {
             initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
                 onSignUp(values.email, values.password);
-                // navigation.push("Homescreen");
             }}
             validationSchema={signUpSchema}
             validateOnMount={true}
