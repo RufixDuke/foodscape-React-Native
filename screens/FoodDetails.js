@@ -16,11 +16,20 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const FoodDetails = ({ navigation }) => {
     const [details, setDetails] = useState({});
     const [cartBtn, setCartBtn] = useState("Add to Cart");
+    const [quantity, setQuantity] = useState(1);
     const route = useRoute();
     const { recipeID, price, title, publisher, social, image } = route.params;
 
     const { cart, itemID } = useSelector((state) => state.handleCart);
     const dispatch = useDispatch();
+
+    const increment = () => {
+        setQuantity(quantity + 1);
+    };
+
+    const decrement = () => {
+        setQuantity(quantity - 1);
+    };
 
     const fetchDetails = () => {
         let url = `https://forkify-api.herokuapp.com/api/get?rId=${recipeID}`;
@@ -205,7 +214,7 @@ const FoodDetails = ({ navigation }) => {
                         <Pressable
                             style={styles.btn}
                             onPress={() => {
-                                addPrice(newPrice + 1);
+                                decrement();
                                 console.log("yoooo");
                             }}
                         >
@@ -214,8 +223,14 @@ const FoodDetails = ({ navigation }) => {
                                 style={{ width: 15, height: 15 }}
                             />
                         </Pressable>
-                        <Text style={{ fontWeight: "700" }}> 1 </Text>
-                        <Pressable style={styles.btn}>
+                        <Text style={{ fontWeight: "700" }}>
+                            {" "}
+                            {quantity < 1 ? (quantity = 1) : quantity}{" "}
+                        </Text>
+                        <Pressable
+                            style={styles.btn}
+                            onPress={() => increment()}
+                        >
                             <Image
                                 source={require("../assets/icons/plus-filled.png")}
                                 style={{ width: 15, height: 15 }}
