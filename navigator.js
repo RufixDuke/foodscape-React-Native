@@ -56,7 +56,7 @@ export const MyStack = () => (
 export const SignedOutStack = () => (
     <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="LoginScreen"
+            initialRouteName="WelcomeScreen"
             screenOptions={screenOptions}
         >
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
