@@ -12,7 +12,8 @@ const Overall = ({ navigation }) => {
     let slicedRecipe = recipe.slice(0, 4);
     let swiperSliced = recipe.slice(8, 12);
     let specialSliced = recipe.slice(13, 17);
-    // console.log(specialSliced);
+    const anotherSliced = recipe.slice(19, 23);
+    // console.log(recipe.length);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
@@ -28,35 +29,6 @@ const Overall = ({ navigation }) => {
     }, []);
     return (
         <View style={styles.wrapper}>
-            {/* <View style={styles.header}>
-                <Text
-                    style={{
-                        marginTop: 50,
-                        fontSize: 18,
-                        color: "#2A2A2A",
-                        fontWeight: "900",
-                    }}
-                >
-                    Welcome, Awwal
-                </Text>
-                <Text
-                    style={{
-                        fontSize: 10,
-                        fontWeight: "500",
-                        color: "#4F4F4F",
-                    }}
-                >
-                    What do you want to order today?
-                </Text>
-            </View>
-            <InputForm title={"Enter Recipes..."} navigation={navigation} /> */}
-            {/* <Pressable onPress={() => navigation.openDrawer()}>
-                <Image
-                    source={require("../../assets/icons/menu.png")}
-                    style={{ width: 21.19, height: 17.14 }}
-                />
-            </Pressable> */}
-            {/* <Filters navigation={navigation} /> */}
             <ScrollView>
                 <View style={{ flex: 1, paddingHorizontal: 20 }}>
                     <Header navigation={navigation} />
@@ -113,6 +85,7 @@ const Overall = ({ navigation }) => {
                                 <SwiperRecipe
                                     swiperSlice={swiperSlice}
                                     key={swiperSlice.recipe_id}
+                                    navigation={navigation}
                                 />
                             ))}
                         </ScrollView>
@@ -138,6 +111,7 @@ const Overall = ({ navigation }) => {
                                 <SpecialOffers
                                     data={data}
                                     key={data.recipe_id}
+                                    navigation={navigation}
                                 />
                             ))}
                         </ScrollView>
@@ -159,10 +133,11 @@ const Overall = ({ navigation }) => {
                             showsHorizontalScrollIndicator={false}
                             style={{ marginTop: 1 }}
                         >
-                            {specialSliced.map((data) => (
+                            {anotherSliced.map((data) => (
                                 <SpecialOffers
                                     data={data}
                                     key={data.recipe_id}
+                                    navigation={navigation}
                                 />
                             ))}
                         </ScrollView>
@@ -175,20 +150,17 @@ const Overall = ({ navigation }) => {
     );
 };
 
-const SwiperRecipe = ({ swiperSlice }) => (
-    <View
+const SwiperRecipe = ({ swiperSlice, navigation }) => (
+    <Pressable
         style={{
             position: "relative",
             marginRight: 12,
         }}
     >
-        {/* <LinearGradient colors={["#666666", "#1D1D1D"]}> */}
-        {/* Uninstall Linear Gradient */}
         <Image
             source={{ uri: swiperSlice.image_url }}
             style={{ width: 140, height: 140, borderRadius: 6 }}
         />
-        {/* </LinearGradient> */}
         <Text
             style={{
                 position: "absolute",
@@ -205,7 +177,7 @@ const SwiperRecipe = ({ swiperSlice }) => (
         >
             {swiperSlice.publisher}
         </Text>
-    </View>
+    </Pressable>
 );
 
 const Header = ({ navigation }) => (

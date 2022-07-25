@@ -8,11 +8,29 @@ import {
 } from "react-native";
 const Popular = ({ data, navigation }) => {
     let rating = (((data.social_rank - 4) / 100) * 5).toFixed(1);
-    let price = (data.social_rank.toFixed() / 2).toString();
-    let prices = price + "00";
-    let numPrice = parseInt(prices);
+
+    let price;
+    if ((parseInt(data.recipe_id) / 9).toFixed(2) === "NaN") {
+        price = 2500.0;
+    } else if (parseInt(data.recipe_id) / 9 < 100) {
+        price = 2900.0;
+    } else {
+        price = (parseInt(data.recipe_id) / 9).toFixed(2);
+    }
     return (
-        <View style={{ position: "relative", marginRight: 12 }}>
+        <Pressable
+            style={{ position: "relative", marginRight: 12 }}
+            onPress={() =>
+                navigation.navigate("FoodDetails", {
+                    recipeID: data.recipe_id,
+                    price,
+                    title: data.title,
+                    publisher: data.publisher,
+                    social: data.social_rank,
+                    image: data.image_url,
+                })
+            }
+        >
             <Image
                 source={{ uri: data.image_url }}
                 style={{ width: 140, height: 140, borderRadius: 6 }}
@@ -56,7 +74,7 @@ const Popular = ({ data, navigation }) => {
                         fontWeight: "900",
                     }}
                 >
-                    N {numPrice}
+                    N {price}
                 </Text>
             </View>
             <View
@@ -86,7 +104,7 @@ const Popular = ({ data, navigation }) => {
                     {rating}
                 </Text>
             </View>
-        </View>
+        </Pressable>
     );
 };
 
