@@ -1,7 +1,5 @@
 import "react-native-gesture-handler";
-// import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-// import Carts from "./screens/Carts";
 import HomeScreen from "./screens/HomeScreen";
 import Profile from "./screens/Profile";
 import Address from "./screens/Address";
@@ -27,7 +25,6 @@ export default DrawerNavigator = () => {
             initialRouteName="Home"
             screenOptions={screenOptions}
             hideStatusBar={true}
-            // drawerStyle={{ backgroundColor: "red", width: 100 }}
         >
             <Drawer.Screen
                 name="Home"

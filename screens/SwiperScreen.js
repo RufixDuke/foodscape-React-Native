@@ -12,7 +12,9 @@ const SwiperScreen = ({ navigation }) => {
             index={0}
         >
             <View style={styles.slide1}>
-                <Image source={require("../assets/icons/swiper1.png")} />
+                <Image
+                    source={require("../assets/icons/BBQChickenPizza.jpg")}
+                />
                 <Text style={styles.text}>
                     We have the best restaurants with exquisite local and
                     international dishes.
@@ -31,7 +33,7 @@ const SwiperScreen = ({ navigation }) => {
             </View>
 
             <View style={styles.slide2}>
-                <Image source={require("../assets/icons/swiper2.png")} />
+                <Image source={require("../assets/icons/Pizza1.jpg")} />
                 <Text style={styles.text}>
                     We have the best restaurants with exquisite local and
                     international dishes.
@@ -53,7 +55,7 @@ const SwiperScreen = ({ navigation }) => {
             </View>
 
             <View style={styles.slide3}>
-                <Image source={require("../assets/icons/swiper3.png")} />
+                <Image source={require("../assets/icons/Pizza3.jpg")} />
                 <Text style={styles.text}>
                     Order for your frequent meals and side dishes just with 2
                     clicks.

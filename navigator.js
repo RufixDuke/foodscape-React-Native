@@ -5,7 +5,6 @@ import SwiperScreen from "./screens/SwiperScreen";
 import LoginScreen from "./screens/LoginScreen";
 import SignUpScreen from "./screens/SignUpScreen";
 import ForgotPassword from "./screens/ForgotPasswordScreen";
-// import HomeScreen from "./screens/HomeScreen";
 import RecentScreen from "./screens/RecentScreen";
 import Favorite from "./screens/Favorite";
 import Carts from "./screens/Carts";
@@ -30,7 +29,7 @@ const screenOptions = {
 export const MyStack = () => (
     <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="HomeScreen"
+            initialRouteName="SwiperScreen"
             screenOptions={screenOptions}
         >
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
