@@ -32,8 +32,6 @@ export const MyStack = () => (
             initialRouteName="HomeScreen"
             screenOptions={screenOptions}
         >
-            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-            <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="HomeScreen" component={DrawerNavigator} />
             <Stack.Screen name="RecentScreen" component={RecentScreen} />
@@ -64,6 +62,8 @@ export const SignedOutStack = () => (
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+            <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+            <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
             <Stack.Screen name="HomeScreen" component={DrawerNavigator} />
         </Stack.Navigator>
     </NavigationContainer>
