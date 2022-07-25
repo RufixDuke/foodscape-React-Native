@@ -28,6 +28,7 @@ const FoodDetails = ({ navigation }) => {
     };
 
     const decrement = () => {
+        if (quantity === 1) return false;
         setQuantity(quantity - 1);
     };
 
@@ -44,12 +45,16 @@ const FoodDetails = ({ navigation }) => {
         typeof recipeID === "string" ? (newRecipeID = 54729) : recipeID;
     // console.log(newRecipeID);
 
+    let newPrices = parseInt(newPrice) * quantity;
+    // console.log(newPrices);
+
     const setTask = () => {
         var Cart = {
             ID: recipeID,
             Title: title,
             Desc: publisher,
-            Price: parseInt(newPrice),
+            Price: parseInt(newPrices),
+            Quantity: quantity,
         };
         const index = cart.findIndex((car) => car.ID === itemID);
         let newCart = [];
@@ -223,10 +228,7 @@ const FoodDetails = ({ navigation }) => {
                                 style={{ width: 15, height: 15 }}
                             />
                         </Pressable>
-                        <Text style={{ fontWeight: "700" }}>
-                            {" "}
-                            {quantity < 1 ? (quantity = 1) : quantity}{" "}
-                        </Text>
+                        <Text style={{ fontWeight: "700" }}> {quantity} </Text>
                         <Pressable
                             style={styles.btn}
                             onPress={() => increment()}
@@ -238,7 +240,7 @@ const FoodDetails = ({ navigation }) => {
                         </Pressable>
                     </View>
 
-                    <Text style={styles.priceText}>#{newPrice}</Text>
+                    <Text style={styles.priceText}>#{newPrice * quantity}</Text>
                 </View>
 
                 <Pressable

@@ -86,34 +86,24 @@ const Snack = ({ food, navigation }) => {
                                 alignItems: "center",
                             }}
                         >
-                            <Pressable
+                            <Image
+                                source={require("../../assets/icons/star-filled.png")}
                                 style={{
-                                    marginRight: 5,
-                                    backgroundColor: "#FFFFFF",
-                                    padding: 8,
-                                    borderRadius: 6,
+                                    width: 11,
+                                    height: 11,
+                                    marginRight: 1,
                                 }}
-                                onPress={() => console.log("Addition....")}
-                            >
-                                <Image
-                                    source={require("../../assets/icons/minus-filled.png")}
-                                    style={{ width: 15, height: 15 }}
-                                />
-                            </Pressable>
-                            <Text style={{ fontWeight: "700" }}> 1 </Text>
-                            <Pressable
+                            />
+                            <Text
                                 style={{
-                                    marginLeft: 5,
-                                    backgroundColor: "#FFFFFF",
-                                    padding: 8,
-                                    borderRadius: 6,
+                                    color: "#4F4F4F",
+                                    fontWeight: "500",
+                                    fontSize: 15,
                                 }}
                             >
-                                <Image
-                                    source={require("../../assets/icons/plus-filled.png")}
-                                    style={{ width: 15, height: 15 }}
-                                />
-                            </Pressable>
+                                {(food.social_rank / 21).toFixed(1)}(
+                                {(food.social_rank + 47).toFixed()})
+                            </Text>
                         </View>
 
                         <Pressable

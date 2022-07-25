@@ -110,7 +110,7 @@ const Carts = ({ navigation }) => {
                                         fontWeight: "900",
                                     }}
                                 >
-                                    x1
+                                    x{item.Quantity}
                                 </Text>
                                 <View>
                                     <Text
@@ -263,7 +263,7 @@ const Carts = ({ navigation }) => {
                                 fontSize: 18,
                             }}
                         >
-                            # {totalPrice + promo}
+                            # {totalPrice - promo}
                         </Text>
                     </View>
                 </View>
