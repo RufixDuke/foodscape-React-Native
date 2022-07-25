@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 const BottomTabs = ({ navigation }) => {
     const { cart } = useSelector((state) => state.handleCart);
-    // console.log(state.length);
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>

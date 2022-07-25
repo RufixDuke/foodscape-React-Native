@@ -38,7 +38,11 @@ const FoodScreen = ({ navigation }) => {
                         <Picker
                             selectedValue={query}
                             onValueChange={(itemValue, itemIndex) =>
-                                setQuery(itemValue)
+                                setQuery(
+                                    itemValue === "Enter your food...."
+                                        ? (itemValue = "pizza")
+                                        : itemValue
+                                )
                             }
                         >
                             <Picker.Item
