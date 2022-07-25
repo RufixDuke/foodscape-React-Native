@@ -64,6 +64,7 @@ export const SignedOutStack = () => (
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+            <Stack.Screen name="HomeScreen" component={DrawerNavigator} />
         </Stack.Navigator>
     </NavigationContainer>
 );

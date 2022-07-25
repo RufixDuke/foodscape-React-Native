@@ -31,7 +31,7 @@ const Login = ({ navigation }) => {
             setLoading(true);
             await firebase.auth().signInWithEmailAndPassword(email, password);
             setLoading(false);
-            navigation.navigate("HomeScreen");
+            navigation.push("HomeScreen");
         } catch (error) {
             Alert.alert(
                 `Hello ${email}`,
