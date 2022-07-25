@@ -43,14 +43,12 @@ const FoodDetails = ({ navigation }) => {
     let newPrice = price === "NaN" ? (newPrice = 2500.0) : price;
     let newRecipeID =
         typeof recipeID === "string" ? (newRecipeID = 54729) : recipeID;
-    // console.log(newRecipeID);
 
     let newPrices = parseInt(newPrice) * quantity;
-    // console.log(newPrices);
 
     const setTask = () => {
         var Cart = {
-            ID: recipeID,
+            ID: itemID,
             Title: title,
             Desc: publisher,
             Price: parseInt(newPrices),
@@ -67,7 +65,6 @@ const FoodDetails = ({ navigation }) => {
         AsyncStorage.setItem("Cart", JSON.stringify(newCart)).then(() => {
             dispatch(addItem(newCart));
             Alert.alert("Success!", "Item saved successfully.");
-            // navigation.goBack();
         });
     };
 
@@ -86,16 +83,6 @@ const FoodDetails = ({ navigation }) => {
         //     deleteAddress({ cart });
         //     setCartBtn("Add to Cart");
         // }
-    };
-
-    const deleteAddress = (id) => {
-        const filteredAddress = cart.filter((car) => car.ID !== id);
-        AsyncStorage.setItem("Cart", JSON.stringify(filteredAddress))
-            .then(() => {
-                dispatch(addItem(filteredAddress));
-                Alert.alert("Success!", "Item removed successfully.");
-            })
-            .catch((err) => console.log(err));
     };
 
     return (
