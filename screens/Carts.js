@@ -270,7 +270,11 @@ const Carts = ({ navigation }) => {
 
                 <Pressable
                     style={styles.cartBtn}
-                    onPress={() => navigation.navigate("CheckoutScreen")}
+                    onPress={() =>
+                        navigation.navigate("CheckoutScreen", {
+                            total: totalPrice,
+                        })
+                    }
                 >
                     <Text style={styles.cartBtnText}>Proceed to Checkout</Text>
                 </Pressable>

@@ -1,8 +1,23 @@
 import { View, Text, Pressable, Image, StyleSheet } from "react-native";
 import React from "react";
 import Card from "../components/Checkout/Card";
+import { useRoute } from "@react-navigation/native";
+import { useState } from "react";
+import { Alert } from "react-native";
 
 const CheckoutScreen = ({ navigation }) => {
+    const [loading, setLoading] = useState(false);
+    const route = useRoute();
+    const { total } = route.params;
+    let delivery = 500;
+
+    const alertMessage = () => {
+        setLoading(true);
+        setTimeout(() => {
+            Alert.alert("Yay!!🎉🎉", "Order placed successfully!!!");
+            setLoading(false);
+        }, 3000);
+    };
     return (
         <View style={{ paddingTop: 50, backgroundColor: "#F5F5F5" }}>
             <View style={styles.wrapper}>
@@ -51,14 +66,14 @@ const CheckoutScreen = ({ navigation }) => {
                 <Text style={{ color: "#828282", fontWeight: "500" }}>
                     Subtotal
                 </Text>
-                <Text style={styles.subtotalText}># 1500</Text>
+                <Text style={styles.subtotalText}># {total}</Text>
             </View>
 
             <View style={styles.delivery}>
                 <Text style={{ color: "#828282", fontWeight: "500" }}>
                     Delivery
                 </Text>
-                <Text style={styles.subtotalText}>Free</Text>
+                <Text style={styles.subtotalText}>{delivery}</Text>
             </View>
             <Text style={styles.line}></Text>
 
@@ -78,15 +93,14 @@ const CheckoutScreen = ({ navigation }) => {
                         fontSize: 16,
                     }}
                 >
-                    # 1500
+                    # {total + delivery}
                 </Text>
             </View>
 
-            <Pressable
-                style={styles.cartBtn}
-                onPress={() => console.log("Order placed....")}
-            >
-                <Text style={styles.cartBtnText}>Place Order</Text>
+            <Pressable style={styles.cartBtn} onPress={() => alertMessage()}>
+                <Text style={styles.cartBtnText}>
+                    {loading ? "Hold on..." : "Place Order"}
+                </Text>
             </Pressable>
         </View>
     );
