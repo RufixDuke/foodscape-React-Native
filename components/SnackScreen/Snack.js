@@ -5,7 +5,6 @@ import { StyleSheet } from "react-native";
 const Snack = ({ food, navigation }) => {
     const [fav, setFav] = useState(false);
 
-    // console.log(typeof parseInt(food.recipe_id / 9));
     let price;
     if ((parseInt(food.recipe_id) / 9).toFixed(2) === "NaN") {
         price = 2500.0;

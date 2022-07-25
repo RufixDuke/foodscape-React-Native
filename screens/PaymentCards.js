@@ -7,17 +7,15 @@ import {
     StyleSheet,
     Alert,
 } from "react-native";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setTasks, setTaskID, delItem } from "../redux/action";
+import { setTasks, setTaskID } from "../redux/action";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import PaymentPage from "../components/ErrorMessage/PaymentPage";
+import EmptyPage from "../components/ErrorMessage/EmptyPage";
 
 const PaymentCards = ({ navigation }) => {
     const { tasks } = useSelector((state) => state.taskReducer);
     const dispatch = useDispatch();
-
-    // let newDesc = item.D.match(/.{1,4}/g);
 
     useEffect(() => {
         getTasks();
@@ -100,7 +98,12 @@ const PaymentCards = ({ navigation }) => {
                 <Text></Text>
             </View>
             {tasks.length === 0 ? (
-                <PaymentPage />
+                <EmptyPage
+                    navigation={navigation}
+                    title="No Card available"
+                    desc="You haven't added any card yet."
+                    image={require("../assets/icons/credit-card-big.png")}
+                />
             ) : (
                 <FlatList
                     data={tasks}
@@ -122,7 +125,6 @@ const PaymentCards = ({ navigation }) => {
                                 {item.Title === "MasterCard" ? (
                                     <Image
                                         source={require("../assets/icons/mastercard.png")}
-                                        // style={{ paddingLeft: 5 }}
                                     />
                                 ) : (
                                     <Image

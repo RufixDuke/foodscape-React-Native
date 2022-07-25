@@ -17,10 +17,7 @@ const SwiperScreen = ({ navigation }) => {
                     We have the best restaurants with exquisite local and
                     international dishes.
                 </Text>
-                <Pressable
-                    style={{ position: "absolute", top: 50, right: 10 }}
-                    // onPress={() => navigation.push("LoginScreen")}
-                >
+                <Pressable style={{ position: "absolute", top: 50, right: 10 }}>
                     <Text
                         style={{
                             color: "white",
@@ -107,7 +104,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
     },
     btn: {
-        // backgroundColor: "#F27C28",
         paddingVertical: 15,
         paddingHorizontal: 100,
         borderRadius: 50,

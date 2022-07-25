@@ -145,7 +145,6 @@ const PaymentInput = ({ navigation }) => {
                                 </Text>
                                 <View style={{ flexDirection: "row" }}>
                                     <Text style={{ color: "#FFFFFF" }}>
-                                        {/* {expire} */}
                                         {expire.length === 0
                                             ? expire
                                             : newExpire.join("/")}

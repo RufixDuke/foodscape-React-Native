@@ -2,7 +2,6 @@ import {
     View,
     Text,
     Pressable,
-    ScrollView,
     TextInput,
     FlatList,
     Alert,
@@ -12,9 +11,9 @@ import { Image } from "react-native";
 import { StyleSheet } from "react-native";
 import { useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { addItem, delItem } from "../redux/action/index";
+import { addItem } from "../redux/action/index";
 import { useDispatch, useSelector } from "react-redux";
-import CartPage from "../components/ErrorMessage/CartPage";
+import EmptyPage from "../components/ErrorMessage/EmptyPage";
 
 const Carts = ({ navigation }) => {
     const [query, setQuery] = useState("");
@@ -176,9 +175,7 @@ const Carts = ({ navigation }) => {
                         autoCapitalize="none"
                         keyboardType="default"
                         textContentType="name"
-                        // autoFocus={true}
                         onChangeText={(query) => setQuery(query)}
-                        // onSubmitEditing={fetchingDatas}
                         value={query}
                     />
 
@@ -290,7 +287,22 @@ const Carts = ({ navigation }) => {
     };
 
     const EmptyCart = () => {
-        return <CartPage navigation={navigation} />;
+        return (
+            <>
+                <EmptyPage
+                    navigation={navigation}
+                    title="No Items in Cart"
+                    desc="You haven’t ordered a meal yet."
+                    image={require("../assets/icons/cart-big.png")}
+                />
+                <Pressable
+                    style={styles.cartBtn}
+                    onPress={() => navigation.navigate("HomeScreen")}
+                >
+                    <Text style={styles.cartBtnText}>Start Ordering</Text>
+                </Pressable>
+            </>
+        );
     };
 
     return (
@@ -346,6 +358,7 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         borderRadius: 32,
         marginTop: 30,
+        marginBottom: 30,
     },
     cartBtnText: {
         textAlign: "center",

@@ -10,15 +10,12 @@ const RestaurantScreen = ({ navigation }) => {
     let uniqueRestaurant = restaurants.filter(
         (rest) => !set.has(rest["publisher"]) && set.add(rest["publisher"])
     );
-    console.log(uniqueRestaurant);
-    // let slicedRestaurant = restaurants.slice(0, 10);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=bean";
         fetch(url)
             .then((response) => response.json())
             .then((recipe) => {
                 setrestaurants(recipe.recipes);
-                // console.log(recipe.recipes);
             });
     };
 

@@ -20,10 +20,8 @@ const SnackScreen = ({ navigation }) => {
             .then((response) => response.json())
             .then((recipe) => {
                 setFood(recipe.recipes);
-                // console.log(recipe.recipes);
             });
     };
-    // console.log(foods);
     return (
         <View style={styles.wrapper}>
             <View style={styles.inputWrapper}>

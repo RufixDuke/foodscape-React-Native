@@ -7,7 +7,6 @@ import {
     Keyboard,
 } from "react-native";
 import React from "react";
-import Login from "../components/Login/Login";
 import SignUp from "../components/SignUp/SignUp";
 
 const SignUpScreen = ({ navigation }) => {

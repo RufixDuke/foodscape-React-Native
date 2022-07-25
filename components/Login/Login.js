@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     Alert,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -48,7 +48,6 @@ const Login = ({ navigation }) => {
             initialValues={{ email: "", password: "" }}
             onSubmit={(values) => {
                 onLogin(values.email, values.password);
-                // navigation.push("Homescreen");
             }}
             validationSchema={LoginSchema}
             validateOnMount={true}
@@ -59,7 +58,6 @@ const Login = ({ navigation }) => {
                         <Text
                             style={{
                                 marginBottom: 20,
-                                // fontWeight: "800",
                                 fontSize: 20,
                                 color: "#2A2A2A",
                             }}
@@ -85,7 +83,6 @@ const Login = ({ navigation }) => {
                                 autoCapitalize="none"
                                 keyboardType="email-address"
                                 textContentType="emailAddress"
-                                // autoFocus={true}
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}

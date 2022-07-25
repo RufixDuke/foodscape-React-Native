@@ -13,13 +13,6 @@ const WelcomeScreen = ({ navigation }) => {
             <View style={styles.header}>
                 <Text style={styles.text}>foodscape</Text>
             </View>
-
-            {/* <Pressable
-                style={styles.btn}
-                onPress={() => navigation.push("SwiperScreen")}
-            >
-                <Text style={styles.btnText}>Get Started</Text>
-            </Pressable> */}
         </SafeAreaView>
     );
 };

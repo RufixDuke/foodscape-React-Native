@@ -11,7 +11,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setTasks, setTaskID, delItem } from "../redux/action";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import AddressPage from "../components/ErrorMessage/AddressPage";
+import EmptyPage from "../components/ErrorMessage/EmptyPage";
 
 const Address = ({ navigation }) => {
     const { tasks } = useSelector((state) => state.taskReducer);
@@ -98,7 +98,12 @@ const Address = ({ navigation }) => {
                 <Text></Text>
             </View>
             {tasks.length === 0 ? (
-                <AddressPage />
+                <EmptyPage
+                    navigation={navigation}
+                    title="No Address yet"
+                    desc="You haven't added an address yet."
+                    image={require("../assets/icons/address-big.png")}
+                />
             ) : (
                 <FlatList
                     data={tasks}

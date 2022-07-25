@@ -1,11 +1,8 @@
 import { View, Text, Image, ScrollView, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
 import { StyleSheet } from "react-native";
-import Filters from "./Filters";
 import Popular from "./Popular";
-import InputForm from "./InputForm";
 import SpecialOffers from "./SpecialOffers";
-import BottomTabs from "./BottomTabs";
 
 const Overall = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
@@ -13,14 +10,12 @@ const Overall = ({ navigation }) => {
     let swiperSliced = recipe.slice(8, 12);
     let specialSliced = recipe.slice(13, 17);
     const anotherSliced = recipe.slice(19, 23);
-    // console.log(recipe.length);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
             .then((response) => response.json())
             .then((recipe) => {
                 setRecipe(recipe.recipes);
-                // console.log(recipe.recipes);
             });
     };
 

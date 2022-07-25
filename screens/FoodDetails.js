@@ -10,7 +10,7 @@ import {
 import React, { useState, useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, setItemID, addPrice } from "../redux/action/index";
+import { addItem, setItemID } from "../redux/action/index";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const FoodDetails = ({ navigation }) => {
@@ -78,11 +78,6 @@ const FoodDetails = ({ navigation }) => {
             dispatch(setItemID(cart.length + 1));
             setCartBtn("Remove from Cart");
         }
-        // else {
-        //     // dispatch(delItem(cart));
-        //     deleteAddress({ cart });
-        //     setCartBtn("Add to Cart");
-        // }
     };
 
     return (
@@ -207,7 +202,6 @@ const FoodDetails = ({ navigation }) => {
                             style={styles.btn}
                             onPress={() => {
                                 decrement();
-                                console.log("yoooo");
                             }}
                         >
                             <Image
@@ -311,7 +305,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
     },
     cartBtn: {
-        // backgroundColor: "#F27C28",
         marginHorizontal: 20,
         paddingHorizontal: 70,
         paddingVertical: 16,

@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
                         fontWeight: "900",
                     }}
                 >
-                    Welcome, Awwal
+                    Welcome, New User
                 </Text>
                 <Text
                     style={{

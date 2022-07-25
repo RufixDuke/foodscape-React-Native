@@ -60,7 +60,6 @@ const Profile = ({ navigation }) => {
                 style={({ pressed }) => [
                     {
                         backgroundColor: pressed ? "#F8BE94" : "#FCDEC9",
-                        // color: pressed ? "#FFFFFF" : "#F27C28",
                     },
                     styles.btn,
                 ]}
@@ -154,7 +153,6 @@ const Profile = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     btn: {
-        // backgroundColor: "#FCDEC9",
         marginTop: 20,
         marginHorizontal: 100,
         paddingVertical: 10,

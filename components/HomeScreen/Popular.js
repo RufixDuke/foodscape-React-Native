@@ -1,11 +1,4 @@
-import {
-    View,
-    Text,
-    Image,
-    ScrollView,
-    TouchableOpacity,
-    Pressable,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity, Pressable } from "react-native";
 const Popular = ({ data, navigation }) => {
     let rating = (((data.social_rank - 4) / 100) * 5).toFixed(1);
 

@@ -98,7 +98,10 @@ const CheckoutScreen = ({ navigation }) => {
                 </Text>
             </View>
 
-            <Pressable style={styles.cartBtn} onPress={() => alertMessage()}>
+            <Pressable
+                style={styles.cartBtn(loading)}
+                onPress={() => alertMessage()}
+            >
                 <Text style={styles.cartBtnText}>
                     {loading ? "Hold on..." : "Place Order"}
                 </Text>
@@ -155,14 +158,14 @@ const styles = StyleSheet.create({
         borderColor: "#E0E0E0",
         marginHorizontal: 30,
     },
-    cartBtn: {
-        backgroundColor: "#F27C28",
+    cartBtn: (loading) => ({
+        backgroundColor: loading ? "#E0E0E0" : "#F27C28",
         marginHorizontal: 30,
         paddingHorizontal: 70,
         paddingVertical: 16,
         borderRadius: 32,
         marginTop: 30,
-    },
+    }),
     cartBtnText: {
         textAlign: "center",
         color: "#FAFAFA",
