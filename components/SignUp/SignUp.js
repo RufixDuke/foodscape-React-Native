@@ -29,11 +29,14 @@ const signUpSchema = Yup.object().shape({
 // };
 
 const SignUp = ({ navigation }) => {
+    const [loading, setLoading] = useState(false);
     const onSignUp = async (email, password) => {
         try {
+            setLoading(true);
             const authUser = await firebase
                 .auth()
                 .createUserWithEmailAndPassword(email, password);
+            setLoading(false);
             navigation.navigate("HomeScreen");
 
             emailVerify(email);
@@ -101,6 +104,8 @@ const SignUp = ({ navigation }) => {
                 console.log(err);
             });
     };
+
+    const Loading = () => <ActivityIndicator size="small" />;
 
     return (
         <Formik
@@ -183,7 +188,9 @@ const SignUp = ({ navigation }) => {
                             onPress={handleSubmit}
                             disabled={!isValid}
                         >
-                            <Text style={styles.buttonText}>Sign Up</Text>
+                            <Text style={styles.buttonText}>
+                                {loading ? <Loading /> : "Sign Up"}
+                            </Text>
                         </Pressable>
 
                         <Text

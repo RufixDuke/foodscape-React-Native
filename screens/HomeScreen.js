@@ -26,7 +26,6 @@ const HomeScreen = ({ navigation }) => {
             .then((recipe) => {
                 setFood(recipe.recipes);
                 setLoading(false);
-                // console.log(recipe.recipes);
             });
     };
 
@@ -89,9 +88,7 @@ const HomeScreen = ({ navigation }) => {
                         autoCapitalize="none"
                         keyboardType="default"
                         textContentType="name"
-                        // autoFocus={true}
                         onChangeText={(value) => setQuery(value)}
-                        // onSubmitEditing={fetchingDatas}
                         value={query}
                     />
                 </View>
@@ -115,7 +112,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     inputWrapper: {
-        // flex: 1,
         marginTop: 24,
         justifyContent: "space-between",
         alignItems: "center",
@@ -134,7 +130,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-
-{
-    /* <Overall navigation={navigation} />; */
-}

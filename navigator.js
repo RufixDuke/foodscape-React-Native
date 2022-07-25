@@ -35,8 +35,6 @@ export const MyStack = () => (
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
-            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="HomeScreen" component={DrawerNavigator} />
             <Stack.Screen name="RecentScreen" component={RecentScreen} />
             <Stack.Screen name="Favorite" component={Favorite} />
@@ -53,7 +51,6 @@ export const MyStack = () => (
             <Stack.Screen name="AddressInput" component={AddressInput} />
             <Stack.Screen name="Address" component={Address} />
             <Stack.Screen name="PaymentInput" component={PaymentInput} />
-            {/* <Stack.Screen name="PaymentCards" component={PaymentCards} /> */}
         </Stack.Navigator>
     </NavigationContainer>
 );
@@ -61,31 +58,12 @@ export const MyStack = () => (
 export const SignedOutStack = () => (
     <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="LoginForm"
+            initialRouteName="LoginScreen"
             screenOptions={screenOptions}
         >
-            <Stack.Screen name="LoginForm" component={LoginForm} />
-            <Stack.Screen name="SignUpForm" component={SignUpForm} />
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+            <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         </Stack.Navigator>
     </NavigationContainer>
 );
-
-// export const TabNavigator = () => {
-//     return (
-//         <NavigationContainer>
-//             <Tab.Navigator
-//                 screenOptions={{
-//                     headerShown: false,
-//                     tabBarShowLabel: false,
-//                     tabBarStyle: { backgroundColor: "#AD40AF" },
-//                     tabBarInactiveTintColor: "#fff",
-//                     tabBarActiveTintColor: "yellow",
-//                 }}
-//             >
-//                 <Tab.Screen name="Home2" component={MyStack} />
-//                 <Tab.Screen name="Cart" component={Carts} />
-//                 <Tab.Screen name="Favorite" component={Favorite} />
-//             </Tab.Navigator>
-//         </NavigationContainer>
-//     );
-// };

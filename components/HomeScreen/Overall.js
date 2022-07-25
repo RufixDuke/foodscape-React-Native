@@ -6,10 +6,10 @@ import SpecialOffers from "./SpecialOffers";
 
 const Overall = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
-    let slicedRecipe = recipe.slice(0, 4);
-    let swiperSliced = recipe.slice(8, 12);
-    let specialSliced = recipe.slice(13, 17);
-    const anotherSliced = recipe.slice(19, 23);
+    let slicedRecipe = recipe.slice(0, 7);
+    let swiperSliced = recipe.slice(8, 15);
+    let specialSliced = recipe.slice(15, 22);
+    const anotherSliced = recipe.slice(22, 29);
     const fetchingData = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)

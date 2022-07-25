@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     imgContainer: {
         alignItems: "center",
-        marginTop: 90,
+        marginTop: 60,
     },
     text: {
         fontSize: 25,

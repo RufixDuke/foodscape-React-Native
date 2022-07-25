@@ -5,6 +5,7 @@ import {
     Pressable,
     TouchableOpacity,
     Alert,
+    ActivityIndicator,
 } from "react-native";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -12,6 +13,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
 import { firebase } from "../../firebase";
+import { useState } from "react";
 
 const LoginSchema = Yup.object().shape({
     email: Yup.string().email().required("Must be present"),
@@ -20,12 +22,16 @@ const LoginSchema = Yup.object().shape({
         .required(),
 });
 
+const Loading = () => <ActivityIndicator size="small" />;
+
 const Login = ({ navigation }) => {
+    const [loading, setLoading] = useState(false);
     const onLogin = async (email, password) => {
         try {
+            setLoading(true);
             await firebase.auth().signInWithEmailAndPassword(email, password);
+            setLoading(false);
             navigation.navigate("HomeScreen");
-            console.log("logged in");
         } catch (error) {
             Alert.alert(
                 `Hello ${email}`,
@@ -136,7 +142,9 @@ const Login = ({ navigation }) => {
                             onPress={handleSubmit}
                             disabled={!isValid}
                         >
-                            <Text style={styles.buttonText}>Log In</Text>
+                            <Text style={styles.buttonText}>
+                                {loading ? <Loading /> : "Log In"}
+                            </Text>
                         </Pressable>
 
                         <View style={styles.signUpContainer}>
@@ -159,7 +167,7 @@ const Login = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     wrapper: {
-        marginTop: 50,
+        marginTop: 10,
         padding: 10,
     },
     inputField: {

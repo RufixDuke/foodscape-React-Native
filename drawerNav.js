@@ -90,22 +90,6 @@ export default DrawerNavigator = () => {
                     headerShown: false,
                 }}
             />
-            <Drawer.Screen
-                name="Map"
-                component={Map}
-                options={{
-                    drawerIcon: ({ focused }) => (
-                        <Image
-                            source={require("./assets/icons/payment-card.png")}
-                            style={{
-                                width: focused ? 20 : 18,
-                                height: focused ? 20 : 18,
-                            }}
-                        />
-                    ),
-                    headerShown: false,
-                }}
-            />
         </Drawer.Navigator>
     );
 };

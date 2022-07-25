@@ -7,40 +7,28 @@ import {
     Alert,
     StyleSheet,
     Image,
+    ActivityIndicator,
 } from "react-native";
 import React, { useRef } from "react";
-import { Formik } from "formik";
-import * as Yup from "yup";
 import Validator from "email-validator";
 import { firebase, db } from "../../firebase";
 import { auth } from "../../firebase";
 import { useState } from "react";
 
-const signUpSchema = Yup.object().shape({
-    email: Yup.string().email().required("Must be present"),
-});
-
 const ForgotPassword = ({ navigation }) => {
     const emailRef = useRef("");
     const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const forgotPassword = async (email) => {
-        // return sendPasswordResetEmail(auth, email);
-
         try {
+            setLoading(true);
             const authUser = await firebase
                 .auth()
                 .sendPasswordResetEmail(email, auth);
-            console.log("Firebase Reset Password Successfully sent", email);
+            setLoading(false);
+            navigation.navigate("LoginScreen");
 
-            // db.collection("users")
-            //     .doc(authUser.user.email)
-            //     .set({
-            //         owner_uid: authUser.user.uid,
-            //         username: username,
-            //         email: authUser.user.email,
-            //         profile_picture: await getRandomProfilePicture(),
-            //     });
             return authUser;
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
@@ -48,14 +36,13 @@ const ForgotPassword = ({ navigation }) => {
     };
 
     const forgotPasswordHandler = () => {
-        // email = emailRef.current;
-        console.log("hmmm");
         if (email)
             forgotPassword(email).then(() => {
                 emailRef.current = "";
-                console.log(typeof emailRef.current);
             });
     };
+
+    const Loading = () => <ActivityIndicator size="small" />;
 
     return (
         <>
@@ -66,13 +53,12 @@ const ForgotPassword = ({ navigation }) => {
                 <View
                     style={[
                         styles.inputField,
-                        // {
-                        //     borderColor:
-                        //         values.email.length < 1 ||
-                        //         Validator.validate(values.email)
-                        //             ? "#F59D5E"
-                        //             : "#EB5757",
-                        // },
+                        {
+                            borderColor:
+                                email.length < 1 || Validator.validate(email)
+                                    ? "#F59D5E"
+                                    : "#EB5757",
+                        },
                     ]}
                 >
                     <TextInput
@@ -82,9 +68,7 @@ const ForgotPassword = ({ navigation }) => {
                         keyboardType="email-address"
                         textContentType="emailAddress"
                         onChangeText={(values) => setEmail(values)}
-                        // onBlur={handleBlur("email")}
                         value={email}
-                        // ref={emailRef}
                     />
                 </View>
 
@@ -92,9 +76,10 @@ const ForgotPassword = ({ navigation }) => {
                     titleSize={20}
                     style={styles.button}
                     onPress={forgotPasswordHandler}
-                    // disabled={!isValid}
                 >
-                    <Text style={styles.buttonText}>Send Link</Text>
+                    <Text style={styles.buttonText}>
+                        {loading ? <Loading /> : "Send Link"}
+                    </Text>
                 </Pressable>
             </View>
         </>

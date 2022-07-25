@@ -1,12 +1,11 @@
-import { MyStack } from "./navigator";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-// import {drawerNav} from './drawerNav'
+import AuthNavigation from "./AuthNavigation";
 
 export default function App() {
     return (
         <Provider store={store}>
-            <MyStack />
+            <AuthNavigation />
         </Provider>
     );
 }
