@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#FAFAFA",
     },
     container: {
-        height: 65,
+        height: 55,
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
