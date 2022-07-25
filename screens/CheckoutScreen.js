@@ -32,6 +32,7 @@ const CheckoutScreen = ({ navigation }) => {
                 title="Home"
                 details="Oremeji Street, Oshodi/Isolo, Nigeria"
                 image={require("../assets/icons/map-address.png")}
+                navigation={() => navigation.push("Address")}
             />
 
             <View style={{ marginTop: 20 }}>

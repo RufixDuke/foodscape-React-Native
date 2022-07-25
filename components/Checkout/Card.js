@@ -2,10 +2,10 @@ import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 import React from "react";
 import { setTaskID } from "../../redux/action";
 
-const Card = ({ image, title, details }) => {
+const Card = ({ image, title, details, navigation }) => {
     return (
         <View>
-            <Pressable style={styles.wrapper}>
+            <Pressable style={styles.wrapper} onPress={navigation}>
                 <Image source={image} />
                 <View style={{ marginHorizontal: 10 }}>
                     <Text>{title}</Text>
