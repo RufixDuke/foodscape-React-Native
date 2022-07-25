@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { View, Text, Image, TouchableOpacity, Pressable } from "react-native";
 const SpecialOffers = ({ data, navigation }) => {
+    const [fav, setFav] = useState(false);
     let rating = (((data.social_rank - 4) / 100) * 5).toFixed(1);
 
     let price;
@@ -34,9 +36,14 @@ const SpecialOffers = ({ data, navigation }) => {
                     top: 7,
                     left: 110,
                 }}
+                onPress={() => setFav(!fav)}
             >
                 <Image
-                    source={require("../../assets/icons/heart.png")}
+                    source={
+                        fav
+                            ? require("../../assets/icons/heart-filled.png")
+                            : require("../../assets/icons/heart.png")
+                    }
                     style={{
                         width: 24,
                         height: 22,

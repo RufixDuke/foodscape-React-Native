@@ -5,6 +5,7 @@ import {
     Pressable,
     StyleSheet,
     ScrollView,
+    TouchableOpacity,
 } from "react-native";
 import React, { useState } from "react";
 import Snack from "../components/SnackScreen/Snack";
@@ -37,7 +38,11 @@ const SnackScreen = ({ navigation }) => {
                         <Picker
                             selectedValue={query}
                             onValueChange={(itemValue, itemIndex) =>
-                                setQuery(itemValue)
+                                setQuery(
+                                    itemValue === "Enter your food...."
+                                        ? (itemValue = "hamburger")
+                                        : itemValue
+                                )
                             }
                         >
                             <Picker.Item
@@ -67,12 +72,12 @@ const SnackScreen = ({ navigation }) => {
                         </Picker>
                     </ScrollView>
                 </View>
-                <Pressable onPress={() => fetchingData()}>
+                <TouchableOpacity onPress={() => fetchingData()}>
                     <Image
                         source={require("../assets/icons/search.png")}
                         style={{ width: 17, height: 17 }}
                     />
-                </Pressable>
+                </TouchableOpacity>
             </View>
 
             <Text
