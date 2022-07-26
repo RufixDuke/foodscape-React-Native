@@ -11,6 +11,7 @@ import { StyleSheet } from "react-native";
 import Cards from "../components/FoodScreen/Cards";
 import BottomTabs from "../components/HomeScreen/BottomTabs";
 import { Picker } from "@react-native-picker/picker";
+import EmptyPage from "../components/ErrorMessage/EmptyPage";
 
 const FoodScreen = ({ navigation }) => {
     const [foods, setFoods] = useState([]);
@@ -90,15 +91,24 @@ const FoodScreen = ({ navigation }) => {
             >
                 Foods
             </Text>
-            <ScrollView>
-                {foods.map((food) => (
-                    <Cards
-                        key={food.recipe_id}
-                        food={food}
-                        navigation={navigation}
-                    />
-                ))}
-            </ScrollView>
+            {foods.length ? (
+                <ScrollView>
+                    {foods.map((food) => (
+                        <Snack
+                            key={food.recipe_id}
+                            food={food}
+                            navigation={navigation}
+                        />
+                    ))}
+                </ScrollView>
+            ) : (
+                <EmptyPage
+                    navigation={navigation}
+                    title="No search yet."
+                    desc="You haven’t searched for a snack yet."
+                    image={require("../assets/icons/rice-big.png")}
+                />
+            )}
             <BottomTabs navigation={navigation} />
         </View>
     );

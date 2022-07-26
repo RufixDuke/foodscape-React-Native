@@ -74,7 +74,7 @@ export default DrawerNavigator = () => {
                 }}
             />
             <Drawer.Screen
-                name="PaymentCards"
+                name="Payment Cards"
                 component={PaymentCards}
                 options={{
                     drawerIcon: ({ focused }) => (

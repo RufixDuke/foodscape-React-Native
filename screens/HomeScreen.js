@@ -97,7 +97,7 @@ const HomeScreen = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <Filters navigation={navigation} />
-            {!loading && query && fetchHandler ? (
+            {query && fetchHandler ? (
                 <FetchedPage />
             ) : (
                 <Overall navigation={navigation} />
