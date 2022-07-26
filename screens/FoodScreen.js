@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
-import Cards from "../components/FoodScreen/Cards";
 import BottomTabs from "../components/HomeScreen/BottomTabs";
 import { Picker } from "@react-native-picker/picker";
 import EmptyPage from "../components/ErrorMessage/EmptyPage";
@@ -22,6 +21,9 @@ const FoodScreen = ({ navigation }) => {
             .then((response) => response.json())
             .then((recipe) => {
                 setFoods(recipe.recipes);
+            })
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
             });
     };
     return (

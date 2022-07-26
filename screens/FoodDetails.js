@@ -38,6 +38,9 @@ const FoodDetails = ({ navigation }) => {
             .then((response) => response.json())
             .then((recipe) => {
                 setDetails(recipe.recipe);
+            })
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
             });
     };
     let newPrice = price === "NaN" ? (newPrice = 2500.0) : price;

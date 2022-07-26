@@ -16,6 +16,9 @@ const RestaurantScreen = ({ navigation }) => {
             .then((response) => response.json())
             .then((recipe) => {
                 setrestaurants(recipe.recipes);
+            })
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
             });
     };
 

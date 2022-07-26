@@ -22,6 +22,9 @@ const SnackScreen = ({ navigation }) => {
             .then((response) => response.json())
             .then((recipe) => {
                 setFood(recipe.recipes);
+            })
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
             });
     };
     return (

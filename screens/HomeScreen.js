@@ -26,6 +26,9 @@ const HomeScreen = ({ navigation }) => {
             .then((recipe) => {
                 setFood(recipe.recipes);
                 setLoading(false);
+            })
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
             });
     };
 

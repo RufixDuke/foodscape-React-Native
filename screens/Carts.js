@@ -62,7 +62,9 @@ const Carts = ({ navigation }) => {
                     dispatch(addItem(parseTasks));
                 }
             })
-            .catch((err) => console.log(err));
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
+            });
     };
 
     let totalPrice = 0;

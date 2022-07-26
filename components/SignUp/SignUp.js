@@ -7,6 +7,7 @@ import {
     Alert,
     StyleSheet,
     Image,
+    ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
 import { Formik } from "formik";

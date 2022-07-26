@@ -29,7 +29,9 @@ const Address = ({ navigation }) => {
                     dispatch(setTasks(parseTasks));
                 }
             })
-            .catch((err) => console.log(err));
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
+            });
     };
 
     const deleteAddress = (id) => {
@@ -39,7 +41,9 @@ const Address = ({ navigation }) => {
                 dispatch(setTasks(filteredAddress));
                 Alert.alert("Success!", "Address removed successfully.");
             })
-            .catch((err) => console.log(err));
+            .catch((error) => {
+                Alert.alert(`Hello User`, error.message);
+            });
     };
 
     const alertPrompt = (id) => {
