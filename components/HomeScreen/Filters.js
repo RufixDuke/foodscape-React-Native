@@ -8,7 +8,8 @@ const Filters = ({ navigation }) => {
                 flexDirection: "row",
                 marginVertical: 10,
                 paddingHorizontal: 20,
-                // height: 50,
+                justifyContent: "space-between",
+                alignItems: "center",
             }}
         >
             <Pressable
@@ -19,7 +20,6 @@ const Filters = ({ navigation }) => {
                     borderRadius: 10,
                     paddingVertical: 12,
                     flexDirection: "row",
-                    // height: 55,
                 }}
                 onPress={() => navigation.push("FoodScreen")}
             >

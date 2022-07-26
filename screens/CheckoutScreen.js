@@ -108,7 +108,10 @@ const CheckoutScreen = ({ navigation }) => {
             </View>
 
             <Pressable
-                style={styles.cartBtn(loading)}
+                style={({ pressed }) => [
+                    { backgroundColor: pressed ? "#F27C28" : "#F59D5E" },
+                    styles.cartBtn(loading),
+                ]}
                 onPress={() => alertMessage()}
             >
                 <Text style={styles.cartBtnText}>

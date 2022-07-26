@@ -268,7 +268,10 @@ const Carts = ({ navigation }) => {
                 </View>
 
                 <Pressable
-                    style={styles.cartBtn}
+                    style={({ pressed }) => [
+                        { backgroundColor: pressed ? "#F59D5E" : "#F27C28" },
+                        styles.cartBtn,
+                    ]}
                     onPress={() =>
                         navigation.navigate("CheckoutScreen", {
                             total: totalPrice,
@@ -279,7 +282,10 @@ const Carts = ({ navigation }) => {
                 </Pressable>
 
                 <Pressable
-                    style={styles.btn}
+                    style={({ pressed }) => [
+                        { backgroundColor: pressed ? "#F8BE94" : "#F5F5F5" },
+                        styles.btn,
+                    ]}
                     onPress={() => navigation.navigate("SnackScreen")}
                 >
                     <Text style={styles.btnText}>Continue Shopping</Text>
@@ -354,7 +360,6 @@ const styles = StyleSheet.create({
         paddingVertical: 5,
     },
     cartBtn: {
-        backgroundColor: "#F27C28",
         marginHorizontal: 20,
         paddingHorizontal: 70,
         paddingVertical: 16,

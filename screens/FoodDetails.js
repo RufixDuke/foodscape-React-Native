@@ -47,7 +47,7 @@ const FoodDetails = ({ navigation }) => {
     let newRecipeID =
         typeof recipeID === "string" ? (newRecipeID = 54729) : recipeID;
 
-    let newPrices = (parseInt(newPrice) * quantity).toFixed(2);
+    let newPrices = newPrice * quantity;
 
     const setTask = () => {
         var Cart = {
@@ -228,7 +228,9 @@ const FoodDetails = ({ navigation }) => {
                         </Pressable>
                     </View>
 
-                    <Text style={styles.priceText}>#{newPrice * quantity}</Text>
+                    <Text style={styles.priceText}>
+                        #{(newPrice * quantity).toFixed(2)}
+                    </Text>
                 </View>
 
                 <Pressable
