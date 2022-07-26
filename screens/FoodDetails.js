@@ -48,7 +48,6 @@ const FoodDetails = ({ navigation }) => {
         typeof recipeID === "string" ? (newRecipeID = 54729) : recipeID;
 
     let newPrices = (parseInt(newPrice) * quantity).toFixed(2);
-    console.log(typeof newPrices);
 
     const setTask = () => {
         var Cart = {
@@ -96,8 +95,12 @@ const FoodDetails = ({ navigation }) => {
 
                 <Text style={styles.headerTitle}>{title}</Text>
                 <Text></Text>
+
+                <View style={styles.imgContainer}>
+                    <Image source={{ uri: image }} style={styles.foodImage} />
+                </View>
             </View>
-            <Image source={{ uri: image }} style={styles.foodImage} />
+
             <ScrollView>
                 <View style={styles.details}>
                     <View
@@ -264,9 +267,15 @@ const styles = StyleSheet.create({
         width: 200,
         height: 200,
         borderRadius: 100,
+    },
+    imgContainer: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
         position: "absolute",
-        top: 120,
-        left: 80,
+        left: 0,
+        right: 0,
+        bottom: -70,
     },
     details: {
         marginTop: 100,
