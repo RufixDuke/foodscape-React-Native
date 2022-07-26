@@ -140,11 +140,7 @@ const SignUp = ({ navigation }) => {
                             OR
                         </Text>
 
-                        <Pressable
-                            titleSize={20}
-                            style={styles.btn2}
-                            onPress={signUpWithFirebase}
-                        >
+                        <Pressable titleSize={20} style={styles.btn2}>
                             <Image
                                 source={require("../../assets/icons/google.png")}
                                 style={{ width: 22, height: 22 }}
