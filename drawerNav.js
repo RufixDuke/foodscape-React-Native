@@ -7,7 +7,6 @@ import PaymentCards from "./screens/PaymentCards";
 import { Image } from "react-native";
 
 import CustomDrawer from "./components/Drawer/Custom";
-import Map from "./screens/Map";
 
 const Drawer = createDrawerNavigator();
 
