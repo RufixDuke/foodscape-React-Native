@@ -65,7 +65,7 @@ const PaymentInput = ({ navigation }) => {
                     }
                 );
             } catch (error) {
-                console.log(error);
+                Alert.alert(error.message);
             }
         }
     };
@@ -195,7 +195,11 @@ const PaymentInput = ({ navigation }) => {
                     <Picker
                         selectedValue={title}
                         onValueChange={(itemValue, itemIndex) =>
-                            setTitle(itemValue)
+                            setTitle(
+                                itemValue === ""
+                                    ? (itemValue = "MasterCard")
+                                    : itemValue
+                            )
                         }
                     >
                         <Picker.Item label="" value="" />
@@ -208,7 +212,6 @@ const PaymentInput = ({ navigation }) => {
             <Text style={{ color: "#828282" }}>Account Name</Text>
             <TextInput
                 style={styles.input}
-                placeholder="John Doe"
                 multiline
                 onChangeText={(value) => setName(value)}
                 value={name}
@@ -218,7 +221,6 @@ const PaymentInput = ({ navigation }) => {
             <Text style={{ color: "#828282" }}>Card Number</Text>
             <TextInput
                 style={[styles.input]}
-                placeholder="0000 0000 0000 0000"
                 multiline
                 onChangeText={(value) => setDesc(value)}
                 value={desc}
@@ -236,11 +238,10 @@ const PaymentInput = ({ navigation }) => {
                     <Text style={{ color: "#828282" }}>Expiration Date</Text>
                     <TextInput
                         style={[styles.input, { width: 180 }]}
-                        placeholder="00/00"
                         multiline
                         onChangeText={(value) => setExpire(value)}
                         value={expire}
-                        maxLength={5}
+                        maxLength={4}
                         keyboardType="numeric"
                     />
                 </View>
@@ -249,7 +250,6 @@ const PaymentInput = ({ navigation }) => {
                     <Text style={{ color: "#828282" }}>CVV</Text>
                     <TextInput
                         style={[styles.input, { width: 120 }]}
-                        placeholder="000"
                         multiline
                         onChangeText={(value) => setCVV(value)}
                         value={cvv}
@@ -277,7 +277,7 @@ const PaymentInput = ({ navigation }) => {
                         fontSize: 16,
                     }}
                 >
-                    Save Address
+                    Save Card
                 </Text>
             </Pressable>
         </View>

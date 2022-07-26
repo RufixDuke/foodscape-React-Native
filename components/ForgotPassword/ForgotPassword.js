@@ -3,15 +3,13 @@ import {
     Text,
     TextInput,
     Pressable,
-    TouchableOpacity,
     Alert,
     StyleSheet,
-    Image,
     ActivityIndicator,
 } from "react-native";
 import React, { useRef } from "react";
 import Validator from "email-validator";
-import { firebase, db } from "../../firebase";
+import { firebase } from "../../firebase";
 import { auth } from "../../firebase";
 import { useState } from "react";
 
