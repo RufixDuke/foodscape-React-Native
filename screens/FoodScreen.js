@@ -11,6 +11,7 @@ import { StyleSheet } from "react-native";
 import BottomTabs from "../components/HomeScreen/BottomTabs";
 import { Picker } from "@react-native-picker/picker";
 import EmptyPage from "../components/ErrorMessage/EmptyPage";
+import Snack from "../components/SnackScreen/Snack";
 
 const FoodScreen = ({ navigation }) => {
     const [foods, setFoods] = useState([]);
