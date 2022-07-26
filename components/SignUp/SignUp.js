@@ -23,12 +23,6 @@ const signUpSchema = Yup.object().shape({
         .required(),
 });
 
-// const getRandomProfilePicture = async () => {
-//     const response = await fetch("https://randomuser.me/api");
-//     const data = await response.json();
-//     return data.results[0].picture.large;
-// };
-
 const SignUp = ({ navigation }) => {
     const [loading, setLoading] = useState(false);
     const onSignUp = async (email, password) => {
@@ -41,69 +35,10 @@ const SignUp = ({ navigation }) => {
             navigation.navigate("HomeScreen");
 
             emailVerify(email);
-
-            // db.collection("users")
-            //     .doc(authUser.user.email)
-            //     .set({
-            //         owner_uid: authUser.user.uid,
-            //         username: username,
-            //         email: authUser.user.email,
-            //         profile_picture: await getRandomProfilePicture(),
-            //     });
             return authUser;
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
         }
-    };
-
-    var actionCodeSettings = {
-        url: "https://www.example.com/?email=" + firebase.auth().email,
-        iOS: {
-            bundleId: "com.example.ios",
-        },
-        android: {
-            packageName: "com.example.android",
-            installApp: true,
-            minimumVersion: "12",
-        },
-        handleCodeInApp: true,
-        // When multiple custom dynamic link domains are defined, specify which
-        // one to use.
-        dynamicLinkDomain: "example.page.link",
-    };
-
-    const emailVerify = async (email) => {
-        try {
-            firebase
-                .auth()
-                .sendSignInLinkToEmail(email, actionCodeSettings)
-                .then(() => {
-                    // The link was successfully sent. Inform the user.
-                    // Save the email locally so you don't need to ask the user for it again
-                    // if they open the link on the same device.
-                    window.localStorage.setItem("emailForSignIn", email);
-                    // ...
-                    console.log("Done");
-                });
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const signUpWithFirebase = () => {
-        let google_provider = new firebase.auth.GoogleAuthProvider();
-        firebase
-            .auth()
-            .signInWithRedirect(google_provider)
-            .then((res) => {
-                if (res.credential) {
-                    let credential = res.credential;
-                    let token = credential.accessToken;
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            });
     };
 
     const Loading = () => <ActivityIndicator size="small" />;
