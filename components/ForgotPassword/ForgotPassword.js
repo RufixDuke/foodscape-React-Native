@@ -12,6 +12,7 @@ import Validator from "email-validator";
 import { firebase } from "../../firebase";
 import { auth } from "../../firebase";
 import { useState } from "react";
+import LinkSent from "./LinkSent";
 
 const ForgotPassword = ({ navigation }) => {
     const emailRef = useRef("");
@@ -25,7 +26,7 @@ const ForgotPassword = ({ navigation }) => {
                 .auth()
                 .sendPasswordResetEmail(email, auth);
             setLoading(false);
-            navigation.navigate("LoginScreen");
+            navigation.navigate("LinkSent");
 
             return authUser;
         } catch (error) {

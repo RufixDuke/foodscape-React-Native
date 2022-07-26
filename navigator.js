@@ -19,6 +19,7 @@ import PaymentInput from "./screens/PaymentInput";
 import DrawerNavigator from "./drawerNav";
 import AddressInput from "./screens/AddressInput";
 import Address from "./screens/Address";
+import LinkSent from "./components/ForgotPassword/LinkSent";
 
 const Stack = createNativeStackNavigator();
 
@@ -64,6 +65,7 @@ export const SignedOutStack = () => (
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
             <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
+            <Stack.Screen name="LinkSent" component={LinkSent} />
             <Stack.Screen name="HomeScreen" component={DrawerNavigator} />
         </Stack.Navigator>
     </NavigationContainer>
