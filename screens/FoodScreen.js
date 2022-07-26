@@ -107,7 +107,7 @@ const FoodScreen = ({ navigation }) => {
                 <EmptyPage
                     navigation={navigation}
                     title="No search yet."
-                    desc="You haven’t searched for a snack yet."
+                    desc="You haven’t searched for a food yet."
                     image={require("../assets/icons/rice-big.png")}
                 />
             )}

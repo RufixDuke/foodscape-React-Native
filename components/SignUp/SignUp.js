@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import Validator from "email-validator";
-import { firebase, db } from "../../firebase";
+import { firebase } from "../../firebase";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 
 const signUpSchema = Yup.object().shape({
@@ -34,7 +34,6 @@ const SignUp = ({ navigation }) => {
             setLoading(false);
             navigation.navigate("HomeScreen");
 
-            emailVerify(email);
             return authUser;
         } catch (error) {
             Alert.alert(`Hello ${email}`, error.message);
@@ -73,7 +72,6 @@ const SignUp = ({ navigation }) => {
                                 autoCapitalize="none"
                                 keyboardType="email-address"
                                 textContentType="emailAddress"
-                                // autoFocus={true}
                                 onChangeText={handleChange("email")}
                                 onBlur={handleBlur("email")}
                                 value={values.email}
