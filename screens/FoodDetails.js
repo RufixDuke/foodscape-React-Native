@@ -47,7 +47,8 @@ const FoodDetails = ({ navigation }) => {
     let newRecipeID =
         typeof recipeID === "string" ? (newRecipeID = 54729) : recipeID;
 
-    let newPrices = parseInt(newPrice) * quantity;
+    let newPrices = (parseInt(newPrice) * quantity).toFixed(2);
+    console.log(typeof newPrices);
 
     const setTask = () => {
         var Cart = {
