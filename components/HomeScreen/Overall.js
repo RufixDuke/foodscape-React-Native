@@ -6,11 +6,13 @@ import SpecialOffers from "./SpecialOffers";
 
 const Overall = ({ navigation }) => {
     const [recipe, setRecipe] = useState([]);
+    const [chicken, setChicken] = useState([]);
+    const [cake, setCake] = useState([]);
     let slicedRecipe = recipe.slice(0, 7);
     let swiperSliced = recipe.slice(8, 15);
     let specialSliced = recipe.slice(15, 22);
     const anotherSliced = recipe.slice(22, 29);
-    const fetchingData = () => {
+    const fetchingPizza = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
             .then((response) => response.json())
@@ -19,8 +21,28 @@ const Overall = ({ navigation }) => {
             });
     };
 
+    const fetchingChicken = () => {
+        let url = "https://forkify-api.herokuapp.com/api/search?q=chicken";
+        fetch(url)
+            .then((response) => response.json())
+            .then((recipe) => {
+                setChicken(recipe.recipes);
+            });
+    };
+
+    const fetchingCake = () => {
+        let url = "https://forkify-api.herokuapp.com/api/search?q=cake";
+        fetch(url)
+            .then((response) => response.json())
+            .then((recipe) => {
+                setCake(recipe.recipes);
+            });
+    };
+
     useEffect(() => {
-        fetchingData();
+        fetchingPizza();
+        fetchingChicken();
+        fetchingCake();
     }, []);
     return (
         <View style={styles.wrapper}>
@@ -102,7 +124,7 @@ const Overall = ({ navigation }) => {
                             showsHorizontalScrollIndicator={false}
                             style={{ marginTop: 1 }}
                         >
-                            {specialSliced.map((data) => (
+                            {chicken.map((data) => (
                                 <SpecialOffers
                                     data={data}
                                     key={data.recipe_id}
@@ -121,14 +143,14 @@ const Overall = ({ navigation }) => {
                                 fontWeight: "800",
                             }}
                         >
-                            Special Offers
+                            Discount Offers
                         </Text>
                         <ScrollView
                             horizontal
                             showsHorizontalScrollIndicator={false}
                             style={{ marginTop: 1 }}
                         >
-                            {anotherSliced.map((data) => (
+                            {cake.map((data) => (
                                 <SpecialOffers
                                     data={data}
                                     key={data.recipe_id}
