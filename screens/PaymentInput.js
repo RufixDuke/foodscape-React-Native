@@ -41,7 +41,7 @@ const PaymentInput = ({ navigation }) => {
 
     const setTask = () => {
         if (title.length == 0) {
-            Alert.alert("Warning", "Please write your address title.");
+            Alert.alert("Warning", "Please write your Card title.");
         } else {
             try {
                 var Task = {
