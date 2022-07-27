@@ -7,7 +7,13 @@ const BottomTabs = ({ navigation }) => {
     return (
         <View style={styles.wrapper}>
             <View style={styles.container}>
-                <TouchableOpacity onPress={() => navigation.push("HomeScreen")}>
+                <TouchableOpacity
+                    onPress={() => navigation.push("HomeScreen")}
+                    style={{
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
                     <Image
                         style={styles.text}
                         source={require("../../assets/icons/home-filled.png")}
@@ -17,6 +23,10 @@ const BottomTabs = ({ navigation }) => {
 
                 <TouchableOpacity
                     onPress={() => navigation.push("RecentScreen")}
+                    style={{
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
                 >
                     <Image
                         style={styles.text}
@@ -25,7 +35,13 @@ const BottomTabs = ({ navigation }) => {
                     <Text style={{ color: "#B6B6B6" }}>Recent</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.push("Favorite")}>
+                <TouchableOpacity
+                    onPress={() => navigation.push("Favorite")}
+                    style={{
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
                     <Image
                         style={[styles.text, styles.fav]}
                         source={require("../../assets/icons/heart-gray.png")}
@@ -35,7 +51,11 @@ const BottomTabs = ({ navigation }) => {
 
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Carts")}
-                    style={{ position: "relative" }}
+                    style={{
+                        position: "relative",
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
                 >
                     <Image
                         style={[styles.text, styles.fav]}
@@ -58,7 +78,13 @@ const BottomTabs = ({ navigation }) => {
                     </Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity onPress={() => navigation.push("Profile")}>
+                <TouchableOpacity
+                    onPress={() => navigation.push("Profile")}
+                    style={{
+                        alignItems: "center",
+                        justifyContent: "center",
+                    }}
+                >
                     <Image
                         style={[styles.text, styles.fav]}
                         source={require("../../assets/icons/user-gray.png")}
@@ -79,11 +105,10 @@ const styles = StyleSheet.create({
         backgroundColor: "#FAFAFA",
     },
     container: {
-        height: 55,
+        height: 65,
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        paddingVertical: 20,
     },
     text: {
         width: 22,

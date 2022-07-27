@@ -11,7 +11,8 @@ const WelcomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
-                <Image source={require("../assets/icons/Foodscape.png")} />
+                {/* <Image source={require("../assets/icons/Foodscape.png")} /> */}
+                <Text>foodscape</Text>
             </View>
         </SafeAreaView>
     );
