@@ -183,12 +183,18 @@ const Carts = ({ navigation }) => {
 
                     <Pressable
                         onPress={() => setQuery("")}
-                        style={{
-                            backgroundColor: "#F59D5E",
-                            paddingHorizontal: 20,
-                            paddingVertical: 10,
-                            borderRadius: 8,
-                        }}
+                        style={({ pressed }) => [
+                            {
+                                backgroundColor: pressed
+                                    ? "#F27C28"
+                                    : "#F59D5E",
+                            },
+                            {
+                                paddingHorizontal: 20,
+                                paddingVertical: 10,
+                                borderRadius: 8,
+                            },
+                        ]}
                     >
                         <Text>Apply</Text>
                     </Pressable>
@@ -365,7 +371,6 @@ const styles = StyleSheet.create({
         paddingVertical: 16,
         borderRadius: 32,
         marginTop: 30,
-        marginBottom: 30,
     },
     cartBtnText: {
         textAlign: "center",
