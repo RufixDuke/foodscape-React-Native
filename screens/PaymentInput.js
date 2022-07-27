@@ -60,7 +60,7 @@ const PaymentInput = ({ navigation }) => {
                 AsyncStorage.setItem("Tasks", JSON.stringify(newTasks)).then(
                     () => {
                         dispatch(setTasks(newTasks));
-                        Alert.alert("Success!", "Address saved successfully.");
+                        Alert.alert("Success!", "Card saved successfully.");
                         navigation.goBack();
                     }
                 );
@@ -212,7 +212,6 @@ const PaymentInput = ({ navigation }) => {
             <Text style={{ color: "#828282" }}>Account Name</Text>
             <TextInput
                 style={styles.input}
-                multiline
                 onChangeText={(value) => setName(value)}
                 value={name}
                 textContentType="name"

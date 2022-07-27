@@ -39,7 +39,7 @@ const PaymentCards = ({ navigation }) => {
         AsyncStorage.setItem("Tasks", JSON.stringify(filteredAddress))
             .then(() => {
                 dispatch(setTasks(filteredAddress));
-                Alert.alert("Success!", "Address removed successfully.");
+                Alert.alert("Success!", "Card removed successfully.");
             })
             .catch((error) => {
                 Alert.alert(`Hello User`, error.message);
@@ -49,7 +49,7 @@ const PaymentCards = ({ navigation }) => {
     const alertPrompt = (id) => {
         Alert.alert(
             "Hey, Hold on!!",
-            "Are you sure you want to delete this address???",
+            "Are you sure you want to delete this card???",
             [
                 {
                     text: "Yes",

@@ -3,11 +3,11 @@ import React from "react";
 import { useEffect } from "react";
 
 const WelcomeScreen = ({ navigation }) => {
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         navigation.replace("SwiperScreen");
-    //     }, 5000);
-    // });
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.replace("SwiperScreen");
+        }, 5000);
+    });
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
