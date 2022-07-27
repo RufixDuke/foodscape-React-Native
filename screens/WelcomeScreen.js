@@ -3,16 +3,16 @@ import React from "react";
 import { useEffect } from "react";
 
 const WelcomeScreen = ({ navigation }) => {
-    useEffect(() => {
-        setTimeout(() => {
-            navigation.replace("SwiperScreen");
-        }, 5000);
-    });
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         navigation.replace("SwiperScreen");
+    //     }, 5000);
+    // });
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.header}>
                 {/* <Image source={require("../assets/icons/Foodscape.png")} /> */}
-                <Text>foodscape</Text>
+                <Text style={styles.text}>foodscape</Text>
             </View>
         </SafeAreaView>
     );
