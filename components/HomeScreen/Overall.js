@@ -10,8 +10,8 @@ const Overall = ({ navigation }) => {
     const [cake, setCake] = useState([]);
     let slicedRecipe = recipe.slice(0, 7);
     let swiperSliced = recipe.slice(8, 15);
-    let specialSliced = recipe.slice(15, 22);
-    const anotherSliced = recipe.slice(22, 29);
+    let specialSliced = chicken.slice(15, 22);
+    const anotherSliced = cake.slice(0, 7);
     const fetchingPizza = () => {
         let url = "https://forkify-api.herokuapp.com/api/search?q=pizza";
         fetch(url)
@@ -124,7 +124,7 @@ const Overall = ({ navigation }) => {
                             showsHorizontalScrollIndicator={false}
                             style={{ marginTop: 1 }}
                         >
-                            {chicken.map((data) => (
+                            {specialSliced.map((data) => (
                                 <SpecialOffers
                                     data={data}
                                     key={data.recipe_id}
@@ -150,7 +150,7 @@ const Overall = ({ navigation }) => {
                             showsHorizontalScrollIndicator={false}
                             style={{ marginTop: 1 }}
                         >
-                            {cake.map((data) => (
+                            {anotherSliced.map((data) => (
                                 <SpecialOffers
                                     data={data}
                                     key={data.recipe_id}
